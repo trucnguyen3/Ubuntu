@@ -4,7 +4,11 @@ const express = require('express')
 const app = express()
 const port = 1337
 
+var cors = require('cors')
+
 app.use(express.json())
+
+app.use(cors())
 
 const auth = new google.auth.GoogleAuth({
   credentials: {
