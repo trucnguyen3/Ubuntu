@@ -31,6 +31,10 @@ const sheets = google.sheets({ auth, version: "v4" }); // This is from your show
 const spreadsheetId = "1RA54GZKbs-ZILxXOojnSd-afygG-rov7N3O7E99Ys7k"; // Please set your Spreadsheet ID.
 const sheetName = "vouncher"; // Please set your sheet name.
 
+app.get('/spinnerwheel', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', '/spinner_wheel.html'));
+});
+
 app.post('/updatesheet', async (req, res) => {
   console.log(JSON.stringify(req.body))
 
