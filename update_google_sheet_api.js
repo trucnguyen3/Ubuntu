@@ -38,9 +38,11 @@ app.get('/spinnerwheel', (req, res) => {
 });
 
 app.post('/updatesheet', async (req, res) => {
-  console.log(JSON.stringify(req.body.GSID))
+  console.log((req.body))
 
-  const inputValues = ["48", "used"]; // This is a sample input value.
+  var sheetID = req.body.GSID
+
+  const inputValues = [sheetID, "used"]; // This is a sample input value.
 
   const { data: { values } } = await sheets.spreadsheets.values.get({ spreadsheetId, range: sheetName });
   await sheets.spreadsheets.values.update({
