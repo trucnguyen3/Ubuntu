@@ -1,5 +1,8 @@
 const { google } = require('googleapis');
 
+const cors = require('cors')
+app.use(cors())
+
 const express = require('express')
 const app = express()
 const port = 1337
