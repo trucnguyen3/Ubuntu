@@ -38,7 +38,7 @@ app.get('/spinnerwheel', (req, res) => {
 });
 
 app.post('/updatesheet', async (req, res) => {
-  console.log(JSON.stringify(req.body))
+  console.log(JSON.stringify(req.body.GSID))
 
   const inputValues = [JSON.stringify(req.body.GSID), "used"]; // This is a sample input value.
 
