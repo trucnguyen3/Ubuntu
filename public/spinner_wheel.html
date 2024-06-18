@@ -604,11 +604,6 @@
                             "Congratulations";
                         document.querySelector(".secondary-header").innerText =
                             "You unlocked a good discount";
-                        var props = { voucher: window.deal, code: window.promoCode, status: "used" };
-                        if (window.CleverTap) {
-                            CleverTap.pushEvent("Vouncher Got", JSON.stringify(props));
-                        }
-
                     }, resultTimeout);
                 }
             });
