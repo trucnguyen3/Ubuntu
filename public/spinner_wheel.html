@@ -372,6 +372,12 @@
                                         .then((response) => response.text())
                                         .then((result) => console.log(result))
                                         .catch((error) => console.error(error));
+
+                                    var props = { GSID: code10notuse[0].GSID, CODE: code10notuse[0].CODE, STATUS: "used", MESSAGE: code10notuse[0].MESSAGE };
+                                    if (window.CleverTap) {
+                                        // Call Android interface             
+                                        CleverTap.pushEvent("Vouncher Got", JSON.stringify(props));
+                                    }
                                 }
                             }
 
@@ -408,6 +414,12 @@
                                         .then((response) => response.text())
                                         .then((result) => console.log(result))
                                         .catch((error) => console.error(error));
+
+                                    var props = { GSID: code20notuse[0].GSID, CODE: code20notuse[0].CODE, STATUS: "used", MESSAGE: code20notuse[0].MESSAGE };
+                                    if (window.CleverTap) {
+                                        // Call Android interface             
+                                        CleverTap.pushEvent("Vouncher Got", JSON.stringify(props));
+                                    }
                                 }
                             }
 
@@ -444,6 +456,12 @@
                                         .then((response) => response.text())
                                         .then((result) => console.log(result))
                                         .catch((error) => console.error(error));
+
+                                    var props = { GSID: code30notuse[0].GSID, CODE: code30notuse[0].CODE, STATUS: "used", MESSAGE: code30notuse[0].MESSAGE };
+                                    if (window.CleverTap) {
+                                        // Call Android interface             
+                                        CleverTap.pushEvent("Vouncher Got", JSON.stringify(props));
+                                    }
                                 }
                             }
 
@@ -480,6 +498,12 @@
                                         .then((response) => response.text())
                                         .then((result) => console.log(result))
                                         .catch((error) => console.error(error));
+
+                                    var props = { GSID: code40notuse[0].GSID, CODE: code40notuse[0].CODE, STATUS: "used", MESSAGE: code40notuse[0].MESSAGE };
+                                    if (window.CleverTap) {
+                                        // Call Android interface             
+                                        CleverTap.pushEvent("Vouncher Got", JSON.stringify(props));
+                                    }
                                 }
                             }
 
@@ -516,6 +540,12 @@
                                         .then((response) => response.text())
                                         .then((result) => console.log(result))
                                         .catch((error) => console.error(error));
+
+                                    var props = { GSID: code50notuse[0].GSID, CODE: code50notuse[0].CODE, STATUS: "used", MESSAGE: code50notuse[0].MESSAGE };
+                                    if (window.CleverTap) {
+                                        // Call Android interface             
+                                        CleverTap.pushEvent("Vouncher Got", JSON.stringify(props));
+                                    }
                                 }
                             }
                             if (finalRotation >= 330 && finalRotation < 30) {
@@ -551,6 +581,12 @@
                                         .then((response) => response.text())
                                         .then((result) => console.log(result))
                                         .catch((error) => console.error(error));
+
+                                    var props = { GSID: codefailnotuse[0].GSID, CODE: codefailnotuse[0].CODE, STATUS: "used", MESSAGE: codefailnotuse[0].MESSAGE };
+                                    if (window.CleverTap) {
+                                        // Call Android interface             
+                                        CleverTap.pushEvent("Vouncher Got", JSON.stringify(props));
+                                    }
                                 }
                             }
                         })
