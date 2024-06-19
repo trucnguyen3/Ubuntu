@@ -60,13 +60,13 @@
         });
 
         function clevertapLogout() {
-            clevertap.clear()
-            sessionStorage.clear()
-
             clevertap.event.push("Logged Out", {
                 "Source": "AKA DEV",
                 "Date": new Date()
             });
+
+            clevertap.clear()
+            sessionStorage.clear()
         }
 
         window.onload = function () {
