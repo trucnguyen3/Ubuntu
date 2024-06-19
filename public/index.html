@@ -31,7 +31,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
+
     <script type="text/javascript">
         var clevertap = { event: [], profile: [], account: [], onUserLogin: [], notifications: [], privacy: [], region: 'sg1' };
         clevertap.account.push({ "id": "485-766-KW7Z" });
@@ -53,20 +53,21 @@
             "rejectButtonText": 'No thanks',
             "okButtonColor": '#f28046'
         });
-        
+
         clevertap.event.push("Home Screen", {
-          "Url":"https://testingakavn.000webhostapp.com/",
-          "Source":"AKA DIGITAL VN",
-          "Date": new Date()
+            "Url": "https://testingakavn.000webhostapp.com/",
+            "Source": "AKA DIGITAL VN",
+            "Date": new Date()
         });
-        
+
         function clevertapLogout() {
             clevertap.clear()
         }
-        
-        window.onload = function() {
+
+        window.onload = function () {
             if (sessionStorage.getItem("username") === null) {
                 document.getElementById("username").innerHTML = "Xin chào, Bạn";
+                document.getElementById("logout").style.display = "none";
             } else {
                 var username = "Xin chào, " + sessionStorage.getItem("username");
                 document.getElementById("username").innerHTML = username;
@@ -107,7 +108,8 @@
                         </div>
                     </div>
                     <a href="login.html" class="nav-item nav-link" style="width: 120px;">Đăng nhập</a>
-                    <a href="login.html" id="logout" class="nav-item nav-link" style="width: 120px;" onclick="clevertapLogout()">Đăng xuất</a>
+                    <a href="login.html" id="logout" class="nav-item nav-link" style="width: 120px;"
+                        onclick="clevertapLogout()">Đăng xuất</a>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
                     <a class="btn btn-light btn-sm-square rounded-circle ms-3" href="">
@@ -648,6 +650,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-</body>
+    </body>
 
 </html>
