@@ -70,13 +70,14 @@
         }
 
         window.onload = function () {
-            if (sessionStorage.getItem("username") === null) {
-                document.getElementById("username").innerHTML = "Xin chào, Bạn";
+            if (sessionStorage.getItem("emailaddress") === null) {
+                document.getElementById("emailaddress").innerHTML = "Xin chào, Bạn";
                 document.getElementById("logout").style.display = "none";
             } else {
-                var username = "Xin chào, " + sessionStorage.getItem("username");
-                document.getElementById("username").innerHTML = username;
+                var emailaddress = "Xin chào, " + sessionStorage.getItem("emailaddress");
+                document.getElementById("emailaddress").innerHTML = emailaddress;
                 document.getElementById("signup").style.display = "none";
+                document.getElementById("login").style.display = "none";
             }
         }
     </script>
@@ -163,7 +164,9 @@
                         </div>
                     </div>
                     <a href="https://dev.akadigital.net/signup" id="signup" class="nav-item nav-link"
-                        style="width: 120px;">Đăng ký</a>
+                        style="width: 100px;">Đăng ký</a>
+                    <a href="https://dev.akadigital.net/login" id="login" class="nav-item nav-link"
+                        style="width: 120px;">Đăng nhập</a>
                     <a href="https://dev.akadigital.net/signup" id="logout" class="nav-item nav-link"
                         style="width: 120px;" onclick="clevertapLogout()">Đăng xuất</a>
                 </div>
