@@ -952,7 +952,10 @@
 				})
 			}
 
-			clevertap.event.push("Login Screen", {});
+			clevertap.event.push("Logged In", {
+				"Source": "AKA DEV",
+				"Date": new Date()
+			});
 			sessionStorage.setItem("username", document.getElementById("txtUsername").value);
 		}
 	</script>
