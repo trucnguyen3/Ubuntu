@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://www.vib.com.vn/vn/home -->
+<html class="no-js" lang="vi">
+<!--<![endif]-->
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>VIB</title>
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Raleway:wght@500;600&display=swap"
+		rel="stylesheet" />
+	<!-- CSS Reset -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" />
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@500;700&family=Raleway:wght@500;700&display=swap"
+		rel="stylesheet" />
+	<style type="text/css">
+		@import"https://fonts.googleapis.com/css?family=Inter:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&subset=vietnamese&display=swap";
+
+		:root {
+			--icon-Logo-Login-IB: url(/static/theme/2022/LogoLogIB.svg?t=2022);
+			--icon-Close: url(/static/theme/2022/close.svg)
+		}
+
+		.link-underline {
+			text-decoration: underline !important
+		}
+
+		#new-login {
+			font-family: Arial, Helvetica, sans-serif
+		}
+
+		#new-login a {
+			color: var(--bg-color-mono-1)
+		}
+
+		#new-login .row {
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			margin-right: -15px;
+			margin-left: -15px
+		}
+
+		#new-login .login-pop-conts {
+			max-width: 1100px;
+			width: 100%;
+			margin: 0 auto;
+			padding-top: 65px;
+			overflow: auto;
+			height: 100%;
+			padding-bottom: 20px
+		}
+
+		#new-login .vib-v2-content-form-login {
+			width: 100%;
+			position: fixed;
+			background: #fff;
+			height: 100vh;
+			opacity: 0;
+			z-index: -99999;
+			transition: all .5s ease;
+			right: auto;
+			overflow: hidden
+		}
+
+		#new-login .vib-v2-content-form-login.active {
+			opacity: 1;
+			z-index: 99999
+		}
+
+		#new-login .col img {
+			max-width: 78px
+		}
+
+		#new-login .part-login-inner {
+			text-align: center
+		}
+
+		#new-login .part-login-inner .vib-v2-header-ib {
+			line-height: normal;
+			background: none;
+			margin-bottom: 16px
+		}
+
+
+		#new-login .part-login-inner>.vib-v2-header-ib {
+			display: none
+		}
+
+		#new-login .part-ad {
+			width: 100%;
+			padding: 0 31px
+		}
+
+		#new-login .part-ad .part-ad-inner {
+			background: #fff;
+			-webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .05);
+			-moz-box-shadow: 0 20px 50px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .05);
+			-ms-box-shadow: 0 20px 50px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .05);
+			-o-box-shadow: 0 20px 50px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .05);
+			box-shadow: 0 20px 50px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .05);
+			border-radius: 10px;
+			padding: 20px 0 0;
+			margin-top: 21.5px;
+			overflow: hidden;
+			text-align: center
+		}
+
+		#new-login .part-ad .part-ad-inner>.row {
+			height: 100%
+		}
+
+		#new-login .part-ad .part-ad-inner .col_pic img {
+			max-width: 100%
+		}
+
+		#new-login .part-ad .part-ad-inner h3 {
+			font-weight: var(--font-body-bold-weight);
+			font-size: var(--font-title-3-size);
+			line-height: 38px;
+			margin: 0
+		}
+
+		#new-login .part-ad .part-ad-inner h3+p {
+			font-weight: var(--font-body-medium-weight);
+			font-size: var(--font-body-bold-size);
+			line-height: 22px;
+			margin-top: 12px
+		}
+
+		#new-login .part-ad .part-ad-inner .qa-info {
+			font-weight: var(--font-body-medium-weight);
+			font-size: var(--font-body-bold-size);
+			line-height: 22px;
+			background: #f9fafb;
+			box-shadow: 0 0 2px rgba(0, 0, 0, .12);
+			border-radius: 3px;
+			padding: 8px 12px;
+			margin-top: 20px;
+			display: none
+		}
+
+		#new-login .tab-id-01 {
+			width: 20%;
+			border-left: none;
+			text-align: left;
+			border-bottom: none;
+			height: 14px;
+			font-weight: 600;
+			line-height: 24px;
+			padding: 16px 0;
+			transition: all .3s ease;
+			margin-right: 40px;
+			float: left;
+		}
+
+		#new-login .tab-id-01::before {
+			top: 54px;
+			background: linear-gradient(94.64deg, #FF5922 3.75%, #FE9B25 96.25%);
+		}
+
+		#new-login .tab-id-02 {
+			width: 40%;
+			border-left: none;
+			text-align: left;
+			border-bottom: none;
+			height: 14px;
+			font-weight: var(--font-body-medium-weight);
+			line-height: 24px;
+			padding: 16px 0;
+			transition: all .3s ease;
+			float: left;
+		}
+
+		#new-login .tab-id-01::before {
+			top: 54px;
+			background: linear-gradient(94.64deg, #FF5922 3.75%, #FE9B25 96.25%);
+		}
+
+		#new-login .tab-id-01.active {
+			height: 15px;
+			font-weight: 600;
+			color: linear-gradient(94.64deg, #FF5922 3.75%, #FE9B25 96.25%);
+			border-bottom: solid 2px #FF5922;
+		}
+
+		#new-login .tab-id-01.active:hover {
+			color: linear-gradient(94.64deg, #FF5922 3.75%, #FE9B25 96.25%);
+		}
+
+		#new-login #tab-id-01,
+		#new-login #tab-id-02 {
+			height: calc(100vh - 308px);
+			overflow-y: auto;
+			padding: 0 10px 3px;
+			overflow-x: hidden;
+			margin: 0 -10px
+		}
+
+		#new-login .scan-qa {
+			position: relative;
+			overflow: hidden
+		}
+
+		#new-login .scan-qa .scan-animation {
+			width: 100%;
+			height: 10px;
+			position: absolute;
+			animation-name: zigzag;
+			animation-duration: 4s;
+			animation-iteration-count: infinite
+		}
+
+		#new-login .conts-in-desk {
+			display: none
+		}
+
+		.align-items-center {
+			-ms-flex-align: center !important;
+			align-items: center !important
+		}
+
+		.col {
+			position: relative;
+			width: 100%;
+			padding-right: 15px;
+			padding-left: 15px;
+			-ms-flex-preferred-size: 0;
+			flex-basis: 0;
+			-ms-flex-positive: 1;
+			flex-grow: 1;
+			max-width: 100%
+		}
+
+		.col-auto {
+			position: relative;
+			width: 100%;
+			padding-right: 15px;
+			padding-left: 15px;
+			-ms-flex: 0 0 auto;
+			flex: 0 0 auto;
+			width: auto;
+			max-width: 100%
+		}
+
+		#new-login.vib-v2-form-login {
+			display: block !important
+		}
+
+
+		@keyframes zigzag {
+			from {
+				background: linear-gradient(0deg, #FF5B23 0%, rgba(255, 167, 137, 0.536896) 24.43%, rgba(255, 255, 255, 0) 100%);
+				top: 0;
+			}
+
+			50% {
+				background: linear-gradient(0deg, #FF5B23 0%, rgba(255, 167, 137, 0.536896) 24.43%, rgba(255, 255, 255, 0) 100%);
+				top: 95%;
+			}
+
+			51% {
+				background: linear-gradient(180deg, #FF5B23 0%, rgba(255, 167, 137, 0.536896) 24.43%, rgba(255, 255, 255, 0) 100%);
+				top: 95%;
+			}
+
+			100% {
+				background: linear-gradient(180deg, #FF5B23 0%, rgba(255, 167, 137, 0.536896) 24.43%, rgba(255, 255, 255, 0) 100%);
+				top: 0;
+			}
+		}
+
+		@media only screen and (min-width:768px) {
+			#new-login .part-login-inner .vib-v2-header-ib span {
+				font-size: 24px;
+				line-height: var(--font-title-1-height)
+			}
+
+			#new-login .part-ad .part-ad-inner {
+				text-align: left;
+				border-radius: 20px;
+				padding-top: 0
+			}
+
+			#new-login .part-ad .part-ad-inner .txt-conts-ad {
+				padding-left: 80px
+			}
+
+			#new-login .part-ad .part-ad-inner .col_pic {
+				width: 353px;
+				padding-right: 0;
+				padding-left: 0
+			}
+
+			#new-login .part-ad .part-ad-inner>.col {
+				padding-left: 0
+			}
+
+			#new-login .part-ad .part-ad-inner h3 {
+				font-size: var(--font-large-title-size);
+				line-height: 38px
+			}
+
+			#new-login .part-ad .part-ad-inner h3+p {
+				font-weight: var(--font-title-3-weight)
+			}
+
+			#new-login .part-ad .part-ad-inner .qa-info {
+				display: block
+			}
+		}
+
+		@media only screen and (max-width:767px) {
+			#new-login .part-login-inner {
+				margin-left: 1px;
+				margin-right: 1px
+			}
+
+			#new-login .part-ad {
+				padding-bottom: 70px
+			}
+
+			#new-login .part-ad .part-ad-inner {
+				margin-top: 32px;
+				padding-top: 32px
+			}
+
+			#new-login .part-ad .part-ad-inner h3+p {
+				margin-top: 8px;
+				margin-bottom: 12px
+			}
+
+			#new-login .part-ad .part-ad-inner .txt-conts-ad {
+				padding-left: 5px;
+				padding-right: 5px
+			}
+
+			#new-login .tab-id-01 {
+				margin-bottom: 32px !important
+			}
+
+			#new-login .tab-id-02 {
+				margin-bottom: 32px !important
+			}
+
+			#new-login .col.part-login {
+				padding-left: 16px;
+				padding-right: 16px
+			}
+		}
+
+		@media only screen and (max-width:991px) {
+			#new-login .login-pop-conts {
+				display: block
+			}
+
+			#new-login .tab-id-01 {
+				margin-bottom: 40px;
+				z-index: 1;
+				display: inline-block;
+				float: none
+			}
+
+			#new-login .tab-id-02 {
+				margin-bottom: 40px;
+				z-index: 1;
+				display: inline-block;
+				float: none
+			}
+
+			#new-login #tab-id-01 {
+				height: auto;
+				padding-right: 0
+			}
+
+			#new-login #tab-id-02 {
+				height: auto;
+				padding-right: 0
+			}
+
+			#new-login .vib-v2-tab-ib::after {
+				content: "";
+				position: absolute;
+				background: #fff;
+				box-shadow: 0 2px 5px rgba(188, 188, 188, .25);
+				height: 56px;
+				top: 0;
+				width: 100%;
+				left: 0
+			}
+
+			.outerLogin {
+				height: 100vh
+			}
+
+			.tab-id-01:hover {
+				color: var(--bg-color-mono-0)
+			}
+
+			.tab-id-02:hover {
+				color: var(--bg-color-mono-0)
+			}
+		}
+
+		@media only screen and (min-width:992px) {
+			#new-login a:hover {
+				color: var(--color-dard-orange)
+			}
+
+			#new-login .vib-v2-content-form-login {
+				background: #fafafa
+			}
+
+			#new-login .login-pop-conts {
+				max-width: 1020px;
+				padding-top: 95px
+			}
+
+			#new-login .part-ad {
+				width: 600px;
+				padding-right: 80px
+			}
+
+			#new-login .part-ad .part-ad-inner {
+				min-height: 600px;
+				margin-top: 0;
+				-webkit-box-shadow: 0 20px 60px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .005);
+				-moz-box-shadow: 0 20px 60px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .005);
+				-ms-box-shadow: 0 20px 60px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .005);
+				-o-box-shadow: 0 20px 60px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .005);
+				box-shadow: 0 20px 60px rgba(0, 0, 0, .07), 0 -3.8px 10px rgba(0, 0, 0, .005)
+			}
+
+			#new-login .part-ad .part-ad-inner .col_pic {
+				width: 200px;
+				padding-right: 0;
+				padding-left: 0
+			}
+
+			#new-login .part-ad .part-ad-inner h3 {
+				font-size: 24px;
+				line-height: var(--font-title-1-height)
+			}
+
+			#new-login .part-ad .part-ad-inner .txt-conts-ad {
+				padding-left: 40px;
+				padding-right: 0
+			}
+
+			#new-login .vib-v2-tab-ib {
+				display: block
+			}
+
+			#new-login .qa-info {
+				display: block
+			}
+
+			#new-login .icon-logo-ib {
+				width: 60px;
+				height: 60px;
+				margin-bottom: 20px;
+				position: relative;
+				left: 0;
+				right: auto;
+				transform: translateX(0);
+				background-size: 55px;
+				background-color: transparent
+			}
+
+			#new-login .part-login-inner {
+				text-align: left
+			}
+
+			#new-login .part-login-inner>.vib-v2-header-ib {
+				display: block
+			}
+
+			#new-login .vib-v2-header-ib {
+				text-align: left
+			}
+
+			#new-login .txt-for-device {
+				display: none
+			}
+
+			#new-login .conts-in-desk {
+				display: block
+			}
+		}
+
+		@media screen and (min-width:768px) and (max-width:992px) {
+			#new-login .part-ad {
+				padding: 0 47px
+			}
+
+			#new-login .icon-logo-ib {
+				background-size: 45px
+			}
+		}
+
+		@media screen and (max-width:1100px) and (min-width:992px) {
+			#new-login iframe {
+				height: 329.5px;
+			}
+
+			#new-login .icon-logo-ib {
+				width: 55px;
+				height: 55px;
+				margin-bottom: 15px;
+				background-size: 40px;
+				width: 40px;
+				height: 40px
+			}
+
+
+			#new-login .part-ad {
+				width: 505px
+			}
+
+			#new-login .part-ad .part-ad-inner {
+				min-height: 450px
+			}
+
+			#new-login .part-ad .part-ad-inner>.col {
+				padding-right: 15px
+			}
+
+			#new-login .part-ad .part-ad-inner .col_pic {
+				width: 220px
+			}
+
+			#new-login .part-ad .part-ad-inner .txt-conts-ad {
+				padding-left: 24px
+			}
+
+			#new-login .part-ad .part-ad-inner .txt-conts-ad .qa-info {
+				font-size: 12px;
+				line-height: 16px
+			}
+
+			#new-login .part-ad .part-ad-inner .txt-conts-ad .qa-info .col-auto {
+				padding-right: 12px
+			}
+
+			#new-login .part-ad .part-ad-inner .txt-conts-ad .qa-info img {
+				max-width: 55px
+			}
+
+			#new-login .part-ad .part-ad-inner h3 {
+				font-size: var(--font-title-3-size);
+				line-height: var(--font-title-2-height)
+			}
+
+			#new-login .part-ad .part-ad-inner h3+p {
+				font-size: var(--font-small-body-bold-size)
+			}
+
+			.outerLogin {
+				width: 1010px;
+				margin: 0 auto
+			}
+		}
+
+		@media only screen and (min-width:1100px) and (max-width:1180px) {
+			#new-login .outerLogin .login-pop-conts {
+				max-width: 1000px;
+				margin-left: 30px
+			}
+
+			#new-login .vib-v2-exit-form-login {
+				right: calc((100vw - 1070px) / 2)
+			}
+
+			#new-login .part-ad {
+				width: 540px;
+				padding-right: 55px
+			}
+		}
+
+		@media only screen and (min-width:1260px) {
+			#new-login .outerLogin .login-pop-conts {
+				max-width: 1130px;
+				margin-left: 45px
+			}
+
+			#new-login .part-ad {
+				width: 630px;
+				padding-right: 65px
+			}
+
+			#new-login .part-ad .part-ad-inner .col_pic {
+				width: 310px;
+				padding-left: 0
+			}
+
+			#new-login .vib-v2-exit-form-login {
+				right: calc((100vw - 1070px) / 2 - 72px)
+			}
+
+			#new-login .part-login-inner {
+				padding-right: 20px
+			}
+
+			#new-login .part-login-inner .vib-v2-header-ib span {
+				font-size: 24px;
+				line-height: var(--font-title-1-height)
+			}
+
+			.outerLogin {
+				width: 1220px;
+				margin: 0 auto
+			}
+		}
+
+		@media screen and (min-width:992px) and (max-height:700px) {
+			#new-login .login-pop-conts {
+				padding-top: 40px;
+				padding-bottom: 0
+			}
+
+			#new-login .part-ad .part-ad-inner {
+				min-height: 440px
+			}
+
+			#new-login #tab-id-02 {
+				height: calc(100vh - 245px)
+			}
+
+			#new-login #tab-id-01 {
+				height: calc(100vh - 240px)
+			}
+
+			#new-login .vib-v2-exit-form-login {
+				top: 30px;
+				right: calc((100vw - 1160px) / 2 - 40px);
+				transform: scale(.72)
+			}
+		}
+
+
+		.vib-v2-login-box-ib {
+			padding: 20px 0px;
+		}
+
+		.line-login-box-ib {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 400;
+			color: #000;
+			line-height: normal;
+			margin-bottom: 16px;
+		}
+
+		.vib-v2-input-login {
+			border: none;
+			height: 50px;
+			position: relative;
+		}
+
+		.vib-v2-input-login .ph_input {
+			color: #5e5c62;
+			font-size: 16px;
+			font-weight: 400;
+			top: 18px;
+			position: absolute;
+			transition: all 0.1s;
+		}
+
+		.vib-v2-input-login.focus .ph_input {
+			font-size: 14px;
+			top: 5px;
+		}
+
+		.field_input {
+			position: absolute;
+			width: 100%;
+			height: 35px;
+			border: none;
+			background: 0 0;
+			color: #000;
+			transition: all 0.1s;
+			outline: none;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			padding: 30px 0 0;
+			border-bottom: 1px solid #aaaaaa;
+		}
+
+		.field_input:hover,
+		.field_input:focus {
+			border-bottom: 2px solid #000;
+		}
+
+		/*
+***** WB NEW LOGIN STYLE 2023
+*/
+		::placeholder {
+			color: #5e5c62 !important;
+			opacity: 1;
+			/* Firefox */
+		}
+
+		::-ms-input-placeholder {
+			/* Edge 12-18 */
+			color: #5e5c62 !important;
+		}
+
+		.accept-term {
+			display: flex;
+			align-items: flex-start;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			line-height: 20px;
+		}
+
+		.accept-term a {
+			font-size: 14px;
+			color: #000;
+			text-decoration: underline !important;
+		}
+
+		.wb-accept-term-error {
+			margin-top: 8px;
+			margin-left: 0px;
+			display: none;
+		}
+
+		.wb-error-text-show {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #f00;
+			font-size: 12px;
+			line-height: 16px;
+		}
+
+		.wb-button-login {
+			font-family: Arial, Helvetica, sans-serif;
+			width: 100%;
+			height: 48px;
+			text-align: center;
+			margin-top: 16px;
+			background: #fdb814;
+			border-radius: 5px;
+			transition: 0.5s;
+		}
+
+		.wb-button-login:hover {
+			background: #000;
+		}
+
+		.wb-button-login a {
+			display: block;
+			line-height: 48px;
+			color: #000;
+			font-size: 16px;
+			font-weight: bold;
+			text-decoration: none;
+		}
+
+		.wb-button-login a:hover {
+			color: #fff !important;
+		}
+
+		/* The container */
+		.wb-checkbox-term-accept {
+			display: block;
+			position: relative;
+			padding-left: 30px;
+			cursor: pointer;
+			font-size: 14px;
+			color: #000;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		/* Hide the browser's default checkbox */
+		.wb-checkbox-term-accept input {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+			height: 0;
+			width: 0;
+		}
+
+		/* Create a custom checkbox */
+		.wb-checkmark {
+			position: absolute;
+			top: 4px;
+			left: 0;
+			height: 16px;
+			width: 16px;
+			border: 2px solid #aaaaaa;
+			border-radius: 2px;
+		}
+
+		/* On mouse-over, add a grey background color */
+		.wb-checkbox-term-accept:hover input~.wb-checkmark {
+			border: 2px solid #000;
+		}
+
+		/* When the checkbox is checked, add a blue background */
+		.wb-checkbox-term-accept input:checked~.wb-checkmark {
+			background-color: #000;
+			border: 2px solid #000;
+		}
+
+		/* Create the checkmark/indicator (hidden when not checked) */
+		.wb-checkmark:after {
+			content: "";
+			position: absolute;
+			display: none;
+		}
+
+		/* Show the checkmark when checked */
+		.wb-checkbox-term-accept input:checked~.wb-checkmark:after {
+			display: block;
+		}
+
+		/* Style the checkmark/indicator */
+		.wb-checkbox-term-accept .wb-checkmark:after {
+			left: 4px;
+			top: 1px;
+			width: 4px;
+			height: 8px;
+			border: solid white;
+			border-width: 0 3px 3px 0;
+			-webkit-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			transform: rotate(45deg);
+		}
+
+		#divLoading {
+			text-align: center;
+			padding-top: 160px;
+			position: fixed;
+			display: none;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 2;
+			cursor: pointer;
+		}
+
+		.vib-txt-form-box-ib {
+			padding: 20px;
+			box-shadow: 0 1px 5px rgba(188, 188, 188, 0.25);
+			border-radius: 5px;
+			height: auto;
+			background: #fff;
+			border-top: 0;
+		}
+
+		.vib-txt-form-box-ib h3 {
+			font-family: Arial, Helvetica, sans-serif !important;
+			margin-top: 0;
+			font-size: 20px;
+			line-height: 28px;
+			margin-bottom: 16px;
+			font-weight: 600;
+			color: #000;
+		}
+
+		.vib-txt-form-box-ib li {
+			margin-bottom: 16px;
+			list-style: none;
+		}
+
+		.vib-txt-form-box-ib li::before {
+			content: "â€¢";
+			position: absolute;
+			left: 60px;
+			color: black;
+			font-size: 20px;
+			line-height: 22px;
+		}
+
+		.vib-txt-form-box-ib a {
+			font-family: Arial, Helvetica, sans-serif !important;
+			font-weight: 600;
+			font-size: 16px;
+			line-height: 23px;
+			position: relative;
+			text-decoration: none;
+			color: #000;
+			transition: all 0.3s ease;
+			left: -4px;
+		}
+
+		.vib-txt-form-box-ib a::after {
+			width: 24px;
+			height: 24px;
+			content: "";
+			position: absolute;
+			background: url("../img/angle-right-small.svg") center center no-repeat;
+		}
+
+		.vib-txt-form-box-ib a:hover::after {
+			width: 24px;
+			height: 24px;
+			content: "";
+			position: absolute;
+			background: url("../img/angle-right-small-hover.svg") center center no-repeat;
+		}
+	</style>
+
+	<script type="text/javascript">
+		var clevertap = { event: [], profile: [], account: [], onUserLogin: [], notifications: [], privacy: [], region: 'sg1' };
+		clevertap.account.push({ "id": "485-766-KW7Z" });
+		clevertap.privacy.push({ optOut: false });
+		clevertap.privacy.push({ useIP: false });
+		(function () {
+			var wzrk = document.createElement('script');
+			wzrk.type = 'text/javascript';
+			wzrk.async = true;
+			wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(wzrk, s);
+		})();
+
+		function updateCleverTapIdentified() {
+			var username = document.getElementById("txtUsername").value;
+			if (username === "Truc Nguyen 1") {
+				clevertap.onUserLogin.push({
+					"Site": {
+						"Name": username,            // String
+						"Identity": "111",              // String or number
+						"Email": "trucnguyen111@gmail.com",         // Email address of the user
+						"Phone": "+84326733572",           // Phone (with the country code)
+						"Gender": "M",                     // Can be either M or F
+						"DOB": new Date(),                 // Date of Birth. Date object
+						// optional fields. controls whether the user will be sent email, push etc.
+						"MSG-email": true,                // Disable email notifications
+						"MSG-push": true,                  // Enable push notifications
+						"MSG-sms": true,                   // Enable sms notifications
+						"MSG-whatsapp": true,              // Enable WhatsApp notifications
+					}
+				})
+			}
+		}
+	</script>
+</head>
+
+<body id="content" class="lotusui30dojo tundra locale_en scrolled body_scroll" data-new-gr-c-s-check-loaded="14.1182.0"
+	data-gr-ext-installed="" style="">
+
+	<div class="wpthemeFrame">
+		<section class="vib-v2-form-login" id="new-login">
+			<div class="vib-v2-content-form-login active">
+				<div class="vib-v2-exit-form-login">
+					<i class="icon_exit-form-login"></i>
+				</div>
+				<div class="outerLogin">
+					<div class="row login-pop-conts">
+						<div class="col part-login">
+							<div class="part-login-inner">
+
+								<a href=""> <i class="icon-logo-ib"><img
+											src="https://www.vib.com.vn/static/theme/2022/LogoLogIB.svg?t=2022"></i></a>
+
+								<div class="vib-v2-header-ib" style="margin-top: 30px; font-weight: 600;">
+									<span>Đăng nhập ngân hàng điện tử</span>
+								</div>
+								<div class="vib-v2-tab-ib">
+
+									<div class="list-tab" style="display: flex;">
+										<div class="tab-id-01 active">
+											Cá nhân</div>
+										<div class="tab-id-02" data-frame-id="vib2018-login-popup-ib-business">
+											Doanh nghiệp</div>
+									</div>
+									<div class="clearfix"></div>
+									<div id="tab-id-03" style="display: block;">
+										<div class="lookNfeel_page">
+											<div id="dnn_ContentPane">
+												<div class="vib-v2-login-box-ib">
+
+													<div class="line-login-box-ib">
+														<div class="vib-v2-input-login form-control ocb txtUsername">
+															<span class="ph_input">Tên đăng nhập</span>
+															<input name="Username" type="text" id="txtUsername"
+																maxlength="50" class="field_input" placeholder="">
+															<i class="icon_user_login"></i>
+														</div>
+													</div>
+
+													<div class="line-login-box-ib">
+														<div class="vib-v2-input-login form-control ocb txtPassword">
+															<span class="ph_input">Mật khẩu</span>
+															<input name="Userpassword" type="password" id="txtPassword"
+																maxlength="50" class="field_input" autocomplete="off"
+																placeholder="">
+															<i class="icon_password_login"></i>
+														</div>
+													</div>
+
+
+
+													<div class="accept-term" style="margin-top: 50px;">
+														<label class="wb-checkbox-term-accept">
+															<input id="chkAcceptTerm" type="checkbox" name="Userchecked"
+																checked="checked">
+															<span class="wb-checkmark"></span>
+															Tôi đã đọc và đồng ý
+															<a id="lblTerm" download=""
+																href="https://ib.vib.com.vn/Banners/VIB_Dieu_khoan_dieu_kien_KHDN.pdf"
+																target="_blank">Điều kiện, điều khoản</a>
+															sử dụng dịch vụ ngân hàng điện tử dành cho khách hàng doanh
+															nghiệp
+														</label>
+													</div>
+
+													<div id="acceptTermError" class="wb-accept-term-error"
+														style="margin-top: 8px;">
+
+														<label class="wb-error-text-show">Bạn vui lòng đọc và đồng ý với
+															điều kiện, điều khoản sử
+															dụng dịch vụ</label>
+
+													</div>
+
+													<div class="wb-button-login">
+														<a onclick="updateCleverTapIdentified()" id="btnLogin"
+															href="https://dev.akadigital.net/"
+															style="display:inline-block;width:100%;">
+															<span>Đăng nhập</span>
+														</a>
+													</div>
+
+													<div
+														style="margin-top: 16px; align-items: center; display: flex; flex-direction: column; margin-bottom: 16px;">
+														<a id="ForgotPassword" class="wb-forgot-password"
+															target="_blank" href="">Quên
+															mật
+															khẩu</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="txt-for-device">
+											<div class="vib-v2-header-ib">
+												<span style="font-size: 24px; font-weight: bolder;">Đăng nhập ngân hàng
+													điện tử</span>
+											</div>
+											<p></p>
+											<p dir="ltr">Tải và đăng nhập MyVIB Corp
+												để quản lý tài khoản trên điện thoại
+											</p>
+											<p></p>
+
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+
+						</div>
+						<div class="col-auto part-ad">
+							<div class="">
+								<div class="row  align-items-center part-ad-inner" id="ib-personal"
+									style="display: none;">
+									<div class="col">
+										<div class="txt-conts-ad">
+											<h3>Hoàn 50% hoá đơn Điện/ Nước /Wifi
+											</h3>
+											<p> Cho người dùng mới MyVIB </p>
+											<div class="qa-info">
+												<div class="row  align-items-center">
+													<div class="col-auto">
+														<div class="scan-qa">
+															<div class="scan-animation">
+															</div>
+														</div>
+													</div>
+													<div class="col"> Quét mã tải
+														app ngay</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-auto col_pic banner_right_bg">
+										<img loading="lazy"
+											src="https://www.vib.com.vn/wps/wcm/connect/1b4aa4d5-d5e9-49a1-a9fe-02f3030e8348/desk.webp?MOD=AJPERES&CACHEID=ROOTWORKSPACE-1b4aa4d5-d5e9-49a1-a9fe-02f3030e8348-oZ2Verj"
+											alt="">
+									</div>
+								</div>
+								<div class="row  align-items-center part-ad-inner" id="ib-bussiness"
+									style="display: flex;">
+									<div class="col">
+										<div class="txt-conts-ad">
+											<h3 style="font-size: 24px; font-weight: bolder;">Hoàn 50% hoá đơn Điện/
+												Nước /Wifi </h3>
+											<p> Cho người dùng mới MyVIB
+											</p>
+											<div class="qa-info">
+												<div class="row  align-items-center">
+													<div class="col-auto">
+														<div class="scan-qa">
+															<img loading="lazy"
+																src="https://www.vib.com.vn/wps/wcm/connect/9b478561-6460-4c52-8b2a-763b1f5caf4d/website_link1_register.png.webp?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9b478561-6460-4c52-8b2a-763b1f5caf4d-oZ2Verj"
+																alt="">
+															<div class="scan-animation">
+															</div>
+														</div>
+													</div>
+													<div class="col"> Quét mã tải
+														app ngay</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-auto col_pic banner_right_bg  htr">
+										<img loading="lazy"
+											src="https://www.vib.com.vn/wps/wcm/connect/1b4aa4d5-d5e9-49a1-a9fe-02f3030e8348/desk.webp?MOD=AJPERES&CACHEID=ROOTWORKSPACE-1b4aa4d5-d5e9-49a1-a9fe-02f3030e8348-oZ2Verj"
+											alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+
+</html>

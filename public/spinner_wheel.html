@@ -238,7 +238,6 @@
             line-height: 19px;
             box-shadow: 0px 1px 1px rgba(5, 27, 44, 0.16),
                 inset 0px 2px 0px rgba(255, 255, 255, 0.05);
-            margin-top: 48px;
         }
 
         h2.deal {
@@ -341,9 +340,9 @@
 
                         fetch("https://opensheet.elk.sh/1RA54GZKbs-ZILxXOojnSd-afygG-rov7N3O7E99Ys7k/vouncher", requestOptions).then(data => data.json()).then(data => {
                             if (finalRotation >= 270 && finalRotation < 330) {
-                                let code10 = data.filter(obj => obj.CODE === "10");
+                                let code10 = data.filter(obj => obj.CODE === "10% OFF");
                                 let code10notuse = code10.filter(obj => obj.STATUS === "not use")
-                                if (code10notuse[0].CODE === "10" && code10notuse[0].STATUS === "not use") {
+                                if (code10notuse[0].CODE === "10% OFF" && code10notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".deal"
                                     ).innerText = code10notuse[0].CODE;
@@ -382,10 +381,10 @@
                             }
 
                             if (finalRotation >= 210 && finalRotation < 270) {
-                                let code20 = data.filter(obj => obj.CODE === "20");
+                                let code20 = data.filter(obj => obj.CODE === "20% OFF");
                                 let code20notuse = code20.filter(obj => obj.STATUS === "not use")
                                 console.log(code20notuse[0])
-                                if (code20notuse[0].CODE === "20" && code20notuse[0].STATUS === "not use") {
+                                if (code20notuse[0].CODE === "20% OFF" && code20notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".deal"
                                     ).innerText = code20notuse[0].CODE;
@@ -424,10 +423,10 @@
                             }
 
                             if (finalRotation >= 150 && finalRotation < 210) {
-                                let code30 = data.filter(obj => obj.CODE === "30");
+                                let code30 = data.filter(obj => obj.CODE === "30% OFF");
                                 let code30notuse = code30.filter(obj => obj.STATUS === "not use")
                                 console.log(code30notuse[0])
-                                if (code30notuse[0].CODE === "30" && code30notuse[0].STATUS === "not use") {
+                                if (code30notuse[0].CODE === "30% OFF" && code30notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".deal"
                                     ).innerText = code30notuse[0].CODE;
@@ -466,10 +465,10 @@
                             }
 
                             if (finalRotation >= 90 && finalRotation < 150) {
-                                let code40 = data.filter(obj => obj.CODE === "40");
+                                let code40 = data.filter(obj => obj.CODE === "40% OFF");
                                 let code40notuse = code40.filter(obj => obj.STATUS === "not use")
                                 console.log(code40notuse[0])
-                                if (code40notuse[0].CODE === "40" && code40notuse[0].STATUS === "not use") {
+                                if (code40notuse[0].CODE === "40% OFF" && code40notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".deal"
                                     ).innerText = code40notuse[0].CODE;
@@ -508,10 +507,10 @@
                             }
 
                             if (finalRotation >= 30 && finalRotation < 90) {
-                                let code50 = data.filter(obj => obj.CODE === "50");
+                                let code50 = data.filter(obj => obj.CODE === "50% OFF");
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
                                 console.log(code50notuse[0])
-                                if (code50notuse[0].CODE === "50" && code50notuse[0].STATUS === "not use") {
+                                if (code50notuse[0].CODE === "50% OFF" && code50notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".deal"
                                     ).innerText = code50notuse[0].CODE;
@@ -548,11 +547,52 @@
                                     }
                                 }
                             }
-                            if (finalRotation >= 330 && finalRotation < 30) {
-                                let codefail = data.filter(obj => obj.CODE === "Chúc bạn may mắn lần sau");
+                            if (finalRotation >= 330) {
+                                let codefail = data.filter(obj => obj.CODE === "Good Luck");
                                 let codefailnotuse = codefail.filter(obj => obj.STATUS === "not use")
                                 console.log(codefailnotuse[0])
-                                if (code50notuse[0].CODE === "Chúc bạn may mắn lần sau" && code50notuse[0].STATUS === "not use") {
+                                if (codefail[0].CODE === "Good Luck" && codefail[0].STATUS === "not use") {
+                                    document.querySelector(
+                                        ".deal"
+                                    ).innerText = codefailnotuse[0].CODE;
+                                    document.querySelector(
+                                        ".promo-code"
+                                    ).innerText = codefailnotuse[0].MESSAGE;
+
+                                    console.log(codefailnotuse[0].GSID)
+                                    console.log(codefailnotuse[0].CODE)
+                                    console.log(codefailnotuse[0].STATUS)
+                                    console.log(codefailnotuse[0].MESSAGE)
+
+                                    const myHeaders = new Headers();
+                                    myHeaders.append("Content-Type", "application/json");
+
+                                    const raw = JSON.stringify(codefailnotuse[0]);
+
+                                    const requestOptions = {
+                                        method: "POST",
+                                        headers: myHeaders,
+                                        body: raw,
+                                        redirect: "follow"
+                                    };
+
+                                    fetch("https://dev.akadigital.net/updatesheet", requestOptions)
+                                        .then((response) => response.text())
+                                        .then((result) => console.log(result))
+                                        .catch((error) => console.error(error));
+
+                                    var props = { GSID: codefailnotuse[0].GSID, CODE: codefailnotuse[0].CODE, STATUS: "used", MESSAGE: codefailnotuse[0].MESSAGE };
+                                    if (window.CleverTap) {
+                                        // Call Android interface             
+                                        CleverTap.pushEvent("Vouncher Got", JSON.stringify(props));
+                                    }
+                                }
+                            }
+                            if (finalRotation < 30) {
+                                let codefail = data.filter(obj => obj.CODE === "Good Luck");
+                                let codefailnotuse = codefail.filter(obj => obj.STATUS === "not use")
+                                console.log(codefailnotuse[0])
+                                if (codefail[0].CODE === "Good Luck" && codefail[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".deal"
                                     ).innerText = codefailnotuse[0].CODE;
@@ -613,8 +653,8 @@
                 var isPromoReceived;
                 var shouldTryAgain;
                 if (finalRotation < 30) {
-                    isPromoReceived = false;
-                    shouldTryAgain = true;
+                    isPromoReceived = true;
+                    shouldTryAgain = false;
                 }
                 if (finalRotation >= 30 && finalRotation < 90) {
                     isPromoReceived = true;
