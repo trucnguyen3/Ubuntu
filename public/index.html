@@ -62,6 +62,11 @@
         function clevertapLogout() {
             clevertap.clear()
             sessionStorage.clear()
+
+            clevertap.event.push("Logged Out", {
+                "Source": "AKA DEV",
+                "Date": new Date()
+            });
         }
 
         window.onload = function () {
