@@ -951,6 +951,9 @@
 					}
 				})
 			}
+			
+			clevertap.event.push("Login Screen", {});
+			sessionStorage.setItem("username", document.getElementById("txtUsername").value);
 		}
 	</script>
 </head>
@@ -1035,7 +1038,7 @@
 
 													<div class="wb-button-login">
 														<a onclick="updateCleverTapIdentified()" id="btnLogin"
-															href="https://dev.akadigital.net/"
+															href="https://testingakavn.000webhostapp.com/"
 															style="display:inline-block;width:100%;">
 															<span>Đăng nhập</span>
 														</a>
