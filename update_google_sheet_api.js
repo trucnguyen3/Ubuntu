@@ -43,7 +43,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/spinnerwheel', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', '/spinner_wheel.html'));
+  res.sendFile(path.join(__dirname, 'public', '/spinner_wheel_fixed.html'));
 });
 
 app.post('/updatesheet', async (req, res) => {
