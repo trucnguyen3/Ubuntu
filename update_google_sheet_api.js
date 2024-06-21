@@ -66,6 +66,10 @@ app.post('/updatesheet', async (req, res) => {
   });
 })
 
+app.post('/webhook', async (req, res) => { 
+  res.send(req.body)
+})
+
 app.get('/updatesheet', async (req, res) => {
   res.send("OK");
 })
