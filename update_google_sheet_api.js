@@ -31,7 +31,7 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ auth, version: "v4" }); // This is from your showing script.
 
 const spreadsheetId = "1RA54GZKbs-ZILxXOojnSd-afygG-rov7N3O7E99Ys7k"; // Please set your Spreadsheet ID.
-const sheetName = "vouncher"; // Please set your sheet name.
+const sheetName = "voucher"; // Please set your sheet name.
 
 
 app.get('/', (req, res) => {
