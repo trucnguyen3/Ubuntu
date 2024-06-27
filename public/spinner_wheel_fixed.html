@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Onesignal In-App Message</title>
+    <title>AKA Inapp Message</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -277,6 +277,8 @@
         <h1 class="secondary-header">
             Vòng quay may mắn <br>dành cho khách hàng của VIB
         </h1>
+        <h1 class="third-header">
+        </h1>
         <h2 class="primary-header"></h2>
         <div class="wheel-container">
             <div class="stopper">
@@ -298,10 +300,10 @@
                 <div class="six">500.000đ</div>
             </div>
             <div class="wheel promo-code-code-message">
-                <p style="font-size: 24px;">Voucher trị giá</p>
+                <p class="name1" style="font-size: 24px;"></p>
                 <h2 class="deal"></h2>
                 <br>
-                <p style="font-size: 24px;">có mã là</p>
+                <p class="name2" style="font-size: 24px;"></p>
                 <h1 class="promo-code"></h1>
             </div>
         </div>
@@ -361,12 +363,21 @@
                                 let code10notuse = code10.filter(obj => obj.STATUS === "not use")
                                 if (code10notuse[0].CODE === "100k" && code10notuse[0].STATUS === "not use") {
                                     document.querySelector(
+                                        ".secondary-header"
+                                    ).innerText = "";
+                                    document.querySelector(
+                                        ".name1"
+                                    ).innerText = "Voucher trị giá";
+                                    document.querySelector(
+                                        ".name2"
+                                    ).innerText = "có mã là";
+                                    document.querySelector(
                                         ".deal"
                                     ).innerText = code10notuse[0].CODE;
                                     document.querySelector(
                                         ".promo-code"
                                     ).innerText = code10notuse[0].MESSAGE;
-                                    document.querySelector(".secondary-header").innerText =
+                                    document.querySelector(".third-header").innerText =
                                         "Chúc mừng bạn đã trúng voucher mua sắm";
 
                                     console.log(code10notuse[0].GSID)
@@ -401,12 +412,21 @@
 
                             if (finalRotation >= 210 && finalRotation < 270) {
                                 document.querySelector(
+                                    ".secondary-header"
+                                ).innerText = "";
+                                document.querySelector(
+                                    ".name1"
+                                ).innerText = "Voucher trị giá";
+                                document.querySelector(
+                                    ".name2"
+                                ).innerText = "có mã là";
+                                document.querySelector(
                                     ".deal"
                                 ).innerText = "0K";
                                 document.querySelector(
                                     ".promo-code"
                                 ).innerText = "0";
-                                document.querySelector(".secondary-header").innerText =
+                                document.querySelector(".third-header").innerText =
                                     "Chúc bạn may mắn lần sau";
 
                                 var props = { GSID: "1", CODE: "0K", STATUS: "used", MESSAGE: "0" };
@@ -422,12 +442,21 @@
                                 console.log(code50notuse[0])
                                 if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
                                     document.querySelector(
+                                        ".secondary-header"
+                                    ).innerText = "";
+                                    document.querySelector(
+                                        ".name1"
+                                    ).innerText = "Voucher trị giá";
+                                    document.querySelector(
+                                        ".name2"
+                                    ).innerText = "có mã là";
+                                    document.querySelector(
                                         ".deal"
                                     ).innerText = code50notuse[0].CODE;
                                     document.querySelector(
                                         ".promo-code"
                                     ).innerText = code50notuse[0].MESSAGE;
-                                    document.querySelector(".secondary-header").innerText =
+                                    document.querySelector(".third-header").innerText =
                                         "Chúc mừng bạn đã trúng voucher mua sắm";
 
                                     console.log(code50notuse[0].GSID)
@@ -466,12 +495,21 @@
                                 console.log(code10notuse[0])
                                 if (code10notuse[0].CODE === "100k" && code10notuse[0].STATUS === "not use") {
                                     document.querySelector(
+                                        ".secondary-header"
+                                    ).innerText = "";
+                                    document.querySelector(
+                                        ".name1"
+                                    ).innerText = "Voucher trị giá";
+                                    document.querySelector(
+                                        ".name2"
+                                    ).innerText = "có mã là";
+                                    document.querySelector(
                                         ".deal"
                                     ).innerText = code10notuse[0].CODE;
                                     document.querySelector(
                                         ".promo-code"
                                     ).innerText = code10notuse[0].MESSAGE;
-                                    document.querySelector(".secondary-header").innerText =
+                                    document.querySelector(".third-header").innerText =
                                         "Chúc mừng bạn đã trúng voucher mua sắm";
 
                                     console.log(code10notuse[0].GSID)
@@ -506,12 +544,21 @@
 
                             if (finalRotation >= 30 && finalRotation < 90) {
                                 document.querySelector(
+                                    ".secondary-header"
+                                ).innerText = "";
+                                document.querySelector(
+                                    ".name1"
+                                ).innerText = "Voucher trị giá";
+                                document.querySelector(
+                                    ".name2"
+                                ).innerText = "có mã là";
+                                document.querySelector(
                                     ".deal"
                                 ).innerText = "0K";
                                 document.querySelector(
                                     ".promo-code"
                                 ).innerText = "0";
-                                document.querySelector(".secondary-header").innerText =
+                                document.querySelector(".third-header").innerText =
                                     "Chúc bạn may mắn lần sau";
 
                                 var props = { GSID: "1", CODE: "0K", STATUS: "used", MESSAGE: "0" };
@@ -526,12 +573,21 @@
                                 console.log(code50notuse[0])
                                 if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
                                     document.querySelector(
+                                        ".secondary-header"
+                                    ).innerText = "";
+                                    document.querySelector(
+                                        ".name1"
+                                    ).innerText = "Voucher trị giá";
+                                    document.querySelector(
+                                        ".name2"
+                                    ).innerText = "có mã là";
+                                    document.querySelector(
                                         ".deal"
                                     ).innerText = code50notuse[0].CODE;
                                     document.querySelector(
                                         ".promo-code"
                                     ).innerText = code50notuse[0].MESSAGE;
-                                    document.querySelector(".secondary-header").innerText =
+                                    document.querySelector(".third-header").innerText =
                                         "Chúc mừng bạn đã trúng voucher mua sắm";
 
                                     console.log(code50notuse[0].GSID)
@@ -569,12 +625,21 @@
                                 console.log(code50notuse[0])
                                 if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
                                     document.querySelector(
+                                        ".secondary-header"
+                                    ).innerText = "";
+                                    document.querySelector(
+                                        ".name1"
+                                    ).innerText = "Voucher trị giá";
+                                    document.querySelector(
+                                        ".name2"
+                                    ).innerText = "có mã là";
+                                    document.querySelector(
                                         ".deal"
                                     ).innerText = code50notuse[0].CODE;
                                     document.querySelector(
                                         ".promo-code"
                                     ).innerText = code50notuse[0].MESSAGE;
-                                    document.querySelector(".secondary-header").innerText =
+                                    document.querySelector(".third-header").innerText =
                                         "Chúc mừng bạn đã trúng voucher mua sắm";
 
                                     console.log(code50notuse[0].GSID)
