@@ -149,136 +149,132 @@
                 // Call Android interface             
                 CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
             }
-
-            document.getElementById('custom-inapp-notification').style.display = 'none';
         }
     </script>
 </head>
 
 <body>
-    <div id="custom-inapp-notification" style="display: none;">
-        <div class="survey">
-            <div class="top-line"></div>
-            <div class="survey-in"
-                style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                <span style="font-weight: bold;">Khảo sát sản phẩm và dịch vụ Thẻ tín dụng VIB</span>
-            </div>
+    <div class="survey">
+        <div class="top-line"></div>
+        <div class="survey-in"
+            style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <span style="font-weight: bold;">Khảo sát sản phẩm và dịch vụ Thẻ tín dụng VIB</span>
+        </div>
 
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
-                <div class="question">
-                    <label for="q1" style="font-weight: bold;">Câu 1: Vui lòng đánh giá mức độ hài lòng của Quý khách
-                        đối
-                        với các sản phẩm Thẻ VIB *</label>
-                    <div class="options">
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio1" value="Rất không hài lòng">
-                            <span class="emoji">😣</span>
-                            <p style="font-size: 15px;">Rất không hài lòng</p>
-                        </label>
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio1" value="Không hài lòng">
-                            <span class="emoji">😐</span>
-                            <p style="font-size: 15px;">Không hài lòng</p>
-                        </label>
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio1" value="Bình thường">
-                            <span class="emoji">🙂</span>
-                            <p style="font-size: 15px;">Bình thường</p>
-                        </label>
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio1" value="Hài lòng">
-                            <span class="emoji">😊</span>
-                            <p style="font-size: 15px;">Hài lòng</p>
-                        </label>
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio1" value="Rất hài lòng">
-                            <span class="emoji">🤩</span>
-                            <p style="font-size: 15px;">Rất hài lòng</p>
-                        </label>
-                    </div>
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <div class="question">
+                <label for="q1" style="font-weight: bold;">Câu 1: Vui lòng đánh giá mức độ hài lòng của Quý khách
+                    đối
+                    với các sản phẩm Thẻ VIB *</label>
+                <div class="options">
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Rất không hài lòng">
+                        <span class="emoji">😣</span>
+                        <p style="font-size: 15px;">Rất không hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Không hài lòng">
+                        <span class="emoji">😐</span>
+                        <p style="font-size: 15px;">Không hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Bình thường">
+                        <span class="emoji">🙂</span>
+                        <p style="font-size: 15px;">Bình thường</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Hài lòng">
+                        <span class="emoji">😊</span>
+                        <p style="font-size: 15px;">Hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Rất hài lòng">
+                        <span class="emoji">🤩</span>
+                        <p style="font-size: 15px;">Rất hài lòng</p>
+                    </label>
                 </div>
             </div>
+        </div>
 
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
-                <div class="question">
-                    <label for="q2" style="font-weight: bold;">Câu 2: Quý khách cảm thấy như thế nào về sự hỗ trợ của
-                        Nhân
-                        viên VIB trong quá trình phát hành và sử dụng Thẻ? *</label>
-                    <div class="options">
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio2" value="Rất không hài lòng">
-                            <span class="emoji">😣</span>
-                            <p style="font-size: 15px;">Rất không hài lòng</p>
-                        </label>
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio2" value="Không hài lòng">
-                            <span class="emoji">😐</span>
-                            <p style="font-size: 15px;">Không hài lòng</p>
-                        </label>
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio2" value="Bình thường">
-                            <span class="emoji">🙂</span>
-                            <p style="font-size: 15px;">Bình thường</p>
-                        </label>
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio2" value="Hài lòng">
-                            <span class="emoji">😊</span>
-                            <p style="font-size: 15px;">Hài lòng</p>
-                        </label>
-                        <label class="radio-container">
-                            <input type="radio" name="emoji-radio2" value="Rất hài lòng">
-                            <span class="emoji">🤩</span>
-                            <p style="font-size: 15px;">Rất hài lòng</p>
-                        </label>
-                    </div>
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <div class="question">
+                <label for="q2" style="font-weight: bold;">Câu 2: Quý khách cảm thấy như thế nào về sự hỗ trợ của
+                    Nhân
+                    viên VIB trong quá trình phát hành và sử dụng Thẻ? *</label>
+                <div class="options">
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Rất không hài lòng">
+                        <span class="emoji">😣</span>
+                        <p style="font-size: 15px;">Rất không hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Không hài lòng">
+                        <span class="emoji">😐</span>
+                        <p style="font-size: 15px;">Không hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Bình thường">
+                        <span class="emoji">🙂</span>
+                        <p style="font-size: 15px;">Bình thường</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Hài lòng">
+                        <span class="emoji">😊</span>
+                        <p style="font-size: 15px;">Hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Rất hài lòng">
+                        <span class="emoji">🤩</span>
+                        <p style="font-size: 15px;">Rất hài lòng</p>
+                    </label>
                 </div>
             </div>
+        </div>
 
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
-                <div class="question">
-                    <label for="q3" style="font-weight: bold;">Câu 3: Theo Quý khách, VIB cần cải thiện thêm điều gì để
-                        phục
-                        vụ Quý khách tốt hơn? (Câu
-                        hỏi không bắt buộc, Quý khách có thể chọn nhiều đáp án)</label>
-                    <div>
-                        <label><input type="checkbox" name="q3" value="Đặc điểm, tính năng & thiết kế Thẻ"> Đặc điểm,
-                            tính
-                            năng
-                            & thiết kế Thẻ</label><br>
-                        <label><input type="checkbox" name="q3" value="Biểu phí & lãi"> Biểu phí & lãi</label><br>
-                        <label><input type="checkbox" name="q3" value="Quy trình & thủ tục mở Thẻ"> Quy trình & thủ tục
-                            mở
-                            Thẻ</label><br>
-                        <label><input type="checkbox" name="q3" value="Các ưu đãi của Thẻ"> Các ưu đãi của
-                            Thẻ</label><br>
-                        <label><input type="checkbox" name="q3" value="Hỗ trợ từ Nhân viên"> Hỗ trợ từ Nhân
-                            viên</label><br>
-                        <label><input type="checkbox" name="q3" value="Các dịch vụ khác liên quan đến Thẻ"> Các dịch vụ
-                            khác
-                            liên quan đến Thẻ</label>
-                    </div>
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <div class="question">
+                <label for="q3" style="font-weight: bold;">Câu 3: Theo Quý khách, VIB cần cải thiện thêm điều gì để
+                    phục
+                    vụ Quý khách tốt hơn? (Câu
+                    hỏi không bắt buộc, Quý khách có thể chọn nhiều đáp án)</label>
+                <div>
+                    <label><input type="checkbox" name="q3" value="Đặc điểm, tính năng & thiết kế Thẻ"> Đặc điểm,
+                        tính
+                        năng
+                        & thiết kế Thẻ</label><br>
+                    <label><input type="checkbox" name="q3" value="Biểu phí & lãi"> Biểu phí & lãi</label><br>
+                    <label><input type="checkbox" name="q3" value="Quy trình & thủ tục mở Thẻ"> Quy trình & thủ tục
+                        mở
+                        Thẻ</label><br>
+                    <label><input type="checkbox" name="q3" value="Các ưu đãi của Thẻ"> Các ưu đãi của
+                        Thẻ</label><br>
+                    <label><input type="checkbox" name="q3" value="Hỗ trợ từ Nhân viên"> Hỗ trợ từ Nhân
+                        viên</label><br>
+                    <label><input type="checkbox" name="q3" value="Các dịch vụ khác liên quan đến Thẻ"> Các dịch vụ
+                        khác
+                        liên quan đến Thẻ</label>
                 </div>
             </div>
+        </div>
 
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
-                <label for="details" style="font-weight: bold;">Quý khách có thể chia sẻ chi tiết tại đây (nếu
-                    có)</label>
-                <textarea id="details" placeholder="Nhập thông tin tại đây"></textarea>
-            </div>
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <label for="details" style="font-weight: bold;">Quý khách có thể chia sẻ chi tiết tại đây (nếu
+                có)</label>
+            <textarea id="details" placeholder="Nhập thông tin tại đây"></textarea>
+        </div>
 
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
-                <div class="question">
-                    <label for="email" style="font-weight: bold;">Quý khách vui lòng nhập địa chỉ email: *</label>
-                    <input type="email" id="emailaddress" placeholder="Nhập địa chỉ email">
-                </div>
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <div class="question">
+                <label for="email" style="font-weight: bold;">Quý khách vui lòng nhập địa chỉ email: *</label>
+                <input type="email" id="emailaddress" placeholder="Nhập địa chỉ email">
             </div>
+        </div>
 
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
-                <span>VIB chân thành cảm ơn Quý khách! Chúng tôi sẽ luôn nỗ lực hết sức để
-                    mang đến cho Quý khách những trải nghiệm dịch vụ Thẻ tốt hơn.</span>
-                <div style="height: 10px;"></div>
-                <button type="submit" onclick="getSelectedValue()">Gửi khảo sát</button>
-            </div>
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <span>VIB chân thành cảm ơn Quý khách! Chúng tôi sẽ luôn nỗ lực hết sức để
+                mang đến cho Quý khách những trải nghiệm dịch vụ Thẻ tốt hơn.</span>
+            <div style="height: 10px;"></div>
+            <button type="submit" onclick="getSelectedValue()">Gửi khảo sát</button>
         </div>
     </div>
 </body>
