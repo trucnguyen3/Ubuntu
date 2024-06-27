@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khảo sát sản phẩm và dịch vụ Thẻ tín dụng VIB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .survey {
+            max-width: 600px;
+            margin: 0 auto;
+            padding-bottom: 20px;
+        }
+
+        .survey-in {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            text-align: center;
+        }
+
+        textarea,
+        input[type="email"] {
+            width: 95%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin: auto;
+            display: block;
+            width: 90%;
+            padding: 10px;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .top-line {
+            display: block;
+            height: 15px;
+            font-weight: bold;
+            background: #0073e6;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        /* Style the radio button container */
+        .radio-container {
+            display: block;
+            position: relative;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            user-select: none;
+        }
+
+        /* Hide the actual radio button */
+        .radio-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .emoji {
+            border: 2px solid transparent;
+            border-radius: 10px;
+        }
+
+        /* Add border to the selected radio button */
+        .radio-container input:checked+.emoji {
+            border: 2px solid #2196F3;
+        }
+    </style>
+
+    <script>
+        function getSelectedValue() {
+            // Get all radio buttons in the group
+            const radio1 = document.getElementsByName('emoji-radio1');
+
+            const radio2 = document.getElementsByName('emoji-radio2');
+
+            var radio1_value;
+            // Find the selected radio button
+            for (const radio of radio1) {
+                if (radio.checked) {
+                    radio1_value = radio.value
+                }
+            }
+
+            var radio2_value;
+            // Find the selected radio button
+            for (const radio of radio2) {
+                if (radio.checked) {
+                    radio2_value = radio.value
+                }
+            }
+
+            var checkboxes = document.querySelectorAll('input[name="q3"]:checked');
+            var selectedValues = [];
+            checkboxes.forEach((checkbox) => {
+                selectedValues.push(checkbox.value);
+            });
+
+            var textarea = document.getElementById("details");
+
+            var emailaddress = document.getElementById('emailaddress');
+
+            console.log(radio1_value)
+            console.log(radio2_value)
+            console.log(selectedValues.join("; "))
+            console.log(textarea.value)
+            console.log(emailaddress.value)
+
+            var props = { Q1: radio1_value, Q2: radio2_value, Q3: selectedValues.join("; "), DETAIL: textarea.value, EMAIL_ADDRESS: emailaddress.value };
+            if (window.CleverTap) {
+                // Call Android interface             
+                CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="survey">
+        <div class="top-line"></div>
+        <div class="survey-in"
+            style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <span style="font-weight: bold;">Khảo sát sản phẩm và dịch vụ Thẻ tín dụng VIB</span>
+        </div>
+
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <div class="question">
+                <label for="q1" style="font-weight: bold;">Câu 1: Vui lòng đánh giá mức độ hài lòng của Quý khách đối
+                    với các sản phẩm Thẻ VIB *</label>
+                <div class="options">
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Rất không hài lòng">
+                        <span class="emoji">😣</span>
+                        <p style="font-size: 15px;">Rất không hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Không hài lòng">
+                        <span class="emoji">😐</span>
+                        <p style="font-size: 15px;">Không hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Bình thường">
+                        <span class="emoji">🙂</span>
+                        <p style="font-size: 15px;">Bình thường</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Hài lòng">
+                        <span class="emoji">😊</span>
+                        <p style="font-size: 15px;">Hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio1" value="Rất hài lòng">
+                        <span class="emoji">🤩</span>
+                        <p style="font-size: 15px;">Rất hài lòng</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <div class="question">
+                <label for="q2" style="font-weight: bold;">Câu 2: Quý khách cảm thấy như thế nào về sự hỗ trợ của Nhân
+                    viên VIB trong quá trình phát hành và sử dụng Thẻ? *</label>
+                <div class="options">
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Rất không hài lòng">
+                        <span class="emoji">😣</span>
+                        <p style="font-size: 15px;">Rất không hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Không hài lòng">
+                        <span class="emoji">😐</span>
+                        <p style="font-size: 15px;">Không hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Bình thường">
+                        <span class="emoji">🙂</span>
+                        <p style="font-size: 15px;">Bình thường</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Hài lòng">
+                        <span class="emoji">😊</span>
+                        <p style="font-size: 15px;">Hài lòng</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="emoji-radio2" value="Rất hài lòng">
+                        <span class="emoji">🤩</span>
+                        <p style="font-size: 15px;">Rất hài lòng</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <div class="question">
+                <label for="q3" style="font-weight: bold;">Câu 3: Theo Quý khách, VIB cần cải thiện thêm điều gì để phục
+                    vụ Quý khách tốt hơn? (Câu
+                    hỏi không bắt buộc, Quý khách có thể chọn nhiều đáp án)</label>
+                <div>
+                    <label><input type="checkbox" name="q3" value="Đặc điểm, tính năng & thiết kế Thẻ"> Đặc điểm, tính
+                        năng
+                        & thiết kế Thẻ</label><br>
+                    <label><input type="checkbox" name="q3" value="Biểu phí & lãi"> Biểu phí & lãi</label><br>
+                    <label><input type="checkbox" name="q3" value="Quy trình & thủ tục mở Thẻ"> Quy trình & thủ tục mở
+                        Thẻ</label><br>
+                    <label><input type="checkbox" name="q3" value="Các ưu đãi của Thẻ"> Các ưu đãi của Thẻ</label><br>
+                    <label><input type="checkbox" name="q3" value="Hỗ trợ từ Nhân viên"> Hỗ trợ từ Nhân viên</label><br>
+                    <label><input type="checkbox" name="q3" value="Các dịch vụ khác liên quan đến Thẻ"> Các dịch vụ khác
+                        liên quan đến Thẻ</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <label for="details" style="font-weight: bold;">Quý khách có thể chia sẻ chi tiết tại đây (nếu có)</label>
+            <textarea id="details" placeholder="Nhập thông tin tại đây"></textarea>
+        </div>
+
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <div class="question">
+                <label for="email" style="font-weight: bold;">Quý khách vui lòng nhập địa chỉ email: *</label>
+                <input type="email" id="emailaddress" placeholder="Nhập địa chỉ email">
+            </div>
+        </div>
+
+        <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <span>VIB chân thành cảm ơn Quý khách! Chúng tôi sẽ luôn nỗ lực hết sức để
+                mang đến cho Quý khách những trải nghiệm dịch vụ Thẻ tốt hơn.</span>
+            <div style="height: 10px;"></div>
+            <button type="submit" onclick="getSelectedValue()">Gửi khảo sát</button>
+        </div>
+    </div>
+</body>
+
+</html>
