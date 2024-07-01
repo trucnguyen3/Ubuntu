@@ -148,6 +148,8 @@
             if (window.CleverTap) {
                 // Call Android interface             
                 CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
+
+                CleverTap.dismissInAppNotification();
             }
         }
     </script>
