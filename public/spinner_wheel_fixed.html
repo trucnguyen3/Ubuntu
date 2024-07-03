@@ -408,6 +408,18 @@
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
                                 }
+                                if (code10notuse[0].STATUS === "used") {
+                                    document.querySelector(".third-header").innerText =
+                                        "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
+
+                                    document.querySelector(".shop-now-button").innerText = "Thoát"
+
+                                    document.querySelector(".shop-now-button")
+                                        .addEventListener("click", function (e) {
+                                            // Redirect to shopping page
+                                            CleverTap.dismissInAppNotification();
+                                        });
+                                }
                             }
 
                             if (finalRotation >= 210 && finalRotation < 270) {
@@ -428,6 +440,14 @@
                                 ).innerText = "0";
                                 document.querySelector(".third-header").innerText =
                                     "Chúc bạn may mắn lần sau";
+
+                                document.querySelector(".shop-now-button").innerText = "Thoát"
+
+                                document.querySelector(".shop-now-button")
+                                    .addEventListener("click", function (e) {
+                                        // Redirect to shopping page
+                                        CleverTap.dismissInAppNotification();
+                                    });
 
                                 var props = { GSID: "1", CODE: "0K", STATUS: "used", MESSAGE: "0" };
                                 if (window.CleverTap) {
@@ -487,6 +507,19 @@
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
                                 }
+
+                                if (code50notuse[0].STATUS === "used") {
+                                    document.querySelector(".third-header").innerText =
+                                        "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
+
+                                    document.querySelector(".shop-now-button").innerText = "Thoát"
+
+                                    document.querySelector(".shop-now-button")
+                                        .addEventListener("click", function (e) {
+                                            // Redirect to shopping page
+                                            CleverTap.dismissInAppNotification();
+                                        });
+                                }
                             }
 
                             if (finalRotation >= 90 && finalRotation < 150) {
@@ -540,6 +573,19 @@
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
                                 }
+
+                                if (code10notuse[0].STATUS === "used") {
+                                    document.querySelector(".third-header").innerText =
+                                        "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
+
+                                    document.querySelector(".shop-now-button").innerText = "Thoát"
+
+                                    document.querySelector(".shop-now-button")
+                                        .addEventListener("click", function (e) {
+                                            // Redirect to shopping page
+                                            CleverTap.dismissInAppNotification();
+                                        });
+                                }
                             }
 
                             if (finalRotation >= 30 && finalRotation < 90) {
@@ -560,6 +606,14 @@
                                 ).innerText = "0";
                                 document.querySelector(".third-header").innerText =
                                     "Chúc bạn may mắn lần sau";
+
+                                document.querySelector(".shop-now-button").innerText = "Thoát"
+
+                                document.querySelector(".shop-now-button")
+                                    .addEventListener("click", function (e) {
+                                        // Redirect to shopping page
+                                        CleverTap.dismissInAppNotification();
+                                    });
 
                                 var props = { GSID: "1", CODE: "0K", STATUS: "used", MESSAGE: "0" };
                                 if (window.CleverTap) {
@@ -618,6 +672,19 @@
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
                                 }
+
+                                if (code50notuse[0].STATUS === "used") {
+                                    document.querySelector(".third-header").innerText =
+                                        "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
+
+                                    document.querySelector(".shop-now-button").innerText = "Thoát"
+
+                                    document.querySelector(".shop-now-button")
+                                        .addEventListener("click", function (e) {
+                                            // Redirect to shopping page
+                                            CleverTap.dismissInAppNotification();
+                                        });
+                                }
                             }
                             if (finalRotation < 30) {
                                 let code50 = data.filter(obj => obj.CODE === "500k");
@@ -670,6 +737,19 @@
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
                                 }
+                            }
+
+                            if (code50notuse[0].STATUS === "used") {
+                                document.querySelector(".third-header").innerText =
+                                    "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
+
+                                document.querySelector(".shop-now-button").innerText = "Thoát"
+
+                                document.querySelector(".shop-now-button")
+                                    .addEventListener("click", function (e) {
+                                        // Redirect to shopping page
+                                        CleverTap.dismissInAppNotification();
+                                    });
                             }
                         })
 
