@@ -409,7 +409,7 @@
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
                                 }
-                                if (code10used[0].STATUS === "used") {
+                                if (code10used[code10used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -510,7 +510,7 @@
                                     }
                                 }
 
-                                if (code50used[0].STATUS === "used") {
+                                if (code50used[code50used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -577,7 +577,7 @@
                                     }
                                 }
 
-                                if (code10used[0].STATUS === "used") {
+                                if (code10used[code10used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -677,7 +677,7 @@
                                     }
                                 }
 
-                                if (code50used[0].STATUS === "used") {
+                                if (code50used[code50used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -744,7 +744,7 @@
                                 }
                             }
 
-                            if (code50used[0].STATUS === "used") {
+                            if (code50used[code50used.length - 1].STATUS === "used") {
                                 document.querySelector(".third-header").innerText =
                                     "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
