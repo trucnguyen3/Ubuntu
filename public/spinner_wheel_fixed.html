@@ -361,6 +361,7 @@
                             if (finalRotation >= 270 && finalRotation < 330) {
                                 let code10 = data.filter(obj => obj.CODE === "100k");
                                 let code10notuse = code10.filter(obj => obj.STATUS === "not use")
+                                let code10used = code10.filter(obj => obj.STATUS === "used")
                                 if (code10notuse[0].CODE === "100k" && code10notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".secondary-header"
@@ -408,7 +409,7 @@
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
                                 }
-                                if (code10notuse[0].STATUS === "used") {
+                                if (code10used[0].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -458,6 +459,7 @@
 
                             if (finalRotation >= 150 && finalRotation < 210) {
                                 let code50 = data.filter(obj => obj.CODE === "500k");
+                                let code50used = code50.filter(obj => obj.STATUS === "used")
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
                                 console.log(code50notuse[0])
                                 if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
@@ -508,7 +510,7 @@
                                     }
                                 }
 
-                                if (code50notuse[0].STATUS === "used") {
+                                if (code50used[0].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -524,6 +526,7 @@
 
                             if (finalRotation >= 90 && finalRotation < 150) {
                                 let code10 = data.filter(obj => obj.CODE === "100k");
+                                let code10used = code10.filter(obj => obj.STATUS === "used")
                                 let code10notuse = code10.filter(obj => obj.STATUS === "not use")
                                 console.log(code10notuse[0])
                                 if (code10notuse[0].CODE === "100k" && code10notuse[0].STATUS === "not use") {
@@ -574,7 +577,7 @@
                                     }
                                 }
 
-                                if (code10notuse[0].STATUS === "used") {
+                                if (code10used[0].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -623,6 +626,7 @@
                             }
                             if (finalRotation >= 330) {
                                 let code50 = data.filter(obj => obj.CODE === "500k");
+                                let code50used = code50.filter(obj => obj.STATUS === "used")
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
                                 console.log(code50notuse[0])
                                 if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
@@ -673,7 +677,7 @@
                                     }
                                 }
 
-                                if (code50notuse[0].STATUS === "used") {
+                                if (code50used[0].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -688,6 +692,7 @@
                             }
                             if (finalRotation < 30) {
                                 let code50 = data.filter(obj => obj.CODE === "500k");
+                                let code50used = code50.filter(obj => obj.STATUS === "used")
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
                                 console.log(code50notuse[0])
                                 if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
@@ -739,7 +744,7 @@
                                 }
                             }
 
-                            if (code50notuse[0].STATUS === "used") {
+                            if (code50used[0].STATUS === "used") {
                                 document.querySelector(".third-header").innerText =
                                     "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
