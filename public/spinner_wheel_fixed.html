@@ -362,6 +362,18 @@
                                 let code10 = data.filter(obj => obj.CODE === "100k");
                                 let code10notuse = code10.filter(obj => obj.STATUS === "not use")
                                 let code10used = code10.filter(obj => obj.STATUS === "used")
+                                if (code10used[code10used.length - 1].STATUS === "used") {
+                                    document.querySelector(".third-header").innerText =
+                                        "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
+
+                                    document.querySelector(".shop-now-button").innerText = "Thoát"
+
+                                    document.querySelector(".shop-now-button")
+                                        .addEventListener("click", function (e) {
+                                            // Redirect to shopping page
+                                            CleverTap.dismissInAppNotification();
+                                        });
+                                }
                                 if (code10notuse[0].CODE === "100k" && code10notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".secondary-header"
@@ -408,18 +420,6 @@
                                         // Call Android interface             
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
-                                }
-                                if (code10used[code10used.length - 1].STATUS === "used") {
-                                    document.querySelector(".third-header").innerText =
-                                        "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
-
-                                    document.querySelector(".shop-now-button").innerText = "Thoát"
-
-                                    document.querySelector(".shop-now-button")
-                                        .addEventListener("click", function (e) {
-                                            // Redirect to shopping page
-                                            CleverTap.dismissInAppNotification();
-                                        });
                                 }
                             }
 
@@ -462,6 +462,18 @@
                                 let code50used = code50.filter(obj => obj.STATUS === "used")
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
                                 console.log(code50notuse[0])
+                                if (code50used[code50used.length - 1].STATUS === "used") {
+                                    document.querySelector(".third-header").innerText =
+                                        "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
+
+                                    document.querySelector(".shop-now-button").innerText = "Thoát"
+
+                                    document.querySelector(".shop-now-button")
+                                        .addEventListener("click", function (e) {
+                                            // Redirect to shopping page
+                                            CleverTap.dismissInAppNotification();
+                                        });
+                                }
                                 if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".secondary-header"
@@ -509,8 +521,14 @@
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
                                 }
+                            }
 
-                                if (code50used[code50used.length - 1].STATUS === "used") {
+                            if (finalRotation >= 90 && finalRotation < 150) {
+                                let code10 = data.filter(obj => obj.CODE === "100k");
+                                let code10used = code10.filter(obj => obj.STATUS === "used")
+                                let code10notuse = code10.filter(obj => obj.STATUS === "not use")
+                                console.log(code10notuse[0])
+                                if (code10used[code10used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -522,13 +540,6 @@
                                             CleverTap.dismissInAppNotification();
                                         });
                                 }
-                            }
-
-                            if (finalRotation >= 90 && finalRotation < 150) {
-                                let code10 = data.filter(obj => obj.CODE === "100k");
-                                let code10used = code10.filter(obj => obj.STATUS === "used")
-                                let code10notuse = code10.filter(obj => obj.STATUS === "not use")
-                                console.log(code10notuse[0])
                                 if (code10notuse[0].CODE === "100k" && code10notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".secondary-header"
@@ -576,19 +587,6 @@
                                         CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
                                     }
                                 }
-
-                                if (code10used[code10used.length - 1].STATUS === "used") {
-                                    document.querySelector(".third-header").innerText =
-                                        "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
-
-                                    document.querySelector(".shop-now-button").innerText = "Thoát"
-
-                                    document.querySelector(".shop-now-button")
-                                        .addEventListener("click", function (e) {
-                                            // Redirect to shopping page
-                                            CleverTap.dismissInAppNotification();
-                                        });
-                                }
                             }
 
                             if (finalRotation >= 30 && finalRotation < 90) {
@@ -629,54 +627,6 @@
                                 let code50used = code50.filter(obj => obj.STATUS === "used")
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
                                 console.log(code50notuse[0])
-                                if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
-                                    document.querySelector(
-                                        ".secondary-header"
-                                    ).innerText = "";
-                                    document.querySelector(
-                                        ".name1"
-                                    ).innerText = "Voucher trị giá";
-                                    document.querySelector(
-                                        ".name2"
-                                    ).innerText = "có mã là";
-                                    document.querySelector(
-                                        ".deal"
-                                    ).innerText = code50notuse[0].CODE;
-                                    document.querySelector(
-                                        ".promo-code"
-                                    ).innerText = code50notuse[0].MESSAGE;
-                                    document.querySelector(".third-header").innerText =
-                                        "Chúc mừng bạn đã trúng voucher mua sắm";
-
-                                    console.log(code50notuse[0].GSID)
-                                    console.log(code50notuse[0].CODE)
-                                    console.log(code50notuse[0].STATUS)
-                                    console.log(code50notuse[0].MESSAGE)
-
-                                    const myHeaders = new Headers();
-                                    myHeaders.append("Content-Type", "application/json");
-
-                                    const raw = JSON.stringify(code50notuse[0]);
-
-                                    const requestOptions = {
-                                        method: "POST",
-                                        headers: myHeaders,
-                                        body: raw,
-                                        redirect: "follow"
-                                    };
-
-                                    fetch("https://dev.akadigital.net/updatesheet", requestOptions)
-                                        .then((response) => response.text())
-                                        .then((result) => console.log(result))
-                                        .catch((error) => console.error(error));
-
-                                    var props = { GSID: code50notuse[0].GSID, CODE: code50notuse[0].CODE, STATUS: "used", MESSAGE: code50notuse[0].MESSAGE };
-                                    if (window.CleverTap) {
-                                        // Call Android interface             
-                                        CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
-                                    }
-                                }
-
                                 if (code50used[code50used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
@@ -689,12 +639,6 @@
                                             CleverTap.dismissInAppNotification();
                                         });
                                 }
-                            }
-                            if (finalRotation < 30) {
-                                let code50 = data.filter(obj => obj.CODE === "500k");
-                                let code50used = code50.filter(obj => obj.STATUS === "used")
-                                let code50notuse = code50.filter(obj => obj.STATUS === "not use")
-                                console.log(code50notuse[0])
                                 if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
                                     document.querySelector(
                                         ".secondary-header"
@@ -743,18 +687,70 @@
                                     }
                                 }
                             }
+                            if (finalRotation < 30) {
+                                let code50 = data.filter(obj => obj.CODE === "500k");
+                                let code50used = code50.filter(obj => obj.STATUS === "used")
+                                let code50notuse = code50.filter(obj => obj.STATUS === "not use")
+                                console.log(code50notuse[0])
+                                if (code50used[code50used.length - 1].STATUS === "used") {
+                                    document.querySelector(".third-header").innerText =
+                                        "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
-                            if (code50used[code50used.length - 1].STATUS === "used") {
-                                document.querySelector(".third-header").innerText =
-                                    "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
+                                    document.querySelector(".shop-now-button").innerText = "Thoát"
 
-                                document.querySelector(".shop-now-button").innerText = "Thoát"
+                                    document.querySelector(".shop-now-button")
+                                        .addEventListener("click", function (e) {
+                                            // Redirect to shopping page
+                                            CleverTap.dismissInAppNotification();
+                                        });
+                                }
+                                if (code50notuse[0].CODE === "500k" && code50notuse[0].STATUS === "not use") {
+                                    document.querySelector(
+                                        ".secondary-header"
+                                    ).innerText = "";
+                                    document.querySelector(
+                                        ".name1"
+                                    ).innerText = "Voucher trị giá";
+                                    document.querySelector(
+                                        ".name2"
+                                    ).innerText = "có mã là";
+                                    document.querySelector(
+                                        ".deal"
+                                    ).innerText = code50notuse[0].CODE;
+                                    document.querySelector(
+                                        ".promo-code"
+                                    ).innerText = code50notuse[0].MESSAGE;
+                                    document.querySelector(".third-header").innerText =
+                                        "Chúc mừng bạn đã trúng voucher mua sắm";
 
-                                document.querySelector(".shop-now-button")
-                                    .addEventListener("click", function (e) {
-                                        // Redirect to shopping page
-                                        CleverTap.dismissInAppNotification();
-                                    });
+                                    console.log(code50notuse[0].GSID)
+                                    console.log(code50notuse[0].CODE)
+                                    console.log(code50notuse[0].STATUS)
+                                    console.log(code50notuse[0].MESSAGE)
+
+                                    const myHeaders = new Headers();
+                                    myHeaders.append("Content-Type", "application/json");
+
+                                    const raw = JSON.stringify(code50notuse[0]);
+
+                                    const requestOptions = {
+                                        method: "POST",
+                                        headers: myHeaders,
+                                        body: raw,
+                                        redirect: "follow"
+                                    };
+
+                                    fetch("https://dev.akadigital.net/updatesheet", requestOptions)
+                                        .then((response) => response.text())
+                                        .then((result) => console.log(result))
+                                        .catch((error) => console.error(error));
+
+                                    var props = { GSID: code50notuse[0].GSID, CODE: code50notuse[0].CODE, STATUS: "used", MESSAGE: code50notuse[0].MESSAGE };
+                                    if (window.CleverTap) {
+                                        // Call Android interface             
+                                        CleverTap.pushEvent("Voucher Got", JSON.stringify(props));
+                                    }
+                                }
                             }
                         })
 
