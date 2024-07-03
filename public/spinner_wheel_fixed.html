@@ -692,7 +692,7 @@
                                 let code50used = code50.filter(obj => obj.STATUS === "used")
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
                                 console.log(code50notuse[0])
-                                if (code50used > 1 && code50used[code50used.length - 1].STATUS === "used") {
+                                if (code50used.length > 1 && code50used[code50used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
