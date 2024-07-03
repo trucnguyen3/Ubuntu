@@ -362,8 +362,7 @@
                                 let code10 = data.filter(obj => obj.CODE === "100k");
                                 let code10notuse = code10.filter(obj => obj.STATUS === "not use")
                                 let code10used = code10.filter(obj => obj.STATUS === "used")
-                                let code10used_last = code10used.slice(-1)
-                                if (code10used.length >= 1 && code10used_last.STATUS === "used") {
+                                if (code10used.length >= 1 && code10used[code10used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -462,9 +461,8 @@
                                 let code50 = data.filter(obj => obj.CODE === "500k");
                                 let code50used = code50.filter(obj => obj.STATUS === "used")
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
-                                let code50used_last = code50used.slice(-1)
                                 console.log(code50notuse[0])
-                                if (code50used.length >= 1 && code50used_last.STATUS === "used") {
+                                if (code50used.length > 1 && code50used[code50used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -529,9 +527,8 @@
                                 let code10 = data.filter(obj => obj.CODE === "100k");
                                 let code10used = code10.filter(obj => obj.STATUS === "used")
                                 let code10notuse = code10.filter(obj => obj.STATUS === "not use")
-                                let code10used_last = code10used.slice(-1)
                                 console.log(code10notuse[0])
-                                if (code10used.length >= 1 && code10used_last.STATUS === "used") {
+                                if (code10used.length > 1 && code10used[code10used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -629,9 +626,8 @@
                                 let code50 = data.filter(obj => obj.CODE === "500k");
                                 let code50used = code50.filter(obj => obj.STATUS === "used")
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
-                                let code50used_last = code50used.slice(-1)
                                 console.log(code50notuse[0])
-                                if (code50used.length >= 1 && code50used_last.STATUS === "used") {
+                                if (code50used.length > 1 && code50used[code50used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
@@ -695,9 +691,8 @@
                                 let code50 = data.filter(obj => obj.CODE === "500k");
                                 let code50used = code50.filter(obj => obj.STATUS === "used")
                                 let code50notuse = code50.filter(obj => obj.STATUS === "not use")
-                                let code50used_last = code50used.slice(-1)
                                 console.log(code50notuse[0])
-                                if (code50used.length >= 1 && code50used_last.STATUS === "used") {
+                                if (code50used.length > 1 && code50used[code50used.length - 1].STATUS === "used") {
                                     document.querySelector(".third-header").innerText =
                                         "Hiện tại không còn mã nào, hẹn bạn ở các minigame sau";
 
