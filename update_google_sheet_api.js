@@ -55,7 +55,7 @@ app.get('/survey', (req, res) => {
 });
 
 app.get('/gameprize', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', '/game_prize.html'));
+  res.sendFile(path.join(__dirname, 'public', '/game_prize_fix.html'));
 });
 
 app.post('/updatesheet', async (req, res) => {
