@@ -54,6 +54,10 @@ app.get('/survey', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', '/survey.html'));
 });
 
+app.get('/gameprize', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', '/game_prize.html'));
+});
+
 app.post('/updatesheet', async (req, res) => {
   console.log((req.body))
 

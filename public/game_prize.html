@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Do Hyeon', sans-serif;
+        }
+
+        .title {
+            text-align: center;
+            margin: 1.2em 0;
+            font-size: 2em;
+            color: #FBFFFE;
+            text-transform: uppercase;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 320px;
+            padding-top: 253px;  
+            padding-left: 53px;
+        }
+
+        .square {
+            border: 1px solid lightpink;
+            flex: 0 0 85px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85px;
+            background: transparent;
+            border-radius: 7px;
+
+            &.square:not(:nth-child(3n)) {
+                margin-right: 6px;
+            }
+
+            &.square:not(:nth-child(n+7)) {
+                margin-bottom: 6px;
+            }
+
+            &.is-active {
+                border: 5px solid gold;
+            }
+        }
+
+        .square__content {
+            font-size: 2.8em;
+        }
+
+        .square__start-btn {
+            background: transparent;
+            color: #e97573;
+            font-size: 2em;
+            cursor: pointer;
+            text-align: center;
+            width: 164px;
+            height: 56px;
+            margin-top: 67px;
+            margin-left: 192px;
+            &:hover {
+                background: lighten(gold, 25%);
+            }
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0;
+            overflow-y: auto;
+        }
+
+        .modal_inner {
+            width: 375px;
+            height: 812px;
+            text-align: center;
+            margin: 0px auto;
+            background: url("https://newtwb.s3.amazonaws.com/images/voolatechsmt/Game_image001.png") no-repeat;
+        }
+
+        #ketqua {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0;
+            overflow-y: auto;
+            background-color: rgba(0, 0, 0, .4);
+            display: none;
+        }
+        #ketquaContent {
+            width: auto;
+            pointer-events: none;
+            text-align: center;
+            border-radius: 5px;
+            position: static;
+            display: inline-block;
+            vertical-align: middle;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+        }
+        #btnClose {
+            width: 70px;
+            height: 50px;
+            position: fixed;
+            vertical-align: middle;
+            top: 5%;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="modal">
+        <div class="modal_inner">
+            <section class="container" id="js-lotto">
+                <div class="square" data-order="0">
+                    <div class="square__content">🙈</div>
+                </div>
+                <div class="square" data-order="1">
+                    <div class="square__content">🤢</div>
+                </div>
+                <div class="square" data-order="2">
+                    <div class="square__content">💩</div>
+                </div>
+                <div class="square" data-order="7">
+                    <div class="square__content">🤖</div>
+                </div>
+                <div class="square" data-order="8">
+                    <div class="square__content">🤢</div>
+                </div>
+                <div class="square" data-order="3">
+                    <div class="square__content">🦊</div>
+                </div>
+                <div class="square" data-order="6">
+                    <div class="square__content">👻</div>
+                </div>
+                <div class="square" data-order="5">
+                    <div class="square__content">👾</div>
+                </div>
+                <div class="square" data-order="4">
+                    <div class="square__content">👀</div>
+                </div>
+            </section>
+            <div class="square__start-btn" id="js-start">
+                <div>START</div>
+            </div>
+            <section id="ketqua">
+                <div id="ketquaContent">
+                </div>
+            </section>
+            <div id="btnClose" onclick="closeKQ();"></div>
+        </div>
+    </section>
+    
+    
+    
+    <script>
+        const prizes = {
+            0: '🙈',
+            1: '🤢',
+            2: '💩',
+            3: '🦊',
+            4: '👀',
+            5: '👾',
+            6: '👻',
+            7: '🤖',
+            8: '🤢',
+        };
+        const images = [
+            'https://newtwb.s3.amazonaws.com/images/voolatechsmt/Ketqua_image003.png',
+            'https://newtwb.s3.amazonaws.com/images/voolatechsmt/Ketqua_image004.png',
+            'https://newtwb.s3.amazonaws.com/images/voolatechsmt/Ketqua_image005.png',
+        ];
+        const total_items = 8;
+        const minimum_jumps = 30;
+        const divKQ = document.getElementById("ketqua");
+        const btnClose = document.getElementById("btnClose");
+        const ketquaContent = document.getElementById("ketquaContent");
+        let current_index = -1;
+        let jumps = 0;
+        let speed = 30;
+        let timer = 0;
+        let prize = -1;
+
+        function runCircle() {
+            $(`[data-order="${current_index}"]`).removeClass('is-active');
+
+            current_index += 1;
+
+            if (current_index > total_items - 1) {
+                current_index = 0;
+            }
+
+            $(`[data-order="${current_index}"]`).addClass('is-active');
+        }
+
+        function generatePrizeNumber() {
+            return Math.floor(Math.random() * total_items);
+        }
+
+        function controllSpeed() {
+            jumps += 1;
+            runCircle();
+            if (jumps > minimum_jumps + 1 && prize === current_index) {
+                clearTimeout(timer);
+
+                createDiv();
+
+                prize = -1;
+                jumps = 0;
+            } else {
+                if (jumps < minimum_jumps) {
+                    speed -= 5;
+                } else if (jumps === minimum_jumps) {
+                    const random_number = generatePrizeNumber();
+                    prize = random_number;
+                } else {
+                    if ((jumps > minimum_jumps + 10) && prize === (current_index + 1)) {
+                        speed += 600;
+                    } else {
+                        speed += 20;
+                    }
+                }
+                if (speed < 40) {
+                    speed = 40;
+                }
+
+                timer = setTimeout(controllSpeed, speed);
+            }
+        }
+
+        
+
+        function init() {
+            jumps = 0;
+            speed = 100;
+            prize = -1;
+            controllSpeed();
+        }
+
+        function closeKQ() {
+            ketquaContent.removeChild(ketquaContent.getElementsByTagName('img')[0]);
+            divKQ.style.display = "none";
+            btnClose.style.display = "none";
+        }
+
+        $(document).ready(() => {
+            $('#js-start').on('click', init);
+        });
+        
+        function createDiv() {
+            console.log(current_index);
+            divKQ.style.display = "block";
+            btnClose.style.display = "block";
+            
+            const imgKQ = document.createElement("img");
+            if (current_index === 4 || current_index === 0) {
+                imgKQ.src = images[0];
+            }
+            else if (current_index === 6) {
+                imgKQ.src = images[1];
+            } else {
+                imgKQ.src = images[2];
+            }
+            document.getElementById("ketquaContent").appendChild(imgKQ);
+        }
+    </script>
+</body>
+
+</html>
