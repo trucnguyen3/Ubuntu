@@ -51,7 +51,7 @@ app.get('/spinnerwheel', (req, res) => {
 });
 
 app.get('/survey', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', '/survey.html'));
+  res.sendFile(path.join(__dirname, 'public', '/survey_fixed.html'));
 });
 
 app.get('/gameprize', (req, res) => {

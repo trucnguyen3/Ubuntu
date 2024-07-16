@@ -30,7 +30,7 @@
             display: flex;
             flex-wrap: wrap;
             width: 100%;
-            padding-top: 253px;  
+            padding-top: 224px;  
             padding-left: 53px;
         }
 
@@ -42,7 +42,7 @@
             align-items: center;
             height: 85px;
             background: transparent;
-            border-radius: 7px;
+            border-radius: 8px;
 
             &.square:not(:nth-child(3n)) {
                 margin-right: 6px;
@@ -53,7 +53,7 @@
             }
 
             &.is-active {
-                border: 5px solid gold;
+                border: 5px solid #0079c1;
             }
         }
 
@@ -75,6 +75,19 @@
                 background: lighten(gold, 25%);
             }
         }
+
+        .square__close-btn {
+            background: transparent;
+            color: #e97573;
+            font-size: 2em;
+            cursor: pointer;
+            text-align: center;
+            width: 164px;
+            height: 56px;
+            margin-top: -56px;
+            margin-left: 18px;
+        }
+
         .modal {
             position: fixed;
             top: 0;
@@ -91,7 +104,7 @@
             height: 812px;
             text-align: center;
             margin: 0px auto;
-            background: url("https://newtwb.s3.amazonaws.com/images/voolatechsmt/Game_image001_1.png") no-repeat;
+            background: url("https://newtwb.s3.amazonaws.com/images/voolatechsmt/Game_image001_1_1.png") no-repeat;
         }
 
         #ketqua {
@@ -112,10 +125,28 @@
             position: fixed;
             vertical-align: middle;
             top: 4%;
-            display: none;
+        }
+        #btnKiemLuot {
+            width: 190px;
+            height: 70px;
+            position: fixed;
+            vertical-align: middle;
+            bottom: 35px;
+            left: 0px;
+        }
+        #btnDungNgay {
+            width: 190px;
+            height: 70px;
+            position: fixed;
+            vertical-align: middle;
+            bottom: 35px;
+            right: 0px;
         }
         img {
             width: 100%;
+        }
+        #blockBtnKQ {
+            display: none;
         }
     </style>
 </head>
@@ -155,11 +186,26 @@
             <div class="square__start-btn" id="js-start">
                 <div>START</div>
             </div>
+            <div class="square__close-btn" id="js-close">
+                <div></div>
+            </div>
             <section id="ketqua">
                 <div id="ketquaContent">
                 </div>
             </section>
-            <div id="btnClose" onclick="closeKQ();"></div>
+            <section id="blockBtnKQ">
+                <div id="btnClose" onclick="closeKQ();"></div>
+                <span>
+                    <a href="https://www.google.com/" target="_blank">
+                        <div id="btnKiemLuot"></div>
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.google.com/" target="_blank"> 
+                        <div id="btnDungNgay"></div>
+                    </a>
+                </span>
+            </section>
         </div>
     </section>
     
@@ -182,14 +228,15 @@
             'https://newtwb.s3.amazonaws.com/images/voolatechsmt/Ketqua_image004_1.png',
             'https://newtwb.s3.amazonaws.com/images/voolatechsmt/Ketqua_image005_1.png',
         ];
-        const total_items = 8;
-        const minimum_jumps = 30;
+        const total_items = 9;
+        const minimum_jumps = 50;
         const divKQ = document.getElementById("ketqua");
         const btnClose = document.getElementById("btnClose");
+        const blockBtnKQ = document.getElementById("blockBtnKQ");
         const ketquaContent = document.getElementById("ketquaContent");
         let current_index = -1;
         let jumps = 0;
-        let speed = 30;
+        let speed = 100;
         let timer = 0;
         let prize = -1;
 
@@ -227,7 +274,7 @@
                     prize = random_number;
                 } else {
                     if ((jumps > minimum_jumps + 10) && prize === (current_index + 1)) {
-                        speed += 600;
+                        speed += 800;
                     } else {
                         speed += 20;
                     }
@@ -240,7 +287,10 @@
             }
         }
 
-        
+        function close_app() {
+            //code close app 
+            console.log("close app");
+        }
 
         function init() {
             jumps = 0;
@@ -252,17 +302,18 @@
         function closeKQ() {
             ketquaContent.removeChild(ketquaContent.getElementsByTagName('img')[0]);
             divKQ.style.display = "none";
-            btnClose.style.display = "none";
+            blockBtnKQ.style.display = "none";
         }
 
         $(document).ready(() => {
             $('#js-start').on('click', init);
+            $('#js-close').on('click', close_app);
         });
         
         function createDiv() {
             console.log(current_index);
             divKQ.style.display = "block";
-            btnClose.style.display = "block";
+            blockBtnKQ.style.display = "block";
             
             const imgKQ = document.createElement("img");
             if (current_index === 4 || current_index === 0) {
