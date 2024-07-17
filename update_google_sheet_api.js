@@ -31,7 +31,8 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ auth, version: "v4" }); // This is from your showing script.
 
 const spreadsheetId = "1RA54GZKbs-ZILxXOojnSd-afygG-rov7N3O7E99Ys7k"; // Please set your Spreadsheet ID.
-const sheetName = "voucher"; // Please set your sheet name.
+const voucher = "voucher"; // Please set your sheet name.
+const survey_submitted = "survey_submitted";
 
 
 app.get('/', (req, res) => {
@@ -51,7 +52,7 @@ app.get('/spinnerwheel', (req, res) => {
 });
 
 app.get('/survey', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', '/survey_fixed.html'));
+  res.sendFile(path.join(__dirname, 'public', '/survey_fixed.html')); 
 });
 
 app.get('/gameprize', (req, res) => {
@@ -65,12 +66,23 @@ app.post('/updatesheet', async (req, res) => {
 
   const inputValues = [sheetID, "used"]; // This is a sample input value.
 
-  const { data: { values } } = await sheets.spreadsheets.values.get({ spreadsheetId, range: sheetName });
+  const { data: { values } } = await sheets.spreadsheets.values.get({ spreadsheetId, range: voucher });
   await sheets.spreadsheets.values.update({
     spreadsheetId,
-    range: sheetName,
+    range: voucher,
     resource: { values: values.map((r) => inputValues.includes(r[0]) ? [r[0], r[1], "used"] : r) },
     valueInputOption: "USER_ENTERED",
+  });
+})
+
+app.post('/surveysubmitted', async (req, res) => {
+  console.log((req.body))
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId,
+    range: survey_submitted,
+    valueInputOption: "USER_ENTERED",
+    requestBody: { majorDimension: "ROWS", values: [["1", "2", "3", "4"]] },
   });
 })
 
