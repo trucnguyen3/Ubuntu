@@ -55,7 +55,7 @@
             border-radius: 5px;
         }
 
-        button {
+        .submit_btn {
             margin: auto;
             display: block;
             width: 90%;
@@ -66,6 +66,7 @@
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
+            text-align: center;
         }
 
         .top-line {
@@ -171,6 +172,10 @@
                 CleverTap.dismissInAppNotification();
             }
         }
+
+        var name = '@Profile - Name | default="Quý khách"';
+
+        document.getElementById("username").innerHTML = name;
     </script>
 </head>
 
@@ -179,9 +184,12 @@
         <div class="top-line"></div>
         <div class="survey-in"
             style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-            <span style="font-weight: bold;">Kính gửi {{ Profile.name | default:"quý khách" }},</span>
+            <span style="font-weight: bold;">Kính gửi </span><span style="font-weight: bold;" id="username"></span><span
+                style="font-weight: bold;">,</span>
+            <p id="hidden_identity" style="display: none;">{{ Profile.Identity | default: "0" }}</p>
             <p></p>
-            <p style="line-height: 1.5; text-align: justify;">Cảm ơn Quý khách đã tin tưởng và
+            <p style="line-height: 1.5; text-align: justify;">Cảm ơn {{ Profile.name | default: "quý khách" }} đã tin
+                tưởng và
                 sử dụng ứng dụng Ngân hàng số MyVIB.
             </p>
             <p></p>
@@ -298,7 +306,7 @@
                 các chi nhánh của VIB trên toàn quốc. MyVIB mong sớm được phục vụ quý khách trở lại!
             </p>
             <div style="height: 10px;"></div>
-            <button type="submit" onclick="getSelectedValue()">Gửi khảo sát</button>
+            <div class="submit_btn" onclick="getSelectedValue()">Gửi khảo sát</div>
         </div>
     </div>
 </body>

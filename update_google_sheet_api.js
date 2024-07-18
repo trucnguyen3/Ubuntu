@@ -33,6 +33,7 @@ const sheets = google.sheets({ auth, version: "v4" }); // This is from your show
 const spreadsheetId = "1RA54GZKbs-ZILxXOojnSd-afygG-rov7N3O7E99Ys7k"; // Please set your Spreadsheet ID.
 const voucher = "voucher"; // Please set your sheet name.
 const survey_submitted = "survey_submitted";
+const minigame_played = "minigame_played";
 
 
 app.get('/', (req, res) => {
@@ -72,6 +73,17 @@ app.post('/updatesheet', async (req, res) => {
     range: voucher,
     resource: { values: values.map((r) => inputValues.includes(r[0]) ? [r[0], r[1], "used"] : r) },
     valueInputOption: "USER_ENTERED",
+  });
+})
+
+app.post('/minigameplayed', async (req, res) => {
+  console.log((req.body))
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId,
+    range: minigame_played,
+    valueInputOption: "USER_ENTERED",
+    requestBody: { majorDimension: "ROWS", values: [["1", "2", "3", "4"]] },
   });
 })
 
