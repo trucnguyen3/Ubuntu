@@ -337,7 +337,7 @@
             if (current_index === 4 || current_index === 0) {
                 imgKQ.src = images[0];
 
-                var props = { prize_title: "Sổ tiết kiệm 50 triệu", amount: 50000000, type: "Tiền gửi trực tuyến", term: "6 tháng", delivered_date: new Date("2024-07-20") };
+                var props = { prize_title: "Sổ tiết kiệm 50 triệu", amount: 50000000, type: "Tiền gửi trực tuyến", term: "6 tháng", delivered_date: new Date('2024-10-01').toISOString() };
                 if (window.CleverTap) {
                     // Call Android interface             
                     CleverTap.pushEvent("Minigame Played", JSON.stringify(props));
@@ -352,7 +352,7 @@
                 }
             } else {
                 imgKQ.src = images[2];
-                var props = { prize_title: "Ưu đãi lãi suất", code: "VIB211908600", validate: new Date("2024-08-01"), offer: "+0.2% cho kỳ đầu tiên", service: "Tiết kiệm trực tuyến" };
+                var props = { prize_title: "Ưu đãi lãi suất", code: "VIB211908600", validate: new Date('2024-08-01').toISOString(), offer: "+0.2% cho kỳ đầu tiên", service: "Tiết kiệm trực tuyến" };
                 if (window.CleverTap) {
                     // Call Android interface             
                     CleverTap.pushEvent("Minigame Played", JSON.stringify(props));

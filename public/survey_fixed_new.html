@@ -132,10 +132,10 @@
             var selectedValuesq1 = [];
             checkboxesq1.forEach((checkbox) => {
                 selectedValuesq1.push(checkbox.value);
-                if (checkboxotherq1.value != "") {
-                    selectedValuesq1.push(checkboxotherq1.value);
-                }
             });
+            if (checkboxotherq1.value != "") {
+                selectedValuesq1.push(checkboxotherq1.value);
+            }
 
             //Q2
             var checkboxesq2 = document.querySelectorAll('input[name="q2"]:checked');
@@ -160,18 +160,16 @@
             var selectedValuesq5 = [];
             checkboxesq5.forEach((checkbox) => {
                 selectedValuesq5.push(checkbox.value);
-                if (checkboxotherq5.value != "") {
-                    selectedValuesq5.push(checkboxotherq5.value);
-                }
             });
+            if (checkboxotherq5.value != "") {
+                selectedValuesq5.push(checkboxotherq5.value);
+            }
 
 
             var props = { Q1: selectedValuesq1.join("; "), Q2: selectedValuesq2.join("; "), Q3: textarea.value, Q4: selectedValuesq4.join("; "), Q5: selectedValuesq5.join("; ") };
             if (window.CleverTap) {
                 // Call Android interface             
                 CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
-
-                CleverTap.dismissInAppNotification();
             }
 
             document.getElementById("stepSuccess").style.display = "block";
@@ -191,6 +189,12 @@
             document.getElementById("stepOne").style.display = "none";
             document.getElementById("stepTwo").style.display = "none";
             document.getElementById("stepSuccess").style.display = "none";
+        }
+
+        function closeInApp() {
+            if (window.CleverTap) {
+                CleverTap.dismissInAppNotification();
+            }
         }
     </script>
 </head>
@@ -341,6 +345,8 @@
                 </p>
                 <div style="height: 10px;"></div>
             </div>
+
+            <button class="submit_btn" onclick="closeInApp()">Kết thúc</button>
         </div>
 
     </div>
