@@ -13,14 +13,14 @@
         }
 
         .survey {
-            max-width: 600px;
+            width: auto;
             margin: 0 auto;
             padding-bottom: 20px;
             background: #fff;
         }
 
         .survey-in {
-            max-width: 600px;
+            width: auto;
             margin: 0 auto;
             padding: 20px;
             border: 1px solid #ddd;
@@ -108,68 +108,57 @@
 
     <script>
         function getSelectedValue() {
-            //Q1
-            var checkboxesq1 = document.querySelectorAll('input[name="q1"]:checked');
-            var checkboxotherq1 = document.getElementById('q1');
-            var selectedValuesq1 = [];
-            checkboxesq1.forEach((checkbox) => {
-                selectedValuesq1.push(checkbox.value);
-                if (checkboxotherq1.value != "") {
-                    selectedValuesq1.push(checkboxotherq1.value);
+            try {
+                var checkboxesq1 = document.querySelectorAll('input[name="q1"]:checked');
+                var checkboxotherq1 = document.getElementById('q1');
+                var selectedValuesq1 = [];
+                checkboxesq1.forEach((checkbox) => {
+                    selectedValuesq1.push(checkbox.value);
+                    if (checkboxotherq1.value != "") {
+                        selectedValuesq1.push(checkboxotherq1.value);
+                    }
+                });
+
+                //Q2
+                var checkboxesq2 = document.querySelectorAll('input[name="q2"]:checked');
+                var selectedValuesq2 = [];
+                checkboxesq2.forEach((checkbox) => {
+                    selectedValuesq2.push(checkbox.value);
+                });
+
+                //Q3
+                var textarea = document.getElementById("details");
+
+                //Q4
+                var checkboxesq4 = document.querySelectorAll('input[name="q4"]:checked');
+                var selectedValuesq4 = [];
+                checkboxesq4.forEach((checkbox) => {
+                    selectedValuesq4.push(checkbox.value);
+                });
+
+                //Q5
+                var checkboxesq5 = document.querySelectorAll('input[name="q5"]:checked');
+                var checkboxotherq5 = document.getElementById('q5');
+                var selectedValuesq5 = [];
+                checkboxesq5.forEach((checkbox) => {
+                    selectedValuesq5.push(checkbox.value);
+                    if (checkboxotherq5.value != "") {
+                        selectedValuesq5.push(checkboxotherq5.value);
+                    }
+                });
+
+
+                var props = { Q1: selectedValuesq1.join("; "), Q2: selectedValuesq2.join("; "), Q3: textarea.value, Q4: selectedValuesq4.join("; "), Q5: selectedValuesq5.join("; ") };
+                if (window.CleverTap) {
+                    // Call Android interface             
+                    CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
+
+                    CleverTap.dismissInAppNotification();
                 }
-            });
-
-            //Q2
-            var checkboxesq2 = document.querySelectorAll('input[name="q2"]:checked');
-            var selectedValuesq2 = [];
-            checkboxesq2.forEach((checkbox) => {
-                selectedValuesq2.push(checkbox.value);
-            });
-
-            //Q3
-            var textarea = document.getElementById("details");
-
-            //Q4
-            var checkboxesq4 = document.querySelectorAll('input[name="q4"]:checked');
-            var selectedValuesq4 = [];
-            checkboxesq4.forEach((checkbox) => {
-                selectedValuesq4.push(checkbox.value);
-            });
-
-            //Q5
-            var checkboxesq5 = document.querySelectorAll('input[name="q5"]:checked');
-            var checkboxotherq5 = document.getElementById('q5');
-            var selectedValuesq5 = [];
-            checkboxesq5.forEach((checkbox) => {
-                selectedValuesq5.push(checkbox.value);
-                if (checkboxotherq5.value != "") {
-                    selectedValuesq5.push(checkboxotherq5.value);
-                }
-            });
-
-            const myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-
-            const raw = JSON.stringify(code50notuse[0]);
-
-            const requestOptions = {
-                method: "POST",
-                headers: myHeaders,
-                body: raw,
-                redirect: "follow"
-            };
-
-            fetch("https://dev.akadigital.net/updatesheet", requestOptions)
-                .then((response) => response.text())
-                .then((result) => console.log(result))
-                .catch((error) => console.error(error));
-
-            var props = { Q1: selectedValuesq1.join("; "), Q2: selectedValuesq2.join("; "), Q3: textarea.value, Q4: selectedValuesq4.join("; "), Q5: selectedValuesq5.join("; ") };
-            if (window.CleverTap) {
-                // Call Android interface             
-                CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
-
-                CleverTap.dismissInAppNotification();
+            } catch (error) {
+                if (document.getElementById("username")) {
+                    document.getElementById("username").innerHTML = error.toString()
+                };
             }
         }
 
@@ -185,8 +174,8 @@
         <div class="top-line"></div>
         <div class="survey-in"
             style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-            <span style="font-weight: bold;">Kính gửi </span><span style="font-weight: bold;" id="username"
-                onload="personalizeData()"></span><span style="font-weight: bold;">,</span>
+            <span style="font-weight: bold;">Kính gửi </span><span style="font-weight: bold;" id="username"></span><span
+                style="font-weight: bold;">,</span>
             <p id="hidden_identity" style="display: none;">{{ Profile.Identity | default: "0" }}</p>
             <p></p>
             <p style="line-height: 1.5; text-align: justify;">Cảm ơn {{ Profile.name | default: "quý khách" }} đã tin
@@ -222,8 +211,8 @@
                         sang sử dụng dịch vụ ngân hàng khác</label><br>
                     <input type="checkbox" style="margin-right: 2%;"
                         onclick="var input = document.getElementById('q1'); if(this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}" />Khác:
-                    <input type="text" id="q1" name="q1" disabled="disabled" size="50"
-                        placeholder="[Xin vui lòng chia sẻ]" style="padding: 5px;" />
+                    <input type="text" id="q1" name="q1" disabled="disabled" placeholder="[Xin vui lòng chia sẻ]"
+                        style="padding: 5px; width:70%" />
                 </div>
             </div>
         </div>
@@ -290,7 +279,7 @@
                     <input type="checkbox" style="margin-right: 2%;"
                         onclick="var input = document.getElementById('q5'); if(this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}" />Khác:
                     <input id="q5" name="q5" disabled="disabled" size="50" placeholder="[Xin vui lòng chia sẻ]"
-                        style="padding: 5px;" />
+                        style="padding: 5px; width:70%" />
                 </div>
             </div>
         </div>
@@ -307,7 +296,7 @@
                 các chi nhánh của VIB trên toàn quốc. MyVIB mong sớm được phục vụ quý khách trở lại!
             </p>
             <div style="height: 10px;"></div>
-            <div class="submit_btn" onclick="getSelectedValue()">Gửi khảo sát</div>
+            <button class="submit_btn" onclick="getSelectedValue()">Gửi khảo sát</button>
         </div>
     </div>
 </body>

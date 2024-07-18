@@ -77,14 +77,66 @@ app.post('/updatesheet', async (req, res) => {
 })
 
 app.post('/minigameplayed', async (req, res) => {
-  console.log((req.body))
+  var user_identified = ""
+  var prize_title = ""
+  var amount = null
+  var type = ""
+  var term = ""
+  var delivered_date = null	
+  var cod = ""
+  var validate = null
+  var offer = ""
+  var service = ""
+  var created_date = null
 
-  await sheets.spreadsheets.values.append({
-    spreadsheetId,
-    range: minigame_played,
-    valueInputOption: "USER_ENTERED",
-    requestBody: { majorDimension: "ROWS", values: [["1", "2", "3", "4"]] },
-  });
+  for (let i = 0; i < req.body.profiles.length; i++) {
+    if (req.body.profiles[i].event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
+      user_identified = req.body.profiles[i].identity
+      prize_title = req.body.profiles[i].event_properties.prize_title
+      amount = req.body.profiles[i].event_properties.amount
+      type = req.body.profiles[i].event_properties.type
+      term = req.body.profiles[i].event_properties.term
+      delivered_date = req.body.profiles[i].event_properties.delivered_date
+      created_date = new Date().toISOString()
+
+      await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range: minigame_played,
+        valueInputOption: "USER_ENTERED",
+        requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, amount, type, term, delivered_date, "", null, "", "", created_date]] },
+      });
+    }
+
+    else if (req.body.profiles[i].event_properties.prize_title == "Tai nghe JBL Tune 501BT") {
+      user_identified = req.body.profiles[i].identity
+      prize_title = req.body.profiles[i].event_properties.prize_title
+      created_date = new Date().toISOString()
+
+      await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range: minigame_played,
+        valueInputOption: "USER_ENTERED",
+        requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, "", null, "", "", created_date]] },
+      });
+    }
+
+    else {
+      user_identified = req.body.profiles[i].identity
+      prize_title = req.body.profiles[i].event_properties.prize_title
+      code = req.body.profiles[i].event_properties.code
+      validate = req.body.profiles[i].event_properties.validate
+      offer = req.body.profiles[i].event_properties.offer
+      service = req.body.profiles[i].event_properties.service
+      created_date = new Date().toISOString()
+
+      await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range: minigame_played,
+        valueInputOption: "USER_ENTERED",
+        requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, code, validate, offer, service, created_date]] },
+      });
+    }
+  }
 })
 
 app.post('/surveysubmitted', async (req, res) => {
