@@ -332,7 +332,26 @@
             const imgKQ = document.createElement("img");
             if (current_index === 4 || current_index === 0) {
                 imgKQ.src = images[0];
+
                 var props = { prize_title: "Số tiết kiệm 50 triệu", amount: 50000000, type: "Tiền gửi trực tuyến", term: "6 tháng", delivered_date: new Date("2024-07-20") };
+
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                const raw = JSON.stringify(props);
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                fetch("https://dev.akadigital.net/updatesheet", requestOptions)
+                    .then((response) => response.text())
+                    .then((result) => console.log(result))
+                    .catch((error) => console.error(error));
+
                 if (window.CleverTap) {
                     // Call Android interface             
                     CleverTap.pushEvent("Minigame Played", JSON.stringify(props));
