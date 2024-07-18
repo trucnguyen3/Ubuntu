@@ -89,10 +89,9 @@ app.post('/surveysubmitted', async (req, res) => {
 })
 
 app.post('/webhook', async (req, res) => {
-  console.log(req.body.key_values.event)
   for (let i = 0; i < req.body.profiles.length; i++) {
     //minigame
-    if (req.body.profiles[i].event_properties.prize_title != null) {
+    if (req.body.key_values.event === "Minigame Played") {
       var user_identified = ""
       var prize_title = ""
       var amount = null
@@ -151,7 +150,7 @@ app.post('/webhook', async (req, res) => {
           requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, code, validate, offer, service, created_date]] },
         });
       }
-    } else if (req.body.profiles[i].event_properties.Q1 != null) {
+    } else if (req.body.key_values.event === "Survey Submitted") {
       //survey
       var user_identified = ""
       var q1 = ""
