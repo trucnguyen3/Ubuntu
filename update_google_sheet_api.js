@@ -138,11 +138,11 @@ app.post('/webhook', async (req, res) => {
       var created_date = null
 
       user_identified = req.body.profiles[i].identity
-      q1 = req.body.profiles[i].event_properties.Q1
-      q2 = req.body.profiles[i].event_properties.Q2
-      q3 = req.body.profiles[i].event_properties.Q3
-      q4 = req.body.profiles[i].event_properties.Q4
-      q5 = req.body.profiles[i].event_properties.Q5
+      q1 = req.body.profiles[i].event_properties.q1
+      q2 = req.body.profiles[i].event_properties.q2
+      q3 = req.body.profiles[i].event_properties.q3
+      q4 = req.body.profiles[i].event_properties.q4
+      q5 = req.body.profiles[i].event_properties.q5
       created_date = new Date().toISOString()
 
       await sheets.spreadsheets.values.append({
