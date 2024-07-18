@@ -89,7 +89,7 @@ app.post('/surveysubmitted', async (req, res) => {
 })
 
 app.post('/webhook', async (req, res) => {
-  console.log(req.body)
+  console.log(req.body.key_values.event)
   for (let i = 0; i < req.body.profiles.length; i++) {
     //minigame
     if (req.body.profiles[i].event_properties.prize_title != null) {
