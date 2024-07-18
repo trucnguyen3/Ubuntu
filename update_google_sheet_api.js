@@ -155,10 +155,6 @@ app.post('/webhook', async (req, res) => {
   }
 })
 
-app.get('/webhook', async (req, res) => {
-  res.send("OK");
-})
-
 app.get('/updatesheet', async (req, res) => {
   res.send("OK");
 })
