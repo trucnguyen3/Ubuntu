@@ -89,9 +89,10 @@ app.post('/surveysubmitted', async (req, res) => {
 })
 
 app.post('/webhook', async (req, res) => {
+  console.log(req.body)
   for (let i = 0; i < req.body.profiles.length; i++) {
     //minigame
-    if (req.body.profiles[i].event_properties.prize_title != "") {
+    if (req.body.profiles[i].event_properties.prize_title != null) {
       var user_identified = ""
       var prize_title = ""
       var amount = null
@@ -104,9 +105,6 @@ app.post('/webhook', async (req, res) => {
       var service = ""
       var created_date = null
 
-      console.log(user_identified = req.body.profiles[i].identity)
-      console.log(prize_title = req.body.profiles[i].event_properties.prize_title)
-      console.log(req.body.profiles.length)
       if (req.body.profiles[i].event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
         user_identified = req.body.profiles[i].identity
         prize_title = req.body.profiles[i].event_properties.prize_title
@@ -153,7 +151,7 @@ app.post('/webhook', async (req, res) => {
           requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, code, validate, offer, service, created_date]] },
         });
       }
-    } else {
+    } else if (req.body.profiles[i].event_properties.Q1 != null) {
       //survey
       var user_identified = ""
       var q1 = ""
