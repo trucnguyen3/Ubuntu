@@ -173,9 +173,10 @@
             }
         }
 
-        var name = '@Profile - Name | default="Quý khách"';
-
-        document.getElementById("username").innerHTML = name;
+        function personalizeData() {
+            var name = '@Profile - Name | default="Quý khách"';
+            document.getElementById("username").innerHTML = name;
+        }
     </script>
 </head>
 
@@ -184,8 +185,8 @@
         <div class="top-line"></div>
         <div class="survey-in"
             style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-            <span style="font-weight: bold;">Kính gửi </span><span style="font-weight: bold;" id="username"></span><span
-                style="font-weight: bold;">,</span>
+            <span style="font-weight: bold;">Kính gửi </span><span style="font-weight: bold;" id="username"
+                onload="personalizeData()"></span><span style="font-weight: bold;">,</span>
             <p id="hidden_identity" style="display: none;">{{ Profile.Identity | default: "0" }}</p>
             <p></p>
             <p style="line-height: 1.5; text-align: justify;">Cảm ơn {{ Profile.name | default: "quý khách" }} đã tin
