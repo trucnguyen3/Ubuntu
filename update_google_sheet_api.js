@@ -99,7 +99,7 @@ app.post('/surveysubmitted', async (req, res) => {
 })
 
 app.post('/webhook', async (req, res) => { 
-  console.log(req.body)
+  console.log(req.body.profile)
 })
 
 app.get('/updatesheet', async (req, res) => {
