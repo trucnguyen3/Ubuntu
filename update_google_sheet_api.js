@@ -76,68 +76,6 @@ app.post('/updatesheet', async (req, res) => {
   });
 })
 
-app.post('/minigameplayed', async (req, res) => {
-  var user_identified = ""
-  var prize_title = ""
-  var amount = null
-  var type = ""
-  var term = ""
-  var delivered_date = null	
-  var cod = ""
-  var validate = null
-  var offer = ""
-  var service = ""
-  var created_date = null
-
-  for (let i = 0; i < req.body.profiles.length; i++) {
-    if (req.body.profiles[i].event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
-      user_identified = req.body.profiles[i].identity
-      prize_title = req.body.profiles[i].event_properties.prize_title
-      amount = req.body.profiles[i].event_properties.amount
-      type = req.body.profiles[i].event_properties.type
-      term = req.body.profiles[i].event_properties.term
-      delivered_date = req.body.profiles[i].event_properties.delivered_date
-      created_date = new Date().toISOString()
-
-      await sheets.spreadsheets.values.append({
-        spreadsheetId,
-        range: minigame_played,
-        valueInputOption: "USER_ENTERED",
-        requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, amount, type, term, delivered_date, "", null, "", "", created_date]] },
-      });
-    }
-
-    else if (req.body.profiles[i].event_properties.prize_title == "Tai nghe JBL Tune 501BT") {
-      user_identified = req.body.profiles[i].identity
-      prize_title = req.body.profiles[i].event_properties.prize_title
-      created_date = new Date().toISOString()
-
-      await sheets.spreadsheets.values.append({
-        spreadsheetId,
-        range: minigame_played,
-        valueInputOption: "USER_ENTERED",
-        requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, "", null, "", "", created_date]] },
-      });
-    }
-
-    else {
-      user_identified = req.body.profiles[i].identity
-      prize_title = req.body.profiles[i].event_properties.prize_title
-      code = req.body.profiles[i].event_properties.code
-      validate = req.body.profiles[i].event_properties.validate
-      offer = req.body.profiles[i].event_properties.offer
-      service = req.body.profiles[i].event_properties.service
-      created_date = new Date().toISOString()
-
-      await sheets.spreadsheets.values.append({
-        spreadsheetId,
-        range: minigame_played,
-        valueInputOption: "USER_ENTERED",
-        requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, code, validate, offer, service, created_date]] },
-      });
-    }
-  }
-})
 
 app.post('/surveysubmitted', async (req, res) => {
   console.log((req.body))
@@ -150,8 +88,97 @@ app.post('/surveysubmitted', async (req, res) => {
   });
 })
 
-app.post('/webhook', async (req, res) => { 
-  console.log(req.body.profiles)
+app.post('/webhook', async (req, res) => {
+  for (let i = 0; i < req.body.profiles.length; i++) {
+    //minigame
+    if (req.body.profiles[i].event_properties.prize_title != "") {
+      var user_identified = ""
+      var prize_title = ""
+      var amount = null
+      var type = ""
+      var term = ""
+      var delivered_date = null	
+      var code = ""
+      var validate = null
+      var offer = ""
+      var service = ""
+      var created_date = null
+
+      console.log(user_identified = req.body.profiles[i].identity)
+      console.log(prize_title = req.body.profiles[i].event_properties.prize_title)
+      console.log(req.body.profiles.length)
+      if (req.body.profiles[i].event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
+        user_identified = req.body.profiles[i].identity
+        prize_title = req.body.profiles[i].event_properties.prize_title
+        amount = req.body.profiles[i].event_properties.amount
+        type = req.body.profiles[i].event_properties.type
+        term = req.body.profiles[i].event_properties.term
+        delivered_date = req.body.profiles[i].event_properties.delivered_date
+        created_date = new Date().toISOString()
+
+        await sheets.spreadsheets.values.append({
+          spreadsheetId,
+          range: minigame_played,
+          valueInputOption: "USER_ENTERED",
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, amount, type, term, delivered_date, "", null, "", "", created_date]] },
+        });
+      }
+
+      else if (req.body.profiles[i].event_properties.prize_title == "Tai nghe JBL Tune 501BT") {
+        user_identified = req.body.profiles[i].identity
+        prize_title = req.body.profiles[i].event_properties.prize_title
+        created_date = new Date().toISOString()
+
+        await sheets.spreadsheets.values.append({
+          spreadsheetId,
+          range: minigame_played,
+          valueInputOption: "USER_ENTERED",
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, "", null, "", "", created_date]] },
+        });
+      }
+
+      else {
+        user_identified = req.body.profiles[i].identity
+        prize_title = req.body.profiles[i].event_properties.prize_title
+        code = req.body.profiles[i].event_properties.code
+        validate = req.body.profiles[i].event_properties.validate
+        offer = req.body.profiles[i].event_properties.offer
+        service = req.body.profiles[i].event_properties.service
+        created_date = new Date().toISOString()
+
+        await sheets.spreadsheets.values.append({
+          spreadsheetId,
+          range: minigame_played,
+          valueInputOption: "USER_ENTERED",
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, code, validate, offer, service, created_date]] },
+        });
+      }
+    } else {
+      //survey
+      var user_identified = ""
+      var q1 = ""
+      var q2 = ""
+      var q3 = ""
+      var q4 = ""
+      var q5 = ""
+      var created_date = null
+
+      user_identified = req.body.profiles[i].identity
+      q1 = req.body.profiles[i].event_properties.Q1
+      q2 = req.body.profiles[i].event_properties.Q2
+      q3 = req.body.profiles[i].event_properties.Q3
+      q4 = req.body.profiles[i].event_properties.Q4
+      q5 = req.body.profiles[i].event_properties.Q5
+      created_date = new Date().toISOString()
+
+      await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range: survey_submitted,
+        valueInputOption: "USER_ENTERED",
+        requestBody: { majorDimension: "ROWS", values: [[user_identified, q1, q2, q3, q4, q5, created_date]] },
+      });
+    }
+  }
 })
 
 app.get('/updatesheet', async (req, res) => {
