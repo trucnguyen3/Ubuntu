@@ -108,63 +108,52 @@
 
     <script>
         function getSelectedValue() {
-            try {
-                var checkboxesq1 = document.querySelectorAll('input[name="q1"]:checked');
-                var checkboxotherq1 = document.getElementById('q1');
-                var selectedValuesq1 = [];
-                checkboxesq1.forEach((checkbox) => {
-                    selectedValuesq1.push(checkbox.value);
-                    if (checkboxotherq1.value != "") {
-                        selectedValuesq1.push(checkboxotherq1.value);
-                    }
-                });
-
-                //Q2
-                var checkboxesq2 = document.querySelectorAll('input[name="q2"]:checked');
-                var selectedValuesq2 = [];
-                checkboxesq2.forEach((checkbox) => {
-                    selectedValuesq2.push(checkbox.value);
-                });
-
-                //Q3
-                var textarea = document.getElementById("details");
-
-                //Q4
-                var checkboxesq4 = document.querySelectorAll('input[name="q4"]:checked');
-                var selectedValuesq4 = [];
-                checkboxesq4.forEach((checkbox) => {
-                    selectedValuesq4.push(checkbox.value);
-                });
-
-                //Q5
-                var checkboxesq5 = document.querySelectorAll('input[name="q5"]:checked');
-                var checkboxotherq5 = document.getElementById('q5');
-                var selectedValuesq5 = [];
-                checkboxesq5.forEach((checkbox) => {
-                    selectedValuesq5.push(checkbox.value);
-                    if (checkboxotherq5.value != "") {
-                        selectedValuesq5.push(checkboxotherq5.value);
-                    }
-                });
-
-
-                var props = { Q1: selectedValuesq1.join("; "), Q2: selectedValuesq2.join("; "), Q3: textarea.value, Q4: selectedValuesq4.join("; "), Q5: selectedValuesq5.join("; ") };
-                if (window.CleverTap) {
-                    // Call Android interface             
-                    CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
-
-                    CleverTap.dismissInAppNotification();
+            var checkboxesq1 = document.querySelectorAll('input[name="q1"]:checked');
+            var checkboxotherq1 = document.getElementById('q1');
+            var selectedValuesq1 = [];
+            checkboxesq1.forEach((checkbox) => {
+                selectedValuesq1.push(checkbox.value);
+                if (checkboxotherq1.value != "") {
+                    selectedValuesq1.push(checkboxotherq1.value);
                 }
-            } catch (error) {
-                if (document.getElementById("username")) {
-                    document.getElementById("username").innerHTML = error.toString()
-                };
-            }
-        }
+            });
 
-        function personalizeData() {
-            var name = '@Profile - Name | default="Quý khách"';
-            document.getElementById("username").innerHTML = name;
+            //Q2
+            var checkboxesq2 = document.querySelectorAll('input[name="q2"]:checked');
+            var selectedValuesq2 = [];
+            checkboxesq2.forEach((checkbox) => {
+                selectedValuesq2.push(checkbox.value);
+            });
+
+            //Q3
+            var textarea = document.getElementById("details");
+
+            //Q4
+            var checkboxesq4 = document.querySelectorAll('input[name="q4"]:checked');
+            var selectedValuesq4 = [];
+            checkboxesq4.forEach((checkbox) => {
+                selectedValuesq4.push(checkbox.value);
+            });
+
+            //Q5
+            var checkboxesq5 = document.querySelectorAll('input[name="q5"]:checked');
+            var checkboxotherq5 = document.getElementById('q5');
+            var selectedValuesq5 = [];
+            checkboxesq5.forEach((checkbox) => {
+                selectedValuesq5.push(checkbox.value);
+                if (checkboxotherq5.value != "") {
+                    selectedValuesq5.push(checkboxotherq5.value);
+                }
+            });
+
+
+            var props = { Q1: selectedValuesq1.join("; "), Q2: selectedValuesq2.join("; "), Q3: textarea.value, Q4: selectedValuesq4.join("; "), Q5: selectedValuesq5.join("; ") };
+            if (window.CleverTap) {
+                // Call Android interface             
+                CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
+
+                CleverTap.dismissInAppNotification();
+            }
         }
     </script>
 </head>

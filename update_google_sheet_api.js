@@ -48,18 +48,6 @@ app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', '/login.html'));
 });
 
-app.get('/spinnerwheel', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', '/spinner_wheel_fixed.html'));
-});
-
-app.get('/survey', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', '/survey_fixed.html')); 
-});
-
-app.get('/gameprize', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', '/game_prize_fix.html'));
-});
-
 app.post('/updatesheet', async (req, res) => {
   console.log((req.body))
 
@@ -73,18 +61,6 @@ app.post('/updatesheet', async (req, res) => {
     range: voucher,
     resource: { values: values.map((r) => inputValues.includes(r[0]) ? [r[0], r[1], "used"] : r) },
     valueInputOption: "USER_ENTERED",
-  });
-})
-
-
-app.post('/surveysubmitted', async (req, res) => {
-  console.log((req.body))
-
-  await sheets.spreadsheets.values.append({
-    spreadsheetId,
-    range: survey_submitted,
-    valueInputOption: "USER_ENTERED",
-    requestBody: { majorDimension: "ROWS", values: [["1", "2", "3", "4"]] },
   });
 })
 
@@ -176,6 +152,10 @@ app.post('/webhook', async (req, res) => {
       });
     }
   }
+})
+
+app.get('/webhook', async (req, res) => {
+  res.send("OK");
 })
 
 app.get('/updatesheet', async (req, res) => {

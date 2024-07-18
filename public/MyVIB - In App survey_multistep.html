@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khảo sát sản phẩm và dịch vụ Thẻ tín dụng VIB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #fff;
+        }
+
+        .survey {
+            width: auto;
+            margin: 0 auto;
+            padding-bottom: 20px;
+            background: #fff;
+        }
+
+        .survey-in {
+            width: auto;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            text-align: center;
+        }
+
+        textarea,
+        input[type="email"] {
+            width: 95%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit_btn {
+            margin: auto;
+            display: block;
+            width: 90%;
+            padding: 10px;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .top-line {
+            display: block;
+            height: 15px;
+            font-weight: bold;
+            background: #0073e6;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        /* Style the radio button container */
+        .radio-container {
+            display: block;
+            position: relative;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            user-select: none;
+        }
+
+        /* Hide the actual radio button */
+        .radio-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .emoji {
+            border: 2px solid transparent;
+            border-radius: 10px;
+        }
+
+        /* Add border to the selected radio button */
+        .radio-container input:checked+.emoji {
+            border: 2px solid #2196F3;
+        }
+
+        #stepTwo,
+        #stepThree,
+        #stepSuccess {
+            display: none;
+        }
+
+        .buttonNextPre {
+            background-color: #0073e6;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .buttonNextPre:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+    <script>
+        function getSelectedValue() {
+            var checkboxesq1 = document.querySelectorAll('input[name="q1"]:checked');
+            var checkboxotherq1 = document.getElementById('q1');
+            var selectedValuesq1 = [];
+            checkboxesq1.forEach((checkbox) => {
+                selectedValuesq1.push(checkbox.value);
+                if (checkboxotherq1.value != "") {
+                    selectedValuesq1.push(checkboxotherq1.value);
+                }
+            });
+
+            //Q2
+            var checkboxesq2 = document.querySelectorAll('input[name="q2"]:checked');
+            var selectedValuesq2 = [];
+            checkboxesq2.forEach((checkbox) => {
+                selectedValuesq2.push(checkbox.value);
+            });
+
+            //Q3
+            var textarea = document.getElementById("details");
+
+            //Q4
+            var checkboxesq4 = document.querySelectorAll('input[name="q4"]:checked');
+            var selectedValuesq4 = [];
+            checkboxesq4.forEach((checkbox) => {
+                selectedValuesq4.push(checkbox.value);
+            });
+
+            //Q5
+            var checkboxesq5 = document.querySelectorAll('input[name="q5"]:checked');
+            var checkboxotherq5 = document.getElementById('q5');
+            var selectedValuesq5 = [];
+            checkboxesq5.forEach((checkbox) => {
+                selectedValuesq5.push(checkbox.value);
+                if (checkboxotherq5.value != "") {
+                    selectedValuesq5.push(checkboxotherq5.value);
+                }
+            });
+
+
+            var props = { Q1: selectedValuesq1.join("; "), Q2: selectedValuesq2.join("; "), Q3: textarea.value, Q4: selectedValuesq4.join("; "), Q5: selectedValuesq5.join("; ") };
+            if (window.CleverTap) {
+                // Call Android interface             
+                CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
+
+                CleverTap.dismissInAppNotification();
+            }
+
+            document.getElementById("stepSuccess").style.display = "block";
+            document.getElementById("stepOne").style.display = "none";
+            document.getElementById("stepThree").style.display = "none";
+            document.getElementById("stepTwo").style.display = "none";
+        }
+
+        function btnNext1() {
+            document.getElementById("stepTwo").style.display = "block";
+            document.getElementById("stepOne").style.display = "none";
+            document.getElementById("stepThree").style.display = "none";
+            document.getElementById("stepSuccess").style.display = "none";
+        }
+        function btnNext2() {
+            document.getElementById("stepThree").style.display = "block";
+            document.getElementById("stepOne").style.display = "none";
+            document.getElementById("stepTwo").style.display = "none";
+            document.getElementById("stepSuccess").style.display = "none";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="survey">
+        <div class="top-line"></div>
+        <div id="stepOne">
+            <div class="survey-in"
+                style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <span style="font-weight: bold;">Kính gửi {{ Profile.name | default: "quý khách" }}</span><span
+                    style="font-weight: bold;" id="username"></span><span style="font-weight: bold;">,</span>
+                <p></p>
+                <p style="line-height: 1.5; text-align: justify;">Cảm ơn {{ Profile.name | default: "quý khách" }} đã
+                    tin
+                    tưởng và
+                    sử dụng ứng dụng Ngân hàng số MyVIB.
+                </p>
+                <p></p>
+                <p style="line-height: 1.5; text-align: justify;">Chúng tôi muốn biết lý
+                    do tại sao quý khách đã không dùng MyVIB thời gian gần đây. Những ý kiến quý báu của quý khách sẽ
+                    giúp
+                    MyVIB cải thiện và mang lại trải nghiệm tốt hơn.
+                </p>
+            </div>
+            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+                <div class="question">
+                    <label for="q1" style="font-weight: bold; line-height: 1.5;">1. Lý do chính khiến quý khách không sử
+                        dụng ứng dụng MyVIB
+                        gần đây là gì? (Chọn tất cả các lý do phù hợp)</label>
+                    <div>
+                        <label><input type="checkbox" name="q1" value="Giao diện khó sử dụng"
+                                style="margin-right: 2%;">Giao
+                            diện khó sử
+                            dụng</label>
+                        <label><input type="checkbox" name="q1" value="Ứng dụng không đáp ứng nhu cầu"
+                                style="margin-right: 2%;">Ứng dụng không đáp
+                            ứng nhu cầu</label>
+                        <label><input type="checkbox" name="q1" value="Tốc độ xử lý chậm" style="margin-right: 2%;">Tốc
+                            độ
+                            xử lý chậm</label>
+                        <label><input type="checkbox" name="q1" value="Gặp phải sự cố kỹ thuật"
+                                style="margin-right: 2%;">Gặp phải sự cố kỹ
+                            thuật</label>
+                        <label><input type="checkbox" name="q1" value="Chuyển sang sử dụng dịch vụ ngân hàng khác"
+                                style="margin-right: 2%;">Chuyển
+                            sang sử dụng dịch vụ ngân hàng khác</label>
+                        <input type="checkbox" style="margin-right: 2%;"
+                            onclick="var input = document.getElementById('q1'); if(this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}" />Khác:
+                        <input type="text" id="q1" name="q1" disabled="disabled" placeholder="[Xin vui lòng chia sẻ]"
+                            style="padding: 5px; width:70%" />
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="nextBtn" class="buttonNextPre" onclick="btnNext1()">Next</button>
+        </div>
+
+        <div id="stepTwo">
+            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+                <div class="question">
+                    <label for="q2" style="font-weight: bold; line-height: 1.5;">2. Quý khách có biết về các tính năng
+                        mới
+                        và cải tiến gần đây của ứng dụng ngân hàng không?
+                    </label>
+                    <div>
+                        <label class="container">
+                            <input type="radio" checked="checked" name="q2" value="Có, tôi đã nghe về các tính năng mới"
+                                style="margin-right: 2%;">
+                            Có, tôi đã nghe về các tính năng mới
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="q2" value="Không, tôi chưa biết" style="margin-right: 2%;">
+                            Không, tôi chưa biết
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+                <label for="details" style="font-weight: bold; line-height: 1.5;">3. Quý khách có gợi ý nào để MyVIB cải
+                    thiện ứng dụng ngân hàng không?</label>
+                <textarea id="details" placeholder="[Xin vui lòng chia sẻ]"></textarea>
+            </div>
+
+            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+                <div class="question">
+                    <label for="q4" style="font-weight: bold; line-height: 1.5;">4. Quý khách có muốn quay lại sử dụng
+                        ứng
+                        dụng ngân hàng của MyVIB nếu MyVIB cải thiện các vấn đề đã đề cập?
+                    </label>
+                    <div>
+                        <label class="container">
+                            <input type="radio" checked="checked" name="q4" value="Có" style="margin-right: 2%;">
+                            Có
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="q4" value="Không" style="margin-right: 2%;">
+                            Không
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="nextBtn" class="buttonNextPre" onclick="btnNext2()">Next</button>
+        </div>
+
+        <div id="stepThree">
+            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+                <div class="question">
+                    <label for="q5" style="font-weight: bold; line-height: 1.5;">5. Quý khách muốn nhận được thông tin
+                        khuyến mãi của dịch vụ nào? (Chọn tất cả các dịch vụ phù hợp)</label>
+                    <div>
+                        <label><input type="checkbox" name="q5" value="Tiết kiệm" style="margin-right: 2%;">Tiết
+                            kiệm</label><br>
+                        <label><input type="checkbox" name="q5" value="Vay vốn" style="margin-right: 2%;">Vay
+                            vốn</label><br>
+                        <label><input type="checkbox" name="q5" value="Thẻ tín dụng" style="margin-right: 2%;">Thẻ tín
+                            dụng</label><br>
+                        <label><input type="checkbox" name="q5" value="Thanh toán trực tuyến"
+                                style="margin-right: 2%;">Thanh toán trực tuyến</label><br>
+                        <label><input type="checkbox" name="q5" value="Đầu tư" style="margin-right: 2%;">Đầu
+                            tư</label><br>
+                        <label><input type="checkbox" name="q5" value="Bảo hiểm" style="margin-right: 2%;">Bảo
+                            hiểm</label><br>
+                        <input type="checkbox" style="margin-right: 2%;"
+                            onclick="var input = document.getElementById('q5'); if(this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}" />Khác:
+                        <input id="q5" name="q5" disabled="disabled" size="50" placeholder="[Xin vui lòng chia sẻ]"
+                            style="padding: 5px; width:70%" />
+                    </div>
+                </div>
+            </div>
+            <button class="submit_btn" onclick="getSelectedValue()">Gửi khảo sát</button>
+        </div>
+
+        <div id="stepSuccess">
+            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px; line-height: 1.5;">
+                <p style="text-align: justify;">
+                    Để cảm ơn quý khách đã dành thời gian hoàn thành khảo sát và để quý khách trải nghiệm lại những cải
+                    tiến
+                    mới của ứng dụng, MyVIB muốn gửi tặng quý khách 50,000 coin. Hãy đăng nhập vào ứng dụng ngân hàng
+                    của
+                    MyVIB để nhận ưu đãi này ngay hôm nay!
+                </p>
+                <p style="text-align: justify;">
+                    MyVIB rất cảm kích sự quan tâm và ý kiến đóng góp của quý khách. Nếu có bất
+                    kỳ thắc mắc hoặc cần hỗ trợ, vui lòng liên hệ TTDVKH 24/7 1900 2200 (1.000 đ/phút) hoặc trực tiếp
+                    tại
+                    các chi nhánh của VIB trên toàn quốc. MyVIB mong sớm được phục vụ quý khách trở lại!
+                </p>
+                <div style="height: 10px;"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
