@@ -65,7 +65,7 @@ app.post('/updatesheet', async (req, res) => {
 })
 
 app.post('/webhook', async (req, res) => {
-  console.log(req.body)
+  console.log(req.body.profiles)
   for (let i = 0; i < req.body.profiles.length; i++) {
     //minigame
     if (req.body.key_values.event === "minigame_played") {
@@ -138,8 +138,8 @@ app.post('/webhook', async (req, res) => {
     } else if (req.body.key_values.event === "survey_submitted") {
       //survey
       var user_identified = ""
-      email_address = req.body.profiles[i].email
-      mobile_number = req.body.profiles[i].phone
+      var email_address = ""
+      var mobile_number = ""
       var q1 = ""
       var q2 = ""
       var q3 = ""
