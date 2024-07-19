@@ -66,10 +66,9 @@ app.post('/updatesheet', async (req, res) => {
 
 app.post('/webhook', async (req, res) => {
   console.log(req.body)
-  res.send("OK")
   for (let i = 0; i < req.body.profiles.length; i++) {
     //minigame
-    if (req.body.key_values.event === "Minigame Played") {
+    if (req.body.key_values.event === "minigame_played") {
       var user_identified = ""
       var email_address = ""
       var mobile_number = ""
@@ -136,7 +135,7 @@ app.post('/webhook', async (req, res) => {
           requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, validate, offer, service, created_date]] },
         });
       }
-    } else if (req.body.key_values.event === "Survey Submitted") {
+    } else if (req.body.key_values.event === "survey_submitted") {
       //survey
       var user_identified = ""
       email_address = req.body.profiles[i].email
@@ -166,6 +165,7 @@ app.post('/webhook', async (req, res) => {
       });
     }
   }
+  res.send("OK")
 })
 
 app.get('/updatesheet', async (req, res) => {

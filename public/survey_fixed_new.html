@@ -192,12 +192,6 @@
             document.getElementById("stepTwo").style.display = "none";
             document.getElementById("stepSuccess").style.display = "none";
         }
-
-        function closeInApp() {
-            if (window.CleverTap) {
-                CleverTap.dismissInAppNotification();
-            }
-        }
     </script>
 </head>
 
@@ -348,7 +342,7 @@
                 <div style="height: 10px;"></div>
             </div>
 
-            <button class="submit_btn" onclick="closeInApp()">Kết thúc</button>
+            <a href="wzrk://exit" style="text-decoration: none;"><button class="submit_btn">Kết thúc</button></a>
         </div>
 
     </div>

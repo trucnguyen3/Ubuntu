@@ -155,14 +155,6 @@
             display: none;
         }
     </style>
-
-    <script>
-        function closeInApp() {
-            if (window.CleverTap) {
-                CleverTap.dismissInAppNotification();
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -200,9 +192,11 @@
             <div class="square__start-btn" id="js-start">
                 <div>START</div>
             </div>
-            <div class="square__close-btn" id="js-close" onclick="closeInApp()">
-                <div></div>
-            </div>
+            <a href="wzrk://exit" style="text-decoration: none;">
+                <div class="square__close-btn" id="js-close">
+                    <div></div>
+                </div>
+            </a>
             <section id="ketqua">
                 <div id="ketquaContent">
                 </div>
