@@ -66,6 +66,7 @@ app.post('/updatesheet', async (req, res) => {
 
 app.post('/webhook', async (req, res) => {
   console.log(req.body)
+  res.send("OK")
   /*
   for (let i = 0; i < req.body.profiles.length; i++) {
     //minigame

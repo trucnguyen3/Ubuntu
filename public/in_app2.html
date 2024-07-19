@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khảo sát sản phẩm và dịch vụ Thẻ tín dụng VIB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+        }
+
+        .survey {
+            width: auto;
+            background: #fff;
+        }
+
+        .survey-in {
+            width: auto;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            text-align: center;
+        }
+
+        textarea,
+        input[type="email"] {
+            width: 95%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit_btn {
+            margin: auto;
+            display: block;
+            width: 50%;
+            padding: 15px;
+            background: linear-gradient(94.64deg, #FE9B25 3.75%, #FF5922 95.77%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .top-line {
+            display: block;
+            height: 15px;
+            font-weight: bold;
+            background: #0073e6;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        /* Style the radio button container */
+        .radio-container {
+            display: block;
+            position: relative;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            user-select: none;
+        }
+
+        /* Hide the actual radio button */
+        .radio-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .emoji {
+            border: 2px solid transparent;
+            border-radius: 10px;
+        }
+
+        /* Add border to the selected radio button */
+        .radio-container input:checked+.emoji {
+            border: 2px solid #2196F3;
+        }
+
+        #stepTwo,
+        #stepThree,
+        #stepSuccess {
+            display: none;
+        }
+
+        .buttonNextPre {
+            background: linear-gradient(94.64deg, #FE9B25 3.75%, #FF5922 95.77%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .buttonNextPre:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+    <script>
+        function closeInApp() {
+            if (window.CleverTap) {
+                CleverTap.dismissInAppNotification();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="survey">
+        <div id="stepOne">
+            <div class="survey-in"
+                style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <img src="https://d1ru61vt1rnsp9.cloudfront.net/1400000005/assets/1973a931daf84353a7ba82eaa434c262.jpeg"
+                    style="width: 100%;"></img>
+            </div>
+            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+                <div class="question">
+                    <label for="q1"
+                        style="font-weight: bold; line-height: 1.5; text-align: center; font-size: 19px;">Khi bật thanh
+                        toán
+                        Điện, Nước, Wifi tự
+                        động</label>
+                    <p style="text-align: center; font-style: italic;">Tiền được hoàn vài tài khoản MyVIB Rewards, 1
+                        Coin = 1 VNĐ</p>
+                </div>
+            </div>
+            <a style="text-decoration: none;" href="myvib2://myvib2.com.vn/data?module=billpay"><button type="button"
+                    id="submit_btn" class="submit_btn">Bật ngay</button></a>
+        </div>
+    </div>
+</body>
+
+</html>
