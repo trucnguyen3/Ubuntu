@@ -150,11 +150,11 @@ app.post('/webhook', async (req, res) => {
       user_identified = req.body.profiles[i].identity
       email_address = req.body.profiles[i].email
       mobile_number = req.body.profiles[i].phone
-      q1 = req.body.profiles[i].event_properties.q1
-      q2 = req.body.profiles[i].event_properties.q2
-      q3 = req.body.profiles[i].event_properties.q3
-      q4 = req.body.profiles[i].event_properties.q4
-      q5 = req.body.profiles[i].event_properties.q5
+      q1 = req.body.profiles[i].event_properties.Q1
+      q2 = req.body.profiles[i].event_properties.Q2
+      q3 = req.body.profiles[i].event_properties.Q3
+      q4 = req.body.profiles[i].event_properties.Q4
+      q5 = req.body.profiles[i].event_properties.Q5
       created_date = req.body.profiles[i].event_properties.created_date
 
       await sheets.spreadsheets.values.append({
