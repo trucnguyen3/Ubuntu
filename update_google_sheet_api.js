@@ -70,6 +70,8 @@ app.post('/webhook', async (req, res) => {
     //minigame
     if (req.body.key_values.event === "Minigame Played") {
       var user_identified = ""
+      var email_address = ""
+      var mobile_number = ""
       var prize_title = ""
       var amount = null
       var type = ""
@@ -83,53 +85,61 @@ app.post('/webhook', async (req, res) => {
 
       if (req.body.profiles[i].event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
         user_identified = req.body.profiles[i].identity
+        email_address = req.body.profiles[i].email
+        mobile_number = req.body.profiles[i].phone
         prize_title = req.body.profiles[i].event_properties.prize_title
         amount = req.body.profiles[i].event_properties.amount
         type = req.body.profiles[i].event_properties.type
         term = req.body.profiles[i].event_properties.term
         delivered_date = req.body.profiles[i].event_properties.delivered_date
-        created_date = new Date().toISOString()
+        created_date = req.body.profiles[i].event_properties.created_date
 
         await sheets.spreadsheets.values.append({
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, amount, type, term, delivered_date, "", null, "", "", created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, delivered_date, "", null, "", "", created_date]] },
         });
       }
 
       else if (req.body.profiles[i].event_properties.prize_title == "Tai nghe JBL Tune 501BT") {
         user_identified = req.body.profiles[i].identity
+        email_address = req.body.profiles[i].email
+        mobile_number = req.body.profiles[i].phone
         prize_title = req.body.profiles[i].event_properties.prize_title
-        created_date = new Date().toISOString()
+        created_date = req.body.profiles[i].event_properties.created_date
 
         await sheets.spreadsheets.values.append({
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, "", null, "", "", created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, "", null, "", "", created_date]] },
         });
       }
 
       else {
         user_identified = req.body.profiles[i].identity
+        email_address = req.body.profiles[i].email
+        mobile_number = req.body.profiles[i].phone
         prize_title = req.body.profiles[i].event_properties.prize_title
         code = req.body.profiles[i].event_properties.code
         validate = req.body.profiles[i].event_properties.validate
         offer = req.body.profiles[i].event_properties.offer
         service = req.body.profiles[i].event_properties.service
-        created_date = new Date().toISOString()
+        created_date = req.body.profiles[i].event_properties.created_date
 
         await sheets.spreadsheets.values.append({
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, prize_title, null, "", "", null, code, validate, offer, service, created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, validate, offer, service, created_date]] },
         });
       }
     } else if (req.body.key_values.event === "Survey Submitted") {
       //survey
       var user_identified = ""
+      email_address = req.body.profiles[i].email
+      mobile_number = req.body.profiles[i].phone
       var q1 = ""
       var q2 = ""
       var q3 = ""
@@ -138,18 +148,20 @@ app.post('/webhook', async (req, res) => {
       var created_date = null
 
       user_identified = req.body.profiles[i].identity
+      email_address = req.body.profiles[i].email
+      mobile_number = req.body.profiles[i].phone
       q1 = req.body.profiles[i].event_properties.q1
       q2 = req.body.profiles[i].event_properties.q2
       q3 = req.body.profiles[i].event_properties.q3
       q4 = req.body.profiles[i].event_properties.q4
       q5 = req.body.profiles[i].event_properties.q5
-      created_date = new Date().toISOString()
+      created_date = req.body.profiles[i].event_properties.created_date
 
       await sheets.spreadsheets.values.append({
         spreadsheetId,
         range: survey_submitted,
         valueInputOption: "USER_ENTERED",
-        requestBody: { majorDimension: "ROWS", values: [[user_identified, q1, q2, q3, q4, q5, created_date]] },
+        requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, created_date]] },
       });
     }
   }
