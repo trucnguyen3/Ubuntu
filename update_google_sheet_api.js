@@ -67,7 +67,6 @@ app.post('/updatesheet', async (req, res) => {
 app.post('/webhook', async (req, res) => {
   console.log(req.body)
   res.send("OK")
-  /*
   for (let i = 0; i < req.body.profiles.length; i++) {
     //minigame
     if (req.body.key_values.event === "Minigame Played") {
@@ -167,7 +166,6 @@ app.post('/webhook', async (req, res) => {
       });
     }
   }
-  */
 })
 
 app.get('/updatesheet', async (req, res) => {
