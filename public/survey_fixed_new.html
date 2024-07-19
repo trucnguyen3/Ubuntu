@@ -169,7 +169,12 @@
             var props = { Q1: selectedValuesq1.join("; "), Q2: selectedValuesq2.join("; "), Q3: textarea.value, Q4: selectedValuesq4.join("; "), Q5: selectedValuesq5.join("; "), created_date: new Date().toISOString() };
             if (window.CleverTap) {
                 // Call Android interface             
-                CleverTap.pushEvent("Survey Submitted", JSON.stringify(props));
+                CleverTap.pushEvent("survey_submitted", JSON.stringify(props));
+            }
+
+            var message = { action: 'recordEventWithProps', event: 'survey_submitted', properties: props };
+            if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.clevertap) {
+                window.webkit.messageHandlers.clevertap.postMessage(message);
             }
 
             document.getElementById("stepSuccess").style.display = "block";
