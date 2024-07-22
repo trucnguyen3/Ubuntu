@@ -101,14 +101,16 @@ app.post('/webhook', async (req, res) => {
         const match = input.match(regex);
 
         const date = new Date(match[1] * 1000);
-        const sheet_created_date = date.toLocaleString();
+        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        const sheet_created_date = date.toLocaleString('en-US', options);
 
         const input2 = delivered_date;
         const regex2 = /\$(?:D_)?(\d+)/;
         const match2 = input2.match(regex2);
 
         const date2 = new Date(match2[1] * 1000);
-        const sheet_delivered_date = date2.toLocaleString();
+        const options2 = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        const sheet_delivered_date = date2.toLocaleString('en-US', options2);
 
         await sheets.spreadsheets.values.append({
           spreadsheetId,
@@ -131,7 +133,8 @@ app.post('/webhook', async (req, res) => {
         const match = input.match(regex);
 
         const date = new Date(match[1] * 1000);
-        const sheet_created_date = date.toLocaleString();       
+        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        const sheet_created_date = date.toLocaleString('en-US', options);   
 
         await sheets.spreadsheets.values.append({
           spreadsheetId,
@@ -158,14 +161,16 @@ app.post('/webhook', async (req, res) => {
         const match = input.match(regex);
 
         const date = new Date(match[1] * 1000);
-        const sheet_created_date = date.toLocaleString();
+        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        const sheet_created_date = date.toLocaleString('en-US', options);
 
         const input2 = validate;
         const regex2 = /\$(?:D_)?(\d+)/;
         const match2 = input2.match(regex2);
 
         const date2 = new Date(match2[1] * 1000);
-        const sheet_validate = date2.toLocaleString();
+        const options2 = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        const sheet_validate = date2.toLocaleString('en-US', options2);   
 
         await sheets.spreadsheets.values.append({
           spreadsheetId,
@@ -203,7 +208,8 @@ app.post('/webhook', async (req, res) => {
       const match = input.match(regex);
 
       const date = new Date(match[1] * 1000);
-      const sheet_created_date = date.toLocaleString();       
+      const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      const sheet_created_date = date.toLocaleString('en-US', options);      
 
       await sheets.spreadsheets.values.append({
         spreadsheetId,
