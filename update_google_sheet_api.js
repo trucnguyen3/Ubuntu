@@ -101,16 +101,20 @@ app.post('/webhook', async (req, res) => {
         const match = input.match(regex);
 
         const date = new Date(match[1] * 1000);
-        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-        const sheet_created_date = date.toLocaleString('en-US', options);
+        const pad = (num) => num.toString().padStart(2, '0');
+        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
+        const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
 
         const input2 = delivered_date;
         const regex2 = /\$(?:D_)?(\d+)/;
         const match2 = input2.match(regex2);
 
         const date2 = new Date(match2[1] * 1000);
-        const options2 = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-        const sheet_delivered_date = date2.toLocaleString('en-US', options2);
+        const pad2 = (num) => num.toString().padStart(2, '0');
+        const options2 = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const gmtPlus7Date2 = new Intl.DateTimeFormat('en-GB', options2).format(date2);
+        const sheet_delivered_date = gmtPlus7Date2.replace(', ', ' ');
 
         await sheets.spreadsheets.values.append({
           spreadsheetId,
@@ -133,8 +137,10 @@ app.post('/webhook', async (req, res) => {
         const match = input.match(regex);
 
         const date = new Date(match[1] * 1000);
-        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-        const sheet_created_date = date.toLocaleString('en-US', options);   
+        const pad = (num) => num.toString().padStart(2, '0');
+        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
+        const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
 
         await sheets.spreadsheets.values.append({
           spreadsheetId,
@@ -161,16 +167,20 @@ app.post('/webhook', async (req, res) => {
         const match = input.match(regex);
 
         const date = new Date(match[1] * 1000);
-        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-        const sheet_created_date = date.toLocaleString('en-US', options);
+        const pad = (num) => num.toString().padStart(2, '0');
+        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
+        const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
 
         const input2 = validate;
         const regex2 = /\$(?:D_)?(\d+)/;
         const match2 = input2.match(regex2);
 
         const date2 = new Date(match2[1] * 1000);
-        const options2 = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-        const sheet_validate = date2.toLocaleString('en-US', options2);   
+        const pad2 = (num) => num.toString().padStart(2, '0');
+        const options2 = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const gmtPlus7Date2 = new Intl.DateTimeFormat('en-GB', options2).format(date2);
+        const sheet_validate = gmtPlus7Date2.replace(', ', ' ');
 
         await sheets.spreadsheets.values.append({
           spreadsheetId,
@@ -208,8 +218,10 @@ app.post('/webhook', async (req, res) => {
       const match = input.match(regex);
 
       const date = new Date(match[1] * 1000);
-      const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-      const sheet_created_date = date.toLocaleString('en-US', options);      
+      const pad = (num) => num.toString().padStart(2, '0');
+      const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
+      const sheet_created_date = gmtPlus7Date.replace(', ', ' ');     
 
       await sheets.spreadsheets.values.append({
         spreadsheetId,
