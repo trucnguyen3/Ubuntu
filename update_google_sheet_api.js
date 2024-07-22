@@ -101,11 +101,18 @@ app.post('/webhook', async (req, res) => {
         const date = new Date(match[1] * 1000);
         const sheet_created_date = date.toLocaleString();
 
+        const input2 = delivered_date;
+        const regex2 = /\$(?:D_)?(\d+)/;
+        const match2 = input2.match(regex2);
+
+        const date2 = new Date(match2[1] * 1000);
+        const sheet_delivered_date = date2.toLocaleString();
+
         await sheets.spreadsheets.values.append({
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, delivered_date, "", null, "", "", sheet_created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, sheet_delivered_date, "", null, "", "", sheet_created_date]] },
         });
       }
 
@@ -149,11 +156,18 @@ app.post('/webhook', async (req, res) => {
         const date = new Date(match[1] * 1000);
         const sheet_created_date = date.toLocaleString();
 
+        const input2 = validate;
+        const regex2 = /\$(?:D_)?(\d+)/;
+        const match2 = input2.match(regex2);
+
+        const date2 = new Date(match2[1] * 1000);
+        const sheet_validate = date2.toLocaleString();
+
         await sheets.spreadsheets.values.append({
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, validate, offer, service, sheet_created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, sheet_validate, offer, service, sheet_created_date]] },
         });
       }
     } else if (req.body.key_values.event === "survey_submitted") {
