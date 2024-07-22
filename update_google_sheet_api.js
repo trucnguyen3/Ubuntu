@@ -145,7 +145,7 @@ app.post('/webhook', async (req, res) => {
         prize_title = req.body.profiles[i].event_properties.prize_title
         code = req.body.profiles[i].event_properties.code
         validate = req.body.profiles[i].event_properties.validate
-        offer = req.body.profiles[i].event_properties.offer
+        offer = "'"+req.body.profiles[i].event_properties.offer
         service = req.body.profiles[i].event_properties.service
         created_date = req.body.profiles[i].event_properties.created_date
 
