@@ -94,11 +94,18 @@ app.post('/webhook', async (req, res) => {
         delivered_date = req.body.profiles[i].event_properties.delivered_date
         created_date = req.body.profiles[i].event_properties.created_date
 
+        const input = created_date;
+        const regex = /\$(?:D_)?(\d+)/;
+        const match = input.match(regex);
+
+        const date = new Date(match[1] * 1000);
+        const sheet_created_date = date.toLocaleString();
+
         await sheets.spreadsheets.values.append({
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, delivered_date, "", null, "", "", created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, delivered_date, "", null, "", "", sheet_created_date]] },
         });
       }
 
@@ -109,11 +116,18 @@ app.post('/webhook', async (req, res) => {
         prize_title = req.body.profiles[i].event_properties.prize_title
         created_date = req.body.profiles[i].event_properties.created_date
 
+        const input = created_date;
+        const regex = /\$(?:D_)?(\d+)/;
+        const match = input.match(regex);
+
+        const date = new Date(match[1] * 1000);
+        const sheet_created_date = date.toLocaleString();       
+
         await sheets.spreadsheets.values.append({
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, "", null, "", "", created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, "", null, "", "", sheet_created_date]] },
         });
       }
 
@@ -128,11 +142,18 @@ app.post('/webhook', async (req, res) => {
         service = req.body.profiles[i].event_properties.service
         created_date = req.body.profiles[i].event_properties.created_date
 
+        const input = created_date;
+        const regex = /\$(?:D_)?(\d+)/;
+        const match = input.match(regex);
+
+        const date = new Date(match[1] * 1000);
+        const sheet_created_date = date.toLocaleString();
+
         await sheets.spreadsheets.values.append({
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, validate, offer, service, created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, validate, offer, service, sheet_created_date]] },
         });
       }
     } else if (req.body.key_values.event === "survey_submitted") {
@@ -157,11 +178,18 @@ app.post('/webhook', async (req, res) => {
       q5 = req.body.profiles[i].event_properties.Q5
       created_date = req.body.profiles[i].event_properties.created_date
 
+      const input = created_date;
+      const regex = /\$(?:D_)?(\d+)/;
+      const match = input.match(regex);
+
+      const date = new Date(match[1] * 1000);
+      const sheet_created_date = date.toLocaleString();       
+
       await sheets.spreadsheets.values.append({
         spreadsheetId,
         range: survey_submitted,
         valueInputOption: "USER_ENTERED",
-        requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, created_date]] },
+        requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, sheet_created_date]] },
       });
     }
   }
