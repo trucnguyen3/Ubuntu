@@ -82,6 +82,7 @@ app.post('/webhook', async (req, res) => {
       var offer = ""
       var service = ""
       var created_date = null
+      var source = ""
 
       if (req.body.profiles[i].event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
         user_identified = req.body.profiles[i].identity
@@ -93,6 +94,7 @@ app.post('/webhook', async (req, res) => {
         term = req.body.profiles[i].event_properties.term
         delivered_date = req.body.profiles[i].event_properties.delivered_date
         created_date = req.body.profiles[i].event_properties.created_date
+        source = req.body.key_values.source
 
         const input = created_date;
         const regex = /\$(?:D_)?(\d+)/;
@@ -112,7 +114,7 @@ app.post('/webhook', async (req, res) => {
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, sheet_delivered_date, "", null, "", "", sheet_created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, sheet_delivered_date, "", null, "", "", sheet_created_date, source]] },
         });
       }
 
@@ -122,6 +124,7 @@ app.post('/webhook', async (req, res) => {
         mobile_number = req.body.profiles[i].phone
         prize_title = req.body.profiles[i].event_properties.prize_title
         created_date = req.body.profiles[i].event_properties.created_date
+        source = req.body.key_values.source
 
         const input = created_date;
         const regex = /\$(?:D_)?(\d+)/;
@@ -134,7 +137,7 @@ app.post('/webhook', async (req, res) => {
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, "", null, "", "", sheet_created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, "", null, "", "", sheet_created_date, source]] },
         });
       }
 
@@ -148,6 +151,7 @@ app.post('/webhook', async (req, res) => {
         offer = "'"+req.body.profiles[i].event_properties.offer
         service = req.body.profiles[i].event_properties.service
         created_date = req.body.profiles[i].event_properties.created_date
+        source = req.body.key_values.source
 
         const input = created_date;
         const regex = /\$(?:D_)?(\d+)/;
@@ -167,7 +171,7 @@ app.post('/webhook', async (req, res) => {
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, sheet_validate, offer, service, sheet_created_date]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, sheet_validate, offer, service, sheet_created_date, source]] },
         });
       }
     } else if (req.body.key_values.event === "survey_submitted") {
@@ -181,6 +185,7 @@ app.post('/webhook', async (req, res) => {
       var q4 = ""
       var q5 = ""
       var created_date = null
+      var source = ""
 
       user_identified = req.body.profiles[i].identity
       email_address = req.body.profiles[i].email
@@ -191,6 +196,7 @@ app.post('/webhook', async (req, res) => {
       q4 = req.body.profiles[i].event_properties.Q4
       q5 = req.body.profiles[i].event_properties.Q5
       created_date = req.body.profiles[i].event_properties.created_date
+      source = req.body.key_values.source
 
       const input = created_date;
       const regex = /\$(?:D_)?(\d+)/;
@@ -203,7 +209,7 @@ app.post('/webhook', async (req, res) => {
         spreadsheetId,
         range: survey_submitted,
         valueInputOption: "USER_ENTERED",
-        requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, sheet_created_date]] },
+        requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, sheet_created_date, source]] },
       });
     }
   }
