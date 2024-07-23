@@ -79,7 +79,7 @@ async function sendToSheet() {
   if (eventData.length) {
     let data = eventData.pop();
 
-    console.log(data.key_values)
+    console.log(data[0].key_values)
 
     async function executedData() {
     //minigame
