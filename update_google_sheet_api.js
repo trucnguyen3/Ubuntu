@@ -69,7 +69,7 @@ var eventData = []
 app.post('/webhook', async (req, res) => {
   //console.log(req.body.profiles)
   console.log(eventData + "1")
-  eventData.push(req.body.profiles)
+  eventData.push(req.body)
   /*
   for (let i = 0; i < req.body.profiles.length; i++) {
     //minigame
@@ -242,7 +242,7 @@ app.post('/webhook', async (req, res) => {
 
 function sendToSheet() {
   console.log(eventData + "2")
-  
+
   let data = eventData.pop()
   console.log(data + "3")
 }
