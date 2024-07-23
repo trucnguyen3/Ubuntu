@@ -246,6 +246,8 @@ function sendToSheet() {
 
   let data = eventData.pop()
   console.log(data + "3")
+
+  setTimeout(sendToSheet, 1000);
 }
 
 sendToSheet()
