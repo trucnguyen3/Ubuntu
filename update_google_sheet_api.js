@@ -97,7 +97,7 @@ async function sendToSheet() {
         var source = ""
         var user_platform = ""
 
-        if (data.event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
+        if (data[i].event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
           user_identified = data[i].identity
           email_address = data[i].email
           mobile_number = data[i].phone
@@ -138,7 +138,7 @@ async function sendToSheet() {
           });
         }
 
-        else if (data.event_properties.prize_title == "Tai nghe JBL Tune 501BT") {
+        else if (data[i].event_properties.prize_title == "Tai nghe JBL Tune 501BT") {
           user_identified = data[i].identity
           email_address = data[i].email
           mobile_number = data[i].phone
