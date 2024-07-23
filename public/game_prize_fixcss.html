@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Do Hyeon', sans-serif;
+        }
+
+        .title {
+            text-align: center;
+            margin: 1.2em 0;
+            font-size: 2em;
+            color: #FBFFFE;
+            text-transform: uppercase;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            padding-top: 224px;
+            padding-left: 53px;
+        }
+
+        .square {
+            border: 1px solid transparent;
+            flex: 0 0 85px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85px;
+            background: transparent;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            margin-right: 6px;
+            
+        }
+        .square.is-active {
+            border: 5px solid #ffb52b;
+         }
+
+        .square__content {
+            font-size: 2.8em;
+        }
+
+        .square__start-btn {
+            background: transparent;
+            color: #e97573;
+            font-size: 2em;
+            cursor: pointer;
+            text-align: center;
+            width: 164px;
+            height: 56px;
+            margin-top: 60px;
+            margin-left: 192px;
+
+            &:hover {
+                background: lighten(gold, 25%);
+            }
+        }
+
+        .square__close-btn {
+            background: transparent;
+            color: #e97573;
+            font-size: 2em;
+            cursor: pointer;
+            text-align: center;
+            width: 164px;
+            height: 56px;
+            margin-top: -56px;
+            margin-left: 18px;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0;
+            overflow-y: auto;
+        }
+
+        .modal_inner {
+            width: 375px;
+            height: 812px;
+            text-align: center;
+            margin: 0px auto;
+            background: url("https://d36wtd36z1xpgw.cloudfront.net/1720405377/assets/aabf556833044d82b919968144873d94.png") no-repeat;
+        }
+
+        #ketqua {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0;
+            overflow-y: auto;
+            background-color: rgba(0, 0, 0, .4);
+            display: none;
+        }
+
+        #btnClose {
+            width: 70px;
+            height: 70px;
+            position: fixed;
+            vertical-align: middle;
+            top: 5%;
+            left: 2%;
+            background: transparent;
+            border-color: transparent;
+        }
+
+        #btnKiemLuot {
+            width: 190px;
+            height: 70px;
+            position: fixed;
+            vertical-align: middle;
+            bottom: 35px;
+            left: 0px;
+        }
+
+        #btnDungNgay {
+            width: 190px;
+            height: 70px;
+            position: fixed;
+            vertical-align: middle;
+            bottom: 35px;
+            right: 0px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        #blockBtnKQ {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="modal">
+        <div class="modal_inner">
+            <section class="container" id="js-lotto">
+                <div class="square" data-order="0">
+                    <div class="square__content">🙈</div>
+                </div>
+                <div class="square" data-order="1">
+                    <div class="square__content">🤢</div>
+                </div>
+                <div class="square" data-order="2">
+                    <div class="square__content">💩</div>
+                </div>
+                <div class="square" data-order="7">
+                    <div class="square__content">🤖</div>
+                </div>
+                <div class="square" data-order="8">
+                    <div class="square__content">🤢</div>
+                </div>
+                <div class="square" data-order="3">
+                    <div class="square__content">🦊</div>
+                </div>
+                <div class="square" data-order="6">
+                    <div class="square__content">👻</div>
+                </div>
+                <div class="square" data-order="5">
+                    <div class="square__content">👾</div>
+                </div>
+                <div class="square" data-order="4">
+                    <div class="square__content">👀</div>
+                </div>
+            </section>
+            <div class="square__start-btn" id="js-start">
+                <div>START</div>
+            </div>
+            <a href="wzrk://exit" style="text-decoration: none;">
+                <button class="square__close-btn" id="js-close" style="border-color: transparent;">
+                    <div></div>
+                </button>
+            </a>
+            <section id="ketqua">
+                <div id="ketquaContent">
+                </div>
+            </section>
+            <section id="blockBtnKQ">
+                <a href="wzrk://exit" style="text-decoration: none;"><button id="btnClose" onclick="closeKQ();"
+                        style="border-color: transparent;"></button></a>
+                <span>
+                    <a href="https://www.google.com/" target="_blank">
+                        <div id="btnKiemLuot"></div>
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.google.com/" target="_blank">
+                        <div id="btnDungNgay"></div>
+                    </a>
+                </span>
+            </section>
+        </div>
+    </section>
+
+
+
+    <script>
+        const prizes = {
+            0: '🙈',
+            1: '🤢',
+            2: '💩',
+            3: '🦊',
+            4: '👀',
+            5: '👾',
+            6: '👻',
+            7: '🤖',
+            8: '🤢',
+        };
+        const images = [
+            'https://d36wtd36z1xpgw.cloudfront.net/1720405377/assets/42033896d0cc4823a51c12630f45f27c.png',
+            'https://d36wtd36z1xpgw.cloudfront.net/1720405377/assets/ccd580ee12e6453b98fef55d07088c27.png',
+            'https://d36wtd36z1xpgw.cloudfront.net/1720405377/assets/d338653c1bf94975bace568dbda044bd.png',
+        ];
+        const total_items = 9;
+        const minimum_jumps = 50;
+        const divKQ = document.getElementById("ketqua");
+        const btnClose = document.getElementById("btnClose");
+        const blockBtnKQ = document.getElementById("blockBtnKQ");
+        const ketquaContent = document.getElementById("ketquaContent");
+        let current_index = -1;
+        let jumps = 0;
+        let speed = 100;
+        let timer = 0;
+        let prize = -1;
+
+        function runCircle() {
+            $(`[data-order="${current_index}"]`).removeClass('is-active');
+
+            current_index += 1;
+
+            if (current_index > total_items - 1) {
+                current_index = 0;
+            }
+
+            $(`[data-order="${current_index}"]`).addClass('is-active');
+        }
+
+        function generatePrizeNumber() {
+            return Math.floor(Math.random() * total_items);
+        }
+
+        function controllSpeed() {
+            jumps += 1;
+            runCircle();
+            if (jumps > minimum_jumps + 1 && prize === current_index) {
+                clearTimeout(timer);
+
+                createDiv();
+
+                prize = -1;
+                jumps = 0;
+            } else {
+                if (jumps < minimum_jumps) {
+                    speed -= 5;
+                } else if (jumps === minimum_jumps) {
+                    const random_number = generatePrizeNumber();
+                    prize = random_number;
+                } else {
+                    if ((jumps > minimum_jumps + 10) && prize === (current_index + 1)) {
+                        speed += 800;
+                    } else {
+                        speed += 20;
+                    }
+                }
+                if (speed < 40) {
+                    speed = 40;
+                }
+
+                timer = setTimeout(controllSpeed, speed);
+            }
+        }
+
+        function close_app() {
+            //code close app 
+            console.log("close app");
+        }
+
+        function init() {
+            jumps = 0;
+            speed = 100;
+            prize = -1;
+            controllSpeed();
+        }
+
+        function closeKQ() {
+            ketquaContent.removeChild(ketquaContent.getElementsByTagName('img')[0]);
+            divKQ.style.display = "none";
+            blockBtnKQ.style.display = "none";
+        }
+
+        $(document).ready(() => {
+            $('#js-start').on('click', init);
+            $('#js-close').on('click', close_app);
+        });
+
+        function createDiv() {
+            console.log(current_index);
+            divKQ.style.display = "block";
+            blockBtnKQ.style.display = "block";
+
+            const imgKQ = document.createElement("img");
+            if (current_index === 4 || current_index === 0) {
+                imgKQ.src = images[0];
+
+                var props = { prize_title: "Sổ tiết kiệm 50 triệu", amount: 50000000, type: "Tiền gửi trực tuyến", term: "6 tháng", delivered_date: new Date('2024-10-01').toISOString(), created_date: new Date().toISOString() };
+                if (window.CleverTap) {
+                    // Call Android interface             
+                    CleverTap.pushEvent("minigame_played", JSON.stringify(props));
+                }
+
+                var message = { action: 'recordEventWithProps', event: 'minigame_played', properties: props };
+                if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.clevertap) {
+                    window.webkit.messageHandlers.clevertap.postMessage(message);
+                }
+            }
+            else if (current_index === 6) {
+                imgKQ.src = images[1];
+                var props = { prize_title: "Tai nghe JBL Tune 501BT", created_date: new Date().toISOString() };
+                if (window.CleverTap) {
+                    // Call Android interface             
+                    CleverTap.pushEvent("minigame_played", JSON.stringify(props));
+                }
+
+                var message = { action: 'recordEventWithProps', event: 'minigame_played', properties: props };
+                if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.clevertap) {
+                    window.webkit.messageHandlers.clevertap.postMessage(message);
+                }
+            } else {
+                imgKQ.src = images[2];
+                var props = { prize_title: "Ưu đãi lãi suất", code: "VIB211908600", validate: new Date('2024-08-01').toISOString(), offer: "+0.2% cho kỳ đầu tiên", service: "Tiết kiệm trực tuyến", created_date: new Date().toISOString() };
+                if (window.CleverTap) {
+                    // Call Android interface             
+                    CleverTap.pushEvent("minigame_played", JSON.stringify(props));
+                }
+
+                var message = { action: 'recordEventWithProps', event: 'minigame_played', properties: props };
+                if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.clevertap) {
+                    window.webkit.messageHandlers.clevertap.postMessage(message);
+                }
+            }
+            document.getElementById("ketquaContent").appendChild(imgKQ);
+        }
+    </script>
+</body>
+
+</html>

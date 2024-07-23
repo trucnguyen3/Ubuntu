@@ -64,8 +64,12 @@ app.post('/updatesheet', async (req, res) => {
   });
 })
 
+var eventData = []
+
 app.post('/webhook', async (req, res) => {
-  console.log(req.body.profiles)
+  //console.log(req.body.profiles)
+  eventData.push(req.body.profiles)
+  /*
   for (let i = 0; i < req.body.profiles.length; i++) {
     //minigame
     if (req.body.key_values.event === "minigame_played") {
@@ -231,8 +235,18 @@ app.post('/webhook', async (req, res) => {
       });
     }
   }
+  */
   res.send("OK")
 })
+
+function sendToSheet() {
+  if (eventData.length) {
+    let data = eventData.pop()
+    console.log(data)
+  }
+}
+
+sendToSheet()
 
 app.get('/updatesheet', async (req, res) => {
   res.send("OK");
