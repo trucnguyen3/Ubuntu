@@ -6,7 +6,8 @@ const port = 1337
 
 const path = require('path')
 
-var cors = require('cors')
+var cors = require('cors');
+const { platform } = require('os');
 
 app.use(express.json())
 
@@ -66,6 +67,7 @@ app.post('/updatesheet', async (req, res) => {
 
 var eventData = []
 
+//VIB CLEVERTAP WEBHOOK
 app.post('/webhook', async (req, res) => {
   //console.log(req.body.profiles)
   eventData.push(req.body.profiles)
@@ -79,9 +81,8 @@ async function sendToSheet() {
 
     console.log(data)
 
-    /*
     //minigame
-    if (req.body.key_values.event === "minigame_played") {
+    if (data.key_values.event === "minigame_played") {
       var user_identified = ""
       var email_address = ""
       var mobile_number = ""
@@ -96,18 +97,20 @@ async function sendToSheet() {
       var service = ""
       var created_date = null
       var source = ""
+      var user_platform = ""
 
-      if (req.body.profiles[i].event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
-        user_identified = req.body.profiles[i].identity
-        email_address = req.body.profiles[i].email
-        mobile_number = req.body.profiles[i].phone
-        prize_title = req.body.profiles[i].event_properties.prize_title
-        amount = req.body.profiles[i].event_properties.amount
-        type = req.body.profiles[i].event_properties.type
-        term = req.body.profiles[i].event_properties.term
-        delivered_date = req.body.profiles[i].event_properties.delivered_date
-        created_date = req.body.profiles[i].event_properties.created_date
-        source = req.body.key_values.source
+      if (data.event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
+        user_identified = data.identity
+        email_address = data.email
+        mobile_number = data.phone
+        prize_title = data.event_properties.prize_title
+        amount = data.event_properties.amount
+        type = data.event_properties.type
+        term = data.event_properties.term
+        delivered_date = data.event_properties.delivered_date
+        created_date = data.event_properties.created_date
+        user_platform = data.event_properties.platform
+        source = data.key_values.source
 
         const input = created_date;
         const regex = /\$(?:D_)?(\d+)/;
@@ -133,17 +136,18 @@ async function sendToSheet() {
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, sheet_delivered_date, "", null, "", "", sheet_created_date, source]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, sheet_delivered_date, "", null, "", "", sheet_created_date, source, user_platform]] },
         });
       }
 
-      else if (req.body.profiles[i].event_properties.prize_title == "Tai nghe JBL Tune 501BT") {
-        user_identified = req.body.profiles[i].identity
-        email_address = req.body.profiles[i].email
-        mobile_number = req.body.profiles[i].phone
-        prize_title = req.body.profiles[i].event_properties.prize_title
-        created_date = req.body.profiles[i].event_properties.created_date
-        source = req.body.key_values.source
+      else if (data.event_properties.prize_title == "Tai nghe JBL Tune 501BT") {
+        user_identified = data.identity
+        email_address = data.email
+        mobile_number = data.phone
+        prize_title = data.event_properties.prize_title
+        created_date = data.event_properties.created_date
+        user_platform = data.event_properties.platform
+        source = data.key_values.source
 
         const input = created_date;
         const regex = /\$(?:D_)?(\d+)/;
@@ -159,21 +163,22 @@ async function sendToSheet() {
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, "", null, "", "", sheet_created_date, source]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, "", null, "", "", sheet_created_date, source, user_platform]] },
         });
       }
 
       else {
-        user_identified = req.body.profiles[i].identity
-        email_address = req.body.profiles[i].email
-        mobile_number = req.body.profiles[i].phone
-        prize_title = req.body.profiles[i].event_properties.prize_title
-        code = req.body.profiles[i].event_properties.code
-        validate = req.body.profiles[i].event_properties.validate
-        offer = "'"+req.body.profiles[i].event_properties.offer
-        service = req.body.profiles[i].event_properties.service
-        created_date = req.body.profiles[i].event_properties.created_date
-        source = req.body.key_values.source
+        user_identified = data.identity
+        email_address = data.email
+        mobile_number = data.phone
+        prize_title = data.event_properties.prize_title
+        code = data.event_properties.code
+        validate = data.event_properties.validate
+        offer = "'"+data.event_properties.offer
+        service = data.event_properties.service
+        created_date = data.event_properties.created_date
+        user_platform = data.event_properties.platform
+        source = data.key_values.source
 
         const input = created_date;
         const regex = /\$(?:D_)?(\d+)/;
@@ -199,7 +204,7 @@ async function sendToSheet() {
           spreadsheetId,
           range: minigame_played,
           valueInputOption: "USER_ENTERED",
-          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, sheet_validate, offer, service, sheet_created_date, source]] },
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, sheet_validate, offer, service, sheet_created_date, source, user_platform]] },
         });
       }
     } else if (req.body.key_values.event === "survey_submitted") {
@@ -215,16 +220,17 @@ async function sendToSheet() {
       var created_date = null
       var source = ""
 
-      user_identified = req.body.profiles[i].identity
-      email_address = req.body.profiles[i].email
-      mobile_number = req.body.profiles[i].phone
-      q1 = req.body.profiles[i].event_properties.Q1
-      q2 = req.body.profiles[i].event_properties.Q2
-      q3 = req.body.profiles[i].event_properties.Q3
-      q4 = req.body.profiles[i].event_properties.Q4
-      q5 = req.body.profiles[i].event_properties.Q5
-      created_date = req.body.profiles[i].event_properties.created_date
-      source = req.body.key_values.source
+      user_identified = data.identity
+      email_address = data.email
+      mobile_number = data.phone
+      q1 = data.event_properties.Q1
+      q2 = data.event_properties.Q2
+      q3 = data.event_properties.Q3
+      q4 = data.event_properties.Q4
+      q5 = data.event_properties.Q5
+      created_date = data.event_properties.created_date
+      user_platform = data.event_properties.platform
+      source = data.key_values.source
 
       const input = created_date;
       const regex = /\$(?:D_)?(\d+)/;
@@ -240,16 +246,16 @@ async function sendToSheet() {
         spreadsheetId,
         range: survey_submitted,
         valueInputOption: "USER_ENTERED",
-        requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, sheet_created_date, source]] },
+        requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, sheet_created_date, source, user_platform]] },
       });
     }
-    */
   }
 
   setTimeout(sendToSheet, 1000);
 }
 
 sendToSheet()
+//VIB CLEVERTAP WEBHOOK
 
 app.get('/updatesheet', async (req, res) => {
   res.send("OK");

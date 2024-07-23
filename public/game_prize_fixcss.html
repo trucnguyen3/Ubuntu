@@ -45,11 +45,12 @@
             border-radius: 8px;
             margin-bottom: 6px;
             margin-right: 6px;
-            
+
         }
+
         .square.is-active {
             border: 5px solid #ffb52b;
-         }
+        }
 
         .square__content {
             font-size: 2.8em;
@@ -325,38 +326,42 @@
             if (current_index === 4 || current_index === 0) {
                 imgKQ.src = images[0];
 
-                var props = { prize_title: "Sổ tiết kiệm 50 triệu", amount: 50000000, type: "Tiền gửi trực tuyến", term: "6 tháng", delivered_date: new Date('2024-10-01').toISOString(), created_date: new Date().toISOString() };
+                var props_android = { prize_title: "Sổ tiết kiệm 50 triệu", amount: 50000000, type: "Tiền gửi trực tuyến", term: "6 tháng", delivered_date: new Date('2024-10-01').toISOString(), created_date: new Date().toISOString(), platform: "Android" };
                 if (window.CleverTap) {
                     // Call Android interface             
-                    CleverTap.pushEvent("minigame_played", JSON.stringify(props));
+                    CleverTap.pushEvent("minigame_played", JSON.stringify(props_android));
                 }
 
-                var message = { action: 'recordEventWithProps', event: 'minigame_played', properties: props };
+                var props_ios = { prize_title: "Sổ tiết kiệm 50 triệu", amount: 50000000, type: "Tiền gửi trực tuyến", term: "6 tháng", delivered_date: new Date('2024-10-01').toISOString(), created_date: new Date().toISOString(), platform: "iOS" };
+                var message = { action: 'recordEventWithProps', event: 'minigame_played', properties: props_ios };
                 if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.clevertap) {
                     window.webkit.messageHandlers.clevertap.postMessage(message);
                 }
             }
             else if (current_index === 6) {
                 imgKQ.src = images[1];
-                var props = { prize_title: "Tai nghe JBL Tune 501BT", created_date: new Date().toISOString() };
+                var props_android = { prize_title: "Tai nghe JBL Tune 501BT", created_date: new Date().toISOString(), platform: "Android" };
                 if (window.CleverTap) {
                     // Call Android interface             
-                    CleverTap.pushEvent("minigame_played", JSON.stringify(props));
+                    CleverTap.pushEvent("minigame_played", JSON.stringify(props_android));
                 }
 
-                var message = { action: 'recordEventWithProps', event: 'minigame_played', properties: props };
+                var props_ios = { prize_title: "Tai nghe JBL Tune 501BT", created_date: new Date().toISOString(), platform: "iOS" };
+                var message = { action: 'recordEventWithProps', event: 'minigame_played', properties: props_ios };
                 if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.clevertap) {
                     window.webkit.messageHandlers.clevertap.postMessage(message);
                 }
             } else {
                 imgKQ.src = images[2];
-                var props = { prize_title: "Ưu đãi lãi suất", code: "VIB211908600", validate: new Date('2024-08-01').toISOString(), offer: "+0.2% cho kỳ đầu tiên", service: "Tiết kiệm trực tuyến", created_date: new Date().toISOString() };
+
+                var props_android = { prize_title: "Ưu đãi lãi suất", code: "VIB211908600", validate: new Date('2024-08-01').toISOString(), offer: "+0.2% cho kỳ đầu tiên", service: "Tiết kiệm trực tuyến", created_date: new Date().toISOString(), platform: "Android" };
                 if (window.CleverTap) {
                     // Call Android interface             
-                    CleverTap.pushEvent("minigame_played", JSON.stringify(props));
+                    CleverTap.pushEvent("minigame_played", JSON.stringify(props_android));
                 }
 
-                var message = { action: 'recordEventWithProps', event: 'minigame_played', properties: props };
+                var props_ios = { prize_title: "Ưu đãi lãi suất", code: "VIB211908600", validate: new Date('2024-08-01').toISOString(), offer: "+0.2% cho kỳ đầu tiên", service: "Tiết kiệm trực tuyến", created_date: new Date().toISOString(), platform: "iOS" };
+                var message = { action: 'recordEventWithProps', event: 'minigame_played', properties: props_ios };
                 if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.clevertap) {
                     window.webkit.messageHandlers.clevertap.postMessage(message);
                 }
