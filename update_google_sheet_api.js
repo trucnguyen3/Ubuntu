@@ -68,9 +68,18 @@ var eventData = []
 
 app.post('/webhook', async (req, res) => {
   //console.log(req.body.profiles)
-  eventData.push(req.body)
-  /*
-  for (let i = 0; i < req.body.profiles.length; i++) {
+  eventData.push(req.body.profiles)
+  //for (let i = 0; i < req.body.profiles.length; i++) {}
+  res.send("OK")
+})
+
+async function sendToSheet() {
+  if (eventData.length) {
+    let data = eventData.pop();
+
+    console.log(data)
+
+    /*
     //minigame
     if (req.body.key_values.event === "minigame_played") {
       var user_identified = ""
@@ -234,16 +243,7 @@ app.post('/webhook', async (req, res) => {
         requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, sheet_created_date, source]] },
       });
     }
-  }
-  */
-  res.send("OK")
-})
-
-function sendToSheet() {
-  if (eventData.length) {
-    let data = eventData.pop();
-
-    console.log(data)
+    */
   }
 
   setTimeout(sendToSheet, 1000);
