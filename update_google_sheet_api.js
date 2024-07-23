@@ -242,10 +242,9 @@ app.post('/webhook', async (req, res) => {
 
 function sendToSheet() {
   console.log(eventData + "2")
-  if (eventData.length) {
-    let data = eventData.pop()
-    console.log(data + "3")
-  }
+  
+  let data = eventData.pop()
+  console.log(data + "3")
 }
 
 sendToSheet()
