@@ -250,13 +250,12 @@ async function sendToSheet() {
           requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, sheet_created_date, source, user_platform]] },
         });
       }
+
+      setTimeout(executedData, 1000);
     }
 
-    setTimeout(executedData, 1000);
-
-
-  }
   executedData()
+  }
 
   setTimeout(sendToSheet, 1000);
 }
