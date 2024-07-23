@@ -239,6 +239,8 @@ app.post('/webhook', async (req, res) => {
   res.send("OK")
 })
 
+console.log(eventData)
+
 function sendToSheet() {
   if (eventData.length) {
     let data = eventData.pop()
