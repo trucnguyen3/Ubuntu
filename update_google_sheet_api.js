@@ -251,7 +251,7 @@ async function sendToSheet() {
         });
       }
 
-      setTimeout(executedData, 1000);
+      setTimeout(executedData, 5000);
     }
 
   executedData()
