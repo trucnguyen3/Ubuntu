@@ -69,6 +69,7 @@ var eventData = []
 app.post('/webhook', async (req, res) => {
   //console.log(req.body.profiles)
   console.log(eventData + "1")
+  console.log(req.body)
   eventData.push(req.body)
   /*
   for (let i = 0; i < req.body.profiles.length; i++) {
