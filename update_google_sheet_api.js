@@ -68,8 +68,6 @@ var eventData = []
 
 app.post('/webhook', async (req, res) => {
   //console.log(req.body.profiles)
-  console.log(eventData + "1")
-  console.log(req.body)
   eventData.push(req.body)
   /*
   for (let i = 0; i < req.body.profiles.length; i++) {
@@ -242,10 +240,11 @@ app.post('/webhook', async (req, res) => {
 })
 
 function sendToSheet() {
-  console.log(eventData + "2")
+  if (eventData.length) {
+    let data = eventData.pop();
 
-  let data = eventData.pop()
-  console.log(data + "3")
+    console.log(data)
+  }
 
   setTimeout(sendToSheet, 1000);
 }
