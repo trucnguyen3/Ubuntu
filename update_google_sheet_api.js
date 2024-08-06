@@ -36,20 +36,7 @@ const voucher = "voucher"; // Please set your sheet name.
 const survey_submitted = "survey_submitted";
 const minigame_played = "minigame_played";
 
-async function testingSheet() {
 
-  const response = await sheets.spreadsheets.values.get({
-    spreadsheetId,
-    range: voucher,
-  });
-  const rows = response.data.values;
-
-  console.log(rows)
-
-}
-testingSheet()
-
-/*
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', '/index.html'));
 });
@@ -272,7 +259,6 @@ sendToSheet()
 app.get('/updatesheet', async (req, res) => {
   res.send("OK");
 })
-*/
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
