@@ -40,7 +40,7 @@ async function testingSheet() {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range,
+    range: voucher,
   });
   const rows = response.data.values;
 
