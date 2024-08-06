@@ -44,6 +44,8 @@ async function testingSheet() {
   });
   const rows = response.data.values;
 
+  console.log(rows)
+
 }
 testingSheet()
 
