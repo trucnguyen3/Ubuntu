@@ -13,13 +13,14 @@
 
         .survey {
             width: auto;
-            padding-bottom: 20px;
+            padding: 8%;
+            padding-top: 14%;
             background: #fff;
         }
 
         .survey-in {
             width: auto;
-            padding: 20px;
+            padding: 15px;
             border: 1px solid #ddd;
         }
 
@@ -27,19 +28,10 @@
             margin-bottom: 20px;
         }
 
-        .question label {
-            display: block;
-            margin-bottom: 20px;
-        }
-
         .options {
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
-        }
-
-        .options label {
-            text-align: center;
         }
 
         textarea,
@@ -53,24 +45,21 @@
         }
 
         .submit_btn {
-            margin: auto;
-            display: block;
-            width: 90%;
-            padding: 10px;
-            background-color: #0073e6;
-            color: white;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #0070D7 0%, #00417D 100%);
+            color: #ffffff;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            padding: 10px 20px;
+            font-size: 17px;
             cursor: pointer;
-            text-align: center;
+            width: 100%;
         }
 
         .top-line {
             display: block;
             height: 15px;
             font-weight: bold;
-            background: #0073e6;
+            background: linear-gradient(90deg, #0070D7 0%, #00417D 100%);
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
@@ -104,21 +93,40 @@
 
         #stepTwo,
         #stepThree,
+        #stepFour,
+        #stepFive,
+        #stepSix,
         #stepSuccess {
             display: none;
         }
 
         .buttonNextPre {
-            background-color: #0073e6;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #0070D7 0%, #00417D 100%);
             color: #ffffff;
             border: none;
             padding: 10px 20px;
             font-size: 17px;
             cursor: pointer;
+            width: 100%;
         }
 
         .buttonNextPre:hover {
             opacity: 0.8;
+        }
+
+        .checkboxcenter {
+            margin-top: 10px;
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
         }
     </style>
 
@@ -179,19 +187,55 @@
             document.getElementById("stepOne").style.display = "none";
             document.getElementById("stepThree").style.display = "none";
             document.getElementById("stepTwo").style.display = "none";
+            document.getElementById("stepFour").style.display = "none";
+            document.getElementById("stepFive").style.display = "none";
+            document.getElementById("stepSix").style.display = "none";
         }
 
         function btnNext1() {
             document.getElementById("stepTwo").style.display = "block";
             document.getElementById("stepOne").style.display = "none";
             document.getElementById("stepThree").style.display = "none";
+            document.getElementById("stepFour").style.display = "none";
+            document.getElementById("stepFive").style.display = "none";
             document.getElementById("stepSuccess").style.display = "none";
+            document.getElementById("stepSix").style.display = "none";
         }
         function btnNext2() {
             document.getElementById("stepThree").style.display = "block";
             document.getElementById("stepOne").style.display = "none";
             document.getElementById("stepTwo").style.display = "none";
+            document.getElementById("stepFour").style.display = "none";
+            document.getElementById("stepFive").style.display = "none";
             document.getElementById("stepSuccess").style.display = "none";
+            document.getElementById("stepSix").style.display = "none";
+        }
+        function btnNext3() {
+            document.getElementById("stepFour").style.display = "block";
+            document.getElementById("stepOne").style.display = "none";
+            document.getElementById("stepThree").style.display = "none";
+            document.getElementById("stepTwo").style.display = "none";
+            document.getElementById("stepFive").style.display = "none";
+            document.getElementById("stepSuccess").style.display = "none";
+            document.getElementById("stepSix").style.display = "none";
+        }
+        function btnNext4() {
+            document.getElementById("stepFour").style.display = "none";
+            document.getElementById("stepOne").style.display = "none";
+            document.getElementById("stepThree").style.display = "none";
+            document.getElementById("stepTwo").style.display = "none";
+            document.getElementById("stepFive").style.display = "block";
+            document.getElementById("stepSuccess").style.display = "none";
+            document.getElementById("stepSix").style.display = "none";
+        }
+        function btnNext5() {
+            document.getElementById("stepFour").style.display = "none";
+            document.getElementById("stepOne").style.display = "none";
+            document.getElementById("stepThree").style.display = "none";
+            document.getElementById("stepTwo").style.display = "none";
+            document.getElementById("stepFive").style.display = "none";
+            document.getElementById("stepSuccess").style.display = "none";
+            document.getElementById("stepSix").style.display = "block";
         }
     </script>
 </head>
@@ -202,123 +246,150 @@
         <div id="stepOne">
             <div class="survey-in"
                 style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                <span style="font-weight: bold;">Kính gửi {{ Profile.name | default: "quý khách" }}</span><span
+                <span style="font-weight: bold;">Kính gửi Quý khách {{ Profile.name | default: "" }}</span><span
                     style="font-weight: bold;" id="username"></span><span style="font-weight: bold;">,</span>
                 <p></p>
-                <p style="line-height: 1.5; text-align: justify;">Cảm ơn {{ Profile.name | default: "quý khách" }} đã
+                <p style="line-height: 1.5; text-align: justify;">Cảm ơn Quý khách đã
                     tin
                     tưởng và
                     sử dụng ứng dụng Ngân hàng số MyVIB.
                 </p>
                 <p></p>
                 <p style="line-height: 1.5; text-align: justify;">Chúng tôi muốn biết lý
-                    do tại sao quý khách đã không dùng MyVIB thời gian gần đây. Những ý kiến quý báu của quý khách sẽ
+                    do tại sao Quý khách đã không dùng MyVIB thời gian gần đây. Những ý
+                    kiến quý báu của quý khách sẽ
                     giúp
                     MyVIB cải thiện và mang lại trải nghiệm tốt hơn.
                 </p>
             </div>
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+            <div class="button-container">
+                <a href="wzrk://exit" style="text-decoration: none;"><button type="button" class="buttonNextPre"
+                        style="background: #D3D3D3; color: #000000;">Thoát</button></a>
+                <button type="button" id="nextBtn" class="buttonNextPre" onclick="btnNext1()">Tiếp tục</button>
+            </div>
+        </div>
+
+        <div id="stepTwo">
+            <div class="survey-in"
+                style="margin-bottom: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                 <div class="question">
                     <label for="q1" style="font-weight: bold; line-height: 1.5;">1. Lý do chính khiến quý khách không sử
                         dụng ứng dụng MyVIB
                         gần đây là gì? (Chọn tất cả các lý do phù hợp)</label>
                     <div>
-                        <label><input type="checkbox" name="q1" value="Giao diện khó sử dụng"
-                                style="margin-right: 2%;">Giao
+                        <label class="checkboxcenter"><input type="checkbox" name="q1" value="Giao diện khó sử dụng"
+                                style="margin-right: 5%;">Giao
                             diện khó sử
                             dụng</label>
-                        <label><input type="checkbox" name="q1" value="Ứng dụng không đáp ứng nhu cầu"
-                                style="margin-right: 2%;">Ứng dụng không đáp
+                        <label class="checkboxcenter"><input type="checkbox" name="q1"
+                                value="Ứng dụng không đáp ứng nhu cầu" style="margin-right: 5%;">Ứng dụng không đáp
                             ứng nhu cầu</label>
-                        <label><input type="checkbox" name="q1" value="Tốc độ xử lý chậm" style="margin-right: 2%;">Tốc
+                        <label class="checkboxcenter"><input type="checkbox" name="q1" value="Tốc độ xử lý chậm"
+                                style="margin-right: 5%;">Tốc
                             độ
                             xử lý chậm</label>
-                        <label><input type="checkbox" name="q1" value="Gặp phải sự cố kỹ thuật"
-                                style="margin-right: 2%;">Gặp phải sự cố kỹ
+                        <label class="checkboxcenter"><input type="checkbox" name="q1" value="Gặp phải sự cố kỹ thuật"
+                                style="margin-right: 5%;">Gặp phải sự cố kỹ
                             thuật</label>
-                        <label><input type="checkbox" name="q1" value="Chuyển sang sử dụng dịch vụ ngân hàng khác"
-                                style="margin-right: 2%;">Chuyển
+                        <label class="checkboxcenter"><input type="checkbox" name="q1"
+                                value="Chuyển sang sử dụng dịch vụ ngân hàng khác" style="margin-right: 5%;">Chuyển
                             sang sử dụng dịch vụ ngân hàng khác</label>
-                        <input type="checkbox" style="margin-right: 2%;"
+                        <input type="checkbox" style="margin-right: 5%;"
                             onclick="var input = document.getElementById('q1'); if(this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}" />Khác:
                         <input type="text" id="q1" name="q1" disabled="disabled" placeholder="[Xin vui lòng chia sẻ]"
-                            style="padding: 5px; width:70%" />
+                            style="padding: 5px; width:65%" />
                     </div>
                 </div>
             </div>
-            <button type="button" id="nextBtn" class="buttonNextPre" onclick="btnNext1()">Next</button>
+            <button type="button" id="nextBtn" class="buttonNextPre" onclick="btnNext2()">Tiếp tục</button>
         </div>
 
-        <div id="stepTwo">
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+        <div id="stepThree">
+            <div class="survey-in"
+                style="margin-bottom: 20px; border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
                 <div class="question">
                     <label for="q2" style="font-weight: bold; line-height: 1.5;">2. Quý khách có biết về các tính năng
                         mới
                         và cải tiến gần đây của ứng dụng ngân hàng không?
                     </label>
-                    <div>
-                        <label class="container">
+                    <div style="margin-top: 10px;">
+                        <label class="checkboxcenter" style="line-height: 1.5;">
                             <input type="radio" checked="checked" name="q2" value="Có, tôi đã nghe về các tính năng mới"
-                                style="margin-right: 2%;">
+                                style="margin-right: 5%;">
                             Có, tôi đã nghe về các tính năng mới
-                        </label>
-                        <label class="container">
-                            <input type="radio" name="q2" value="Không, tôi chưa biết" style="margin-right: 2%;">
+                        </label><br />
+                        <label class="checkboxcenter">
+                            <input type="radio" name="q2" value="Không, tôi chưa biết"
+                                style="margin-right: 5%; margin-top: 0;">
                             Không, tôi chưa biết
                         </label>
                     </div>
                 </div>
             </div>
+            <button type="button" id="nextBtn" class="buttonNextPre" onclick="btnNext3()">Tiếp tục</button>
+        </div>
 
+        <div id="stepFour">
             <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
                 <label for="details" style="font-weight: bold; line-height: 1.5;">3. Quý khách có gợi ý nào để MyVIB cải
                     thiện ứng dụng ngân hàng không?</label>
                 <textarea id="details" placeholder="[Xin vui lòng chia sẻ]"></textarea>
             </div>
+            <button type="button" id="nextBtn" class="buttonNextPre" onclick="btnNext4()">Tiếp tục</button>
+        </div>
 
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+        <div id="stepFive">
+            <div class="survey-in"
+                style="margin-bottom: 20px; border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
                 <div class="question">
                     <label for="q4" style="font-weight: bold; line-height: 1.5;">4. Quý khách có muốn quay lại sử dụng
                         ứng
                         dụng ngân hàng của MyVIB nếu MyVIB cải thiện các vấn đề đã đề cập?
                     </label>
-                    <div>
-                        <label class="container">
-                            <input type="radio" checked="checked" name="q4" value="Có" style="margin-right: 2%;">
+                    <div style="margin-top: 10px;">
+                        <label class="checkboxcenter">
+                            <input type="radio" checked="checked" name="q4" value="Có"
+                                style="margin-right: 5%; margin-top: 0;">
                             Có
                         </label>
-                        <label class="container">
-                            <input type="radio" name="q4" value="Không" style="margin-right: 2%;">
+                        <label class="checkboxcenter">
+                            <input type="radio" name="q4" value="Không" style="margin-right: 5%; margin-top: 0;">
                             Không
                         </label>
                     </div>
                 </div>
             </div>
-            <button type="button" id="nextBtn" class="buttonNextPre" onclick="btnNext2()">Next</button>
+            <button type="button" id="nextBtn" class="buttonNextPre" onclick="btnNext5()">Tiếp tục</button>
         </div>
 
-        <div id="stepThree">
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px;">
+        <div id="stepSix">
+            <div class="survey-in"
+                style="margin-bottom: 20px; border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
                 <div class="question">
                     <label for="q5" style="font-weight: bold; line-height: 1.5;">5. Quý khách muốn nhận được thông tin
                         khuyến mãi của dịch vụ nào? (Chọn tất cả các dịch vụ phù hợp)</label>
                     <div>
-                        <label><input type="checkbox" name="q5" value="Tiết kiệm" style="margin-right: 2%;">Tiết
+                        <label class="checkboxcenter"><input type="checkbox" name="q5" value="Tiết kiệm"
+                                style="margin-right: 5%;">Tiết
                             kiệm</label><br>
-                        <label><input type="checkbox" name="q5" value="Vay vốn" style="margin-right: 2%;">Vay
+                        <label class="checkboxcenter"><input type="checkbox" name="q5" value="Vay vốn"
+                                style="margin-right: 5%;">Vay
                             vốn</label><br>
-                        <label><input type="checkbox" name="q5" value="Thẻ tín dụng" style="margin-right: 2%;">Thẻ tín
+                        <label class="checkboxcenter"><input type="checkbox" name="q5" value="Thẻ tín dụng"
+                                style="margin-right: 5%;">Thẻ tín
                             dụng</label><br>
-                        <label><input type="checkbox" name="q5" value="Thanh toán trực tuyến"
-                                style="margin-right: 2%;">Thanh toán trực tuyến</label><br>
-                        <label><input type="checkbox" name="q5" value="Đầu tư" style="margin-right: 2%;">Đầu
+                        <label class="checkboxcenter"><input type="checkbox" name="q5" value="Thanh toán trực tuyến"
+                                style="margin-right: 5%;">Thanh toán trực tuyến</label><br>
+                        <label class="checkboxcenter"><input type="checkbox" name="q5" value="Đầu tư"
+                                style="margin-right: 5%;">Đầu
                             tư</label><br>
-                        <label><input type="checkbox" name="q5" value="Bảo hiểm" style="margin-right: 2%;">Bảo
+                        <label class="checkboxcenter"><input type="checkbox" name="q5" value="Bảo hiểm"
+                                style="margin-right: 5%;">Bảo
                             hiểm</label><br>
-                        <input type="checkbox" style="margin-right: 2%;"
+                        <input type="checkbox" style="margin-right: 5%; margin-top: 15px;"
                             onclick="var input = document.getElementById('q5'); if(this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}" />Khác:
                         <input id="q5" name="q5" disabled="disabled" size="50" placeholder="[Xin vui lòng chia sẻ]"
-                            style="padding: 5px; width:70%" />
+                            style="padding: 5px; width:65%" />
                     </div>
                 </div>
             </div>
@@ -326,7 +397,8 @@
         </div>
 
         <div id="stepSuccess">
-            <div class="survey-in" style="margin-bottom: 20px; border-radius: 10px; line-height: 1.5;">
+            <div class="survey-in"
+                style="margin-bottom: 20px; border-bottom-left-radius: 10px;border-bottom-right-radius: 10px; line-height: 1.5;">
                 <p style="text-align: justify;">
                     Để cảm ơn quý khách đã dành thời gian hoàn thành khảo sát và để quý khách trải nghiệm lại những cải
                     tiến
