@@ -248,6 +248,11 @@
             {
                 'Facebook.EventSourceUrl': 'https://dev.akadigital.net/'  // Custom flag for EventSourceUrl
             });
+
+        mParticle.logEvent('checkout web', mParticle.EventType.Other, { 'deeplink': 'aka://demo/checkout', 'source': 'mParticle', 'total': 100000 },
+            {
+                'Facebook.EventSourceUrl': 'https://dev.akadigital.net/'  // Custom flag for EventSourceUrl
+            });
     </script>
 </header>
 
