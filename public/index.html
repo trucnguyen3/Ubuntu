@@ -244,7 +244,10 @@
         mParticle.logEvent('Play Movie', mParticle.EventType.Navigation, {
             movie_length: '127 minutes',
             rating: 'PG',
-        });
+        },
+            {
+                'Facebook.EventSourceUrl': 'https://dev.akadigital.net/'  // Custom flag for EventSourceUrl
+            });
     </script>
 </header>
 
