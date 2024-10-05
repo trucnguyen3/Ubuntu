@@ -272,7 +272,13 @@
                         country: 'US',
                     }
                 })
-            }); 
+            });
+
+        mParticle.logPageView(
+            "Product Detail Page",
+            { page: window.location.toString() },
+            { "Google.Page": window.location.pathname.toString() } // if you're using Google Analytics to track page views
+        );
     </script>
 
     <!-- Google tag (gtag.js) -->
