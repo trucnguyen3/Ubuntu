@@ -257,22 +257,7 @@
         mParticle.logEvent(
             'Test Search',
             mParticle.EventType.Search,
-            { url: 'dev.akadigital.net' },
-            {
-                "GoogleAds.ECData": JSON.stringify({
-                    email: 'test@gmail.com',
-                    phone_number: '84123456789',
-                    first_name: 'John',
-                    last_name: 'Doe',
-                    home_address: {
-                        street: '123 Main St',
-                        city: 'San Francisco',
-                        region: 'CA',
-                        postal_code: '12345',
-                        country: 'US',
-                    }
-                })
-            });
+            { url: 'dev.akadigital.net' });
 
         mParticle.logPageView(
             "Product Detail Page",
