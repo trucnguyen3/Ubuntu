@@ -166,11 +166,13 @@
         window.mParticle = {
             config: {
                 isDevelopmentMode: true,
+                /*
                 identifyRequest: {
                     userIdentities: {
                         customerid: 'rmmuAh/xqZy8jCSvwApi/lfDkY6982v4CXT9neIhhXU=',
                     },
                 },
+                */
                 logLevel: 'warning',
                 initForwarder: function (settings, testMode, userAttributes, userIdentities, processEvent, eventQueue, isInitialized) {
                     var wzrk = document.createElement('script');
@@ -258,7 +260,31 @@
                 'Facebook.ActionSource': 'website',
                 'Facebook.EventSourceUrl': 'https://dev.akadigital.net/'  // Custom flag for EventSourceUrl
             });
+
+        mParticle.logEvent(
+            'Test Search',
+            mParticle.EventType.Search,
+            { url: 'dev.akadigital.net' });
+
+        mParticle.logPageView(
+            "Product Detail Page",
+            { page: window.location.toString() },
+            { "Google.Page": window.location.pathname.toString() } // if you're using Google Analytics to track page views
+        );
         */
+    </script>
+
+    <!-- Event snippet for Test Search conversion page -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-436957539"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-436957539');
+
+        gtag('event', 'conversion', { 'send_to': 'AW-436957539/U4KYCOfKgdoZEOPirdAB' });
     </script>
 
     <!-- Google tag (gtag.js) -->
@@ -269,6 +295,16 @@
         gtag('js', new Date());
 
         gtag('config', 'AW-436957539');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1CN2CEEJ1C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-1CN2CEEJ1C');
     </script>
 </header>
 
