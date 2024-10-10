@@ -36,6 +36,11 @@ const voucher = "voucher"; // Please set your sheet name.
 const survey_submitted = "survey_submitted";
 const minigame_played = "minigame_played";
 
+app.post('/webhook_v3', (req, res) => {
+  console.log(req.body)
+  res.send("OK")
+})
+
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', '/index.html'));
