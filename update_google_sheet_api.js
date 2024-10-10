@@ -38,6 +38,10 @@ const minigame_played = "minigame_played";
 
 app.post('/webhook_v3', (req, res) => {
   console.log(req.body)
+  console.log("-----------------------------------------------------------")
+  console.log(req.body.event[0].data)
+  console.log("-----------------------------------------------------------")
+  console.log(req.body.event[0])
   res.send("OK")
 })
 
