@@ -258,6 +258,10 @@
                 "CC2",
                 "VISA"
             ]);
+
+            setTimeout(() => {
+                mParticle.Identity.logout({}, identityCallback);
+            }, 10000)
         }, 10000)
 
         mParticle.logEvent('Play Movie', mParticle.EventType.Navigation, {
