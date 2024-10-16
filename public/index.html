@@ -240,6 +240,23 @@
             c.parentNode.insertBefore(mp, c)
         })("au1-f22d28dfba5ea843ae4114f32df25f85");
 
+        var currentUser = mParticle.Identity.getCurrentUser();
+
+        // Set user attributes associated with the user 
+        currentUser.setUserAttribute("Customer Status", "Active");
+
+        // You can change the value of an existing attribute at any time
+        currentUser.setUserAttribute("eKYC Stage", "eKYC_Completed");
+
+        currentUser.setUserAttribute("test1", "test1");
+
+        // Associate a list of values with an attribute key
+        currentUser.setUserAttributeList("List Card Activated", [
+            "CC1",
+            "CC2",
+            "VISA"
+        ]);
+
         mParticle.logEvent('Play Movie', mParticle.EventType.Navigation, {
             movie_length: '127 minutes',
             rating: 'PG',
