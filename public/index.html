@@ -261,13 +261,15 @@
         }, 5000)
 
         setTimeout(() => {
-            var identityCallback = function (result) {
-                if (result.getUser()) {
-                    //proceed with logout 
-                }
-            };
+            if (mParticle.Identity.getCurrentUser().getUserIdentities().userIdentities != null) {
+                var identityCallback = function (result) {
+                    if (result.getUser()) {
+                        //proceed with logout 
+                    }
+                };
 
-            mParticle.Identity.logout({}, identityCallback);
+                mParticle.Identity.logout({}, identityCallback);
+            }
         }, 10000)
 
         mParticle.logEvent('Play Movie', mParticle.EventType.Navigation, {
