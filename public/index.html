@@ -260,6 +260,7 @@
             ]);
         }, 5000)
 
+        /*
         setTimeout(() => {
             if (mParticle.Identity.getCurrentUser().getUserIdentities().userIdentities != null) {
                 var identityCallback = function (result) {
@@ -271,6 +272,7 @@
                 mParticle.Identity.logout({}, identityCallback);
             }
         }, 10000)
+        */
 
         mParticle.logEvent('Play Movie', mParticle.EventType.Navigation, {
             movie_length: '127 minutes',
