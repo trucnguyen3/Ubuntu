@@ -37,11 +37,13 @@ const survey_submitted = "survey_submitted";
 const minigame_played = "minigame_played";
 
 app.post('/webhook_v3', (req, res) => {
-  console.log(req.body)
-  console.log("-----------------------------------------------------------")
-  console.log(req.body.events[0])
-  console.log("-----------------------------------------------------------")
-  console.log(req.body.events[0].data)
+  if (req.body != null) {
+    console.log(req.body)
+  } else {
+    console.log(req.body)
+    console.log("-----------------------------------------------------------")
+    console.log(req.body.events[0])
+  }
   res.send("OK")
 })
 
