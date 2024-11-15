@@ -2,16 +2,13 @@
 <html lang="en">
 
 <header>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-WRVPPB4Z');</script>
-    <!-- End Google Tag Manager -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NFT78J6');</script>
+<!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <title>VIB</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -161,84 +158,7 @@
             src="https://www.facebook.com/tr?id=1566112967310810&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
 
-    <script type="text/javascript">
-        // Configures the SDK. Note the settings below for isDevelopmentMode and logLevel.
-        window.mParticle = {
-            config: {
-                isDevelopmentMode: true,
-                identifyRequest: {
-                    userIdentities: {
-                    },
-                },
-                logLevel: 'warning',
-                initForwarder: function (settings, testMode, userAttributes, userIdentities, processEvent, eventQueue, isInitialized) {
-                    var wzrk = document.createElement('script');
-                    wzrk.type = 'text/javascript';
-                    wzrk.async = true;
-                    wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
-
-                },
-            }
-        };
-        (function (t) {
-            window.mParticle = window.mParticle || {};
-            window.mParticle.EventType = {
-                Unknown: 0,
-                Navigation: 1,
-                Location: 2,
-                Search: 3,
-                Transaction: 4,
-                UserContent: 5,
-                UserPreference: 6,
-                Social: 7,
-                Other: 8
-            };
-            window.mParticle.eCommerce = {
-                Cart: {}
-            };
-            window.mParticle.Identity = {};
-            window.mParticle.config = window.mParticle.config || {};
-            window.mParticle.config.rq = [];
-            window.mParticle.config.snippetVersion = 2.3;
-            window.mParticle.ready = function (t) {
-                window.mParticle.config.rq.push(t)
-            };
-            var e = ["endSession", "logError", "logBaseEvent", "logEvent", "logForm", "logLink", "logPageView", "setSessionAttribute", "setAppName", "setAppVersion", "setOptOut", "setPosition", "startNewSession", "startTrackingLocation", "stopTrackingLocation"];
-            var o = ["setCurrencyCode", "logCheckout"];
-            var i = ["identify", "login", "logout", "modify"];
-            e.forEach(function (t) {
-                window.mParticle[t] = n(t)
-            });
-            o.forEach(function (t) {
-                window.mParticle.eCommerce[t] = n(t, "eCommerce")
-            });
-            i.forEach(function (t) {
-                window.mParticle.Identity[t] = n(t, "Identity")
-            });
-
-            function n(e, o) {
-                return function () {
-                    if (o) {
-                        e = o + "." + e
-                    }
-                    var t = Array.prototype.slice.call(arguments);
-                    t.unshift(e);
-                    window.mParticle.config.rq.push(t)
-                }
-            }
-            var dpId, dpV, config = window.mParticle.config,
-                env = config.isDevelopmentMode ? 1 : 0,
-                dbUrl = "?env=" + env,
-                dataPlan = window.mParticle.config.dataPlan;
-            dataPlan && (dpId = dataPlan.planId, dpV = dataPlan.planVersion, dpId && (dpV && (dpV < 1 || dpV > 1e3) && (dpV = null), dbUrl += "&plan_id=" + dpId + (dpV ? "&plan_version=" + dpV : "")));
-            var mp = document.createElement("script");
-            mp.type = "text/javascript";
-            mp.async = true;
-            mp.src = ("https:" == document.location.protocol ? "https://jssdkcdns" : "http://jssdkcdn") + ".mparticle.com/js/v2/" + t + "/mparticle.js" + dbUrl;
-            var c = document.getElementsByTagName("script")[0];
-            c.parentNode.insertBefore(mp, c)
-        })("au1-f22d28dfba5ea843ae4114f32df25f85");
-
+	/*
         setTimeout(() => {
             var currentUser = mParticle.Identity.getCurrentUser();
 
@@ -257,6 +177,7 @@
                 "VISA"
             ]);
         }, 5000)
+	*/
 
         /*
         setTimeout(() => {
@@ -272,6 +193,7 @@
         }, 10000)
         */
 
+	/*
         mParticle.logEvent('Play Movie', mParticle.EventType.Navigation, {
             movie_length: '127 minutes',
             rating: 'PG',
@@ -298,6 +220,7 @@
             { page: window.location.toString() },
             { "Google.Page": window.location.pathname.toString() } // if you're using Google Analytics to track page views
         );
+	*/
     </script>
 
     <!-- Event snippet for Test Search conversion page -->
@@ -336,9 +259,9 @@
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRVPPB4Z" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFT78J6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
