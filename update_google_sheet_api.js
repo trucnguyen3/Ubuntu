@@ -39,6 +39,8 @@ const minigame_played = "minigame_played";
 app.post('/webhook_v3', (req, res) => {
   if (req.body != null) {
     console.log(req.body)
+    console.log("-----------------------------------------------------------")
+    console.log(req.body.events[0])
   } else {
     console.log(req.body)
     console.log("-----------------------------------------------------------")
