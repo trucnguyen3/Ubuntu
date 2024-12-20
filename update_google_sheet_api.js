@@ -83,40 +83,26 @@ app.post('/webhook_v3', async (req, res) => {
   event_time = data.events[0].data.custom_attributes.event_time
   event_value = data.events[0].data.custom_attributes.event_value
 
-const parts = new Intl.DateTimeFormat('en-GB', {
-  ...options,
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
-  hour12: false,
-}).formatToParts(date);
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).formatToParts(date);
 
-// Extract components
-const year = parts.find(part => part.type === 'year').value;
-const month = parts.find(part => part.type === 'month').value;
-const day = parts.find(part => part.type === 'day').value;
-const hour = parts.find(part => part.type === 'hour').value;
-const minute = parts.find(part => part.type === 'minute').value;
-const second = parts.find(part => part.type === 'second').value;
+  // Extract components
+  const year = parts.find(part => part.type === 'year').value;
+  const month = parts.find(part => part.type === 'month').value;
+  const day = parts.find(part => part.type === 'day').value;
+  const hour = parts.find(part => part.type === 'hour').value;
+  const minute = parts.find(part => part.type === 'minute').value;
+  const second = parts.find(part => part.type === 'second').value;
 
-// Combine into desired format
-const sheet_created_date = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-
-  console.log(device_id)
-  console.log(platform)
-  console.log(device_model)
-  console.log(mpid)
-  console.log(customer_id)
-  console.log(other)
-  console.log(mobile_number)
-  console.log(event_name)
-  console.log(event_time)
-  console.log(event_value)
-  console.log(sheet_created_date)
-  console.log(source)
+  // Combine into desired format
+  const sheet_created_date = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 
   await sheets2.spreadsheets.values.append({
     spreadsheetId: spreadsheetIdAppsflyer,
