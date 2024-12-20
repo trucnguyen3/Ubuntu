@@ -43,7 +43,7 @@ const appsflyer_feed = "appsflyer_feed";
 var appsflyer_data = []
 
 app.post('/webhook_v3', (req, res) => {
-  eventData.push(req.body)
+  appsflyer_data.push(req.body)
   res.send("OK")
 })
 
