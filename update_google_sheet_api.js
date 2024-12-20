@@ -71,16 +71,16 @@ app.post('/webhook_v3', async (req, res) => {
   var created_date = null
   var source = "AKA"
 
-  device_id = data[i].device_info.android_advertising_id
-  platform = data[i].device_info.platform
-  device_model = data[i].device_info.device_model
-  mpid = data[i].mpid
-  customer_id = data[i].user_identities.customer_id
-  other = data[i].user_identities.other
-  mobile_number = data[i].user_identities.mobile_number
-  event_name = data[i].event[0].data.custom_attributes.event_name
-  event_time = data[i].event[0].data.custom_attributes.event_time
-  event_value = data[i].event[0].data.custom_attributes.event_value
+  device_id = data.device_info.android_advertising_id
+  platform = data.device_info.platform
+  device_model = data.device_info.device_model
+  mpid = data.mpid
+  customer_id = data.user_identities.customer_id
+  other = data.user_identities.other
+  mobile_number = data.user_identities.mobile_number
+  event_name = data.event[0].data.custom_attributes.event_name
+  event_time = data.event[0].data.custom_attributes.event_time
+  event_value = data.event[0].data.custom_attributes.event_value
 
   const input = created_date;
   const regex = /\$(?:D_)?(\d+)/;
@@ -111,7 +111,7 @@ app.post('/webhook_v3', async (req, res) => {
     valueInputOption: "USER_ENTERED",
     requestBody: { majorDimension: "ROWS", values: [[device_id, platform, device_model, mpid, customer_id, other, mobile_number, event_name, event_time, event_value, sheet_created_date, source]] },
   });
-  
+
   res.send("OK")
 });
 //Appsflyer mParticle webhook
