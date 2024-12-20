@@ -70,7 +70,6 @@ app.post('/webhook_v3', async (req, res) => {
   var event_name = ""
   var event_time = null
   var event_value = {}
-  var created_date = null
   var source = "AKA"
 
   device_id = data.device_info.android_advertising_id
@@ -104,7 +103,7 @@ app.post('/webhook_v3', async (req, res) => {
   console.log(source)
 
   await sheets2.spreadsheets.values.append({
-    spreadsheetIdAppsflyer,
+    spreadsheetId: spreadsheetIdAppsflyer,
     range: appsflyer_feed,
     valueInputOption: "USER_ENTERED",
     requestBody: { majorDimension: "ROWS", values: [[device_id, platform, device_model, mpid, customer_id, other, mobile_number, event_name, event_time, event_value, sheet_created_date, source]] },
