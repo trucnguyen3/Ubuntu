@@ -84,7 +84,7 @@ app.post('/webhook_v3', async (req, res) => {
   event_time = data.events[0].data.custom_attributes.event_time
   event_value = data.events[0].data.custom_attributes.event_value
 
-  const date = new Date(match[1] * 1000);
+  const date = new Date();
   const pad = (num) => num.toString().padStart(2, '0');
   const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
   const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
