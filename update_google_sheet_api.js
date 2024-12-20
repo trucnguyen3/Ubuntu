@@ -83,7 +83,12 @@ app.post('/webhook_v3', async (req, res) => {
   event_time = data.events[0].data.custom_attributes.event_time
   event_value = data.events[0].data.custom_attributes.event_value
 
+  const date = new Date(); // Ensure date is defined
+  const options = { timeZone: 'Asia/Bangkok' };
+
+  // Get the date components in Bangkok timezone
   const parts = new Intl.DateTimeFormat('en-GB', {
+    ...options,
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
