@@ -80,9 +80,9 @@ app.post('/webhook_v3', async (req, res) => {
   customer_id = data.user_identities.customer_id
   other = data.user_identities.other
   mobile_number = data.user_identities.mobile_number
-  event_name = data.event[0].data.custom_attributes.event_name
-  event_time = data.event[0].data.custom_attributes.event_time
-  event_value = data.event[0].data.custom_attributes.event_value
+  event_name = data.events[0].data.custom_attributes.event_name
+  event_time = data.events[0].data.custom_attributes.event_time
+  event_value = data.events[0].data.custom_attributes.event_value
 
   const input = created_date;
   const regex = /\$(?:D_)?(\d+)/;
