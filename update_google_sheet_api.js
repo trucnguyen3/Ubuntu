@@ -56,67 +56,62 @@ const spreadsheetIdAppsflyer = "1rD8uXA_jUSfW9QGadbbp0DUfcRyaT6yESo3q-RKd7yo"; /
 const appsflyer_feed = "appsflyer_feed";
 
 app.post('/webhook_v3', async (req, res) => {
-  let data = []
-  data = req.body;
+  let data = req.body;
 
-  console.log(data)
-  console.log(data.length)
+  var device_id = ""
+  var platform = ""
+  var device_model = ""
+  var mpid = ""
+  var customer_id = ""
+  var other = ""
+  var mobile_number = ""
+  var event_name = ""
+  var event_time = null
+  var event_value = {}
+  var created_date = null
+  var source = "AKA"
 
-  for (let i = 0; i < data.length; i++) {
-    var device_id = ""
-    var platform = ""
-    var device_model = ""
-    var mpid = ""
-    var customer_id = ""
-    var other = ""
-    var mobile_number = ""
-    var event_name = ""
-    var event_time = null
-    var event_value = {}
-    var created_date = null
-    var source = "AKA"
+  device_id = data[i].device_info.android_advertising_id
+  platform = data[i].device_info.platform
+  device_model = data[i].device_info.device_model
+  mpid = data[i].mpid
+  customer_id = data[i].user_identities.customer_id
+  other = data[i].user_identities.other
+  mobile_number = data[i].user_identities.mobile_number
+  event_name = data[i].event[0].data.custom_attributes.event_name
+  event_time = data[i].event[0].data.custom_attributes.event_time
+  event_value = data[i].event[0].data.custom_attributes.event_value
 
-    device_id = data[i].device_info.android_advertising_id
-    platform = data[i].device_info.platform
-    device_model = data[i].device_info.device_model
-    mpid = data[i].mpid
-    customer_id = data[i].user_identities.customer_id
-    other = data[i].user_identities.other
-    mobile_number = data[i].user_identities.mobile_number
-    event_name = data[i].event[0].data.custom_attributes.event_name
-    event_time = data[i].event[0].data.custom_attributes.event_time
-    event_value = data[i].event[0].data.custom_attributes.event_value
+  const input = created_date;
+  const regex = /\$(?:D_)?(\d+)/;
+  const match = input.match(regex);
 
-    const input = created_date;
-    const regex = /\$(?:D_)?(\d+)/;
-    const match = input.match(regex);
+  const date = new Date(match[1] * 1000);
+  const pad = (num) => num.toString().padStart(2, '0');
+  const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
+  const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
 
-    const date = new Date(match[1] * 1000);
-    const pad = (num) => num.toString().padStart(2, '0');
-    const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-    const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
-    const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
+  console.log(device_id)
+  console.log(platform)
+  console.log(device_model)
+  console.log(mpid)
+  console.log(customer_id)
+  console.log(other)
+  console.log(mobile_number)
+  console.log(event_name)
+  console.log(event_time)
+  console.log(event_value)
+  console.log(sheet_created_date)
+  console.log(source)
 
-    console.log(device_id)
-    console.log(platform)
-    console.log(device_model)
-    console.log(mpid)
-    console.log(customer_id)
-    console.log(other)
-    console.log(mobile_number)
-    console.log(event_name)
-    console.log(event_time)
-    console.log(event_value)
-    console.log(sheet_created_date)
-    console.log(source)
-
-    await sheets2.spreadsheets.values.append({
-      spreadsheetIdAppsflyer,
-      range: appsflyer_feed,
-      valueInputOption: "USER_ENTERED",
-      requestBody: { majorDimension: "ROWS", values: [[device_id, platform, device_model, mpid, customer_id, other, mobile_number, event_name, event_time, event_value, sheet_created_date, source]] },
-    });
-  }
+  await sheets2.spreadsheets.values.append({
+    spreadsheetIdAppsflyer,
+    range: appsflyer_feed,
+    valueInputOption: "USER_ENTERED",
+    requestBody: { majorDimension: "ROWS", values: [[device_id, platform, device_model, mpid, customer_id, other, mobile_number, event_name, event_time, event_value, sheet_created_date, source]] },
+  });
+  
   res.send("OK")
 });
 //Appsflyer mParticle webhook
