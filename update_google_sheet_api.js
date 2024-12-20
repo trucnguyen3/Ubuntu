@@ -29,7 +29,7 @@ const auth = new google.auth.GoogleAuth({
   ],
 });
 
-const sheets = google.sheets({ auth, version: "v4" }); // This is from your showing script.
+const sheets = google.sheets({ auth: auth, version: "v4" }); // This is from your showing script.
 
 const spreadsheetId = "1RA54GZKbs-ZILxXOojnSd-afygG-rov7N3O7E99Ys7k"; // Please set your Spreadsheet ID.
 const voucher = "voucher"; // Please set your sheet name.
@@ -50,7 +50,7 @@ const auth2 = new google.auth.GoogleAuth({
   ],
 });
 
-const sheets2 = google.sheets({ auth2, version: "v4" }); // This is from your showing script.
+const sheets2 = google.sheets({ auth: auth2, version: "v4" }); // This is from your showing script.
 
 const spreadsheetIdAppsflyer = "1rD8uXA_jUSfW9QGadbbp0DUfcRyaT6yESo3q-RKd7yo"; // Please set your Spreadsheet ID.
 const appsflyer_feed = "appsflyer_feed";
