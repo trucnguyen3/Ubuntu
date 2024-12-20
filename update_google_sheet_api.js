@@ -36,6 +36,22 @@ const voucher = "voucher"; // Please set your sheet name.
 const survey_submitted = "survey_submitted";
 const minigame_played = "minigame_played";
 
+const auth2 = new google.auth.GoogleAuth({
+  credentials: {
+    client_email:
+      "firebase-adminsdk-ez6w3@akastore-project.iam.gserviceaccount.com", //Placeholder client_email value
+    private_key:
+      "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDg/YzPHUqsF0my\nj3/BXU0ES+MipUX6T1dupKBCkNxp3NNHmVUFadJnj7ar9ihw5BXcpqzlntC7xwhx\nfQD+aElDhbOdTTqojMBuvr8iZUeOE4VaKiWxwFbG95OuLoBmZUPBAonW3fXFKyL7\nOXEmlxMQbzx9oCDoTq1VNaArUXgmximZTukAE7T2zKSiK6hwv8oJEkVmXNrvNTKb\nU0j4kcrges2VMIZXmtbp5lCL0z+yWfPAYGRaT35MNt0aRQGWx8BFZ3dDMeVXTTXC\n1QMcdYdZBBMIn5vNf4ElUA3nH+N59ZhxAkGjKtr8uBIAPQe+X6XPcrx+1HMVjN/c\nN/fRAkiPAgMBAAECggEAa6VkRYQCQiwyOpily2JUgwW7+suQm55yeqGRe8fLbWsW\nO1+Faj2jSaFdCRGRb9HxE807U/GUdQNZatMgMpi61O+XbF+S/Sm6uEHTOSW0Aqoc\nV3Nq7YzU+AVkRyZAkL1KmYIZaRBxkpB9AC4PkSMfH/HYw1Jl7EAYdnhd1dv43LN1\nBYVTbMmPolfk9kQ6gLotfK7BGN0eQfW9QoHLHlatBri5MgFKXxotFTnCDZBSRM8J\nggo+xP+O6bYerMYOTtGn7FnLKpdzyAogmUdxHTbSRq+TWXAjCSis8Hw72bzbRAgO\ndrQvmVYxEb7ZYzDlY/7Q6gm8ivvxKuTymV4YhA4+QQKBgQD/M45K2FjdVtpkkxcn\n7b/wdJI8qbh3GFQ8ZIlqXYm750esh67Vsi3y2riXWVZq61zzoEA+2Xl1LfQUXfyQ\nw/PuzVjJaB7rUf+PFhbQWUb0TF8HmkZOCunPw5eZj2ZtNowOLWBP7cLBBWr1x1Wy\nG/1gxaLm49FlUG+QXTRCwG6cKQKBgQDhscq72yP+v7nCRz2k0ZmMpiIQk+aHLpiZ\nh+JZZUuyYPhYxsAxYLXHwBee0NK4lbsDlA+MzeNcSSn+f5E1YVgGY9QYk5Dqi5te\nvFpQHaz2SEtZ7kV6GRiZPRHNSOzKeqQjsq2d3XZiuhHP0gPGMk11qHBjj4M7by0S\nYCXRlvBV9wKBgCBo6MJClY6OkC/DqmYswHqGI2hG2aFuWoxM7FKwzGQrrCOSG7cR\n6Nn1wwmdk+cCOwzJpj8VGWKzUlMf2Ip+CEWkmIkDiyGxiTYfxQfyvpsZ89ugURtq\nMWVsXp1m48gs7D6Err2X4WroCDxsc0qqWVRn5RdTiW1HeNOpspBjpeh5AoGBANAO\nNSUuJCWQmu7E+8e3zQRCln6PyWDvDI/kGz5ryfdbuzUjq0MZsxm8NEocmVS9+xOW\nZytXFXQaolLRSIxb+2iQmJI7XslI/2a63cqjQLIc/RGfPH8NKYcCLCoBQwB5RF0A\nN1qjMKJcg1UAdqg78Po417qALusYVwVsixCGQ3ILAoGAfymOuicpJcV8Z9EckEYt\nvtvxVyIqyfoEr8XMUdmNA6VPVW8YNZXU41tkNgPf5PgH0G/TMFA4WwV7WP9DPjNn\nrT9VIvyhODtg0YI6UBu4eBEBxLtE0Se4652JNtyOX6NguJTjmZDik2w7AqhSzRi/\nKdebZl8yD/B+eRzwdpkYBjg=\n-----END PRIVATE KEY-----\n", //Placeholder private_key value
+  },
+  scopes: [
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/spreadsheets",
+  ],
+});
+
+const sheets2 = google.sheets({ auth2, version: "v4" }); // This is from your showing script.
+
 const spreadsheetIdAppsflyer = "1rD8uXA_jUSfW9QGadbbp0DUfcRyaT6yESo3q-RKd7yo"; // Please set your Spreadsheet ID.
 const appsflyer_feed = "appsflyer_feed";
 
@@ -100,7 +116,7 @@ async function sendToSheetAppsFlyer() {
       console.log(sheet_created_date)
       console.log(source)
 
-      await sheets.spreadsheets.values.append({
+      await sheets2.spreadsheets.values.append({
         spreadsheetIdAppsflyer,
         range: appsflyer_feed,
         valueInputOption: "USER_ENTERED",
