@@ -48,6 +48,7 @@ app.post('/webhook_v3', (req, res) => {
 })
 
 async function sendToSheetAppsFlyer() {
+  console.log(appsflyer_data)
   if (appsflyer_data.length) {
     let data = appsflyer_data.pop();
 
