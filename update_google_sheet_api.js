@@ -83,11 +83,27 @@ app.post('/webhook_v3', async (req, res) => {
   event_time = data.events[0].data.custom_attributes.event_time
   event_value = data.events[0].data.custom_attributes.event_value
 
-  const date = new Date();
-  const pad = (num) => num.toString().padStart(2, '0');
-  const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-  const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
-  const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
+const parts = new Intl.DateTimeFormat('en-GB', {
+  ...options,
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false,
+}).formatToParts(date);
+
+// Extract components
+const year = parts.find(part => part.type === 'year').value;
+const month = parts.find(part => part.type === 'month').value;
+const day = parts.find(part => part.type === 'day').value;
+const hour = parts.find(part => part.type === 'hour').value;
+const minute = parts.find(part => part.type === 'minute').value;
+const second = parts.find(part => part.type === 'second').value;
+
+// Combine into desired format
+const sheet_created_date = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 
   console.log(device_id)
   console.log(platform)
