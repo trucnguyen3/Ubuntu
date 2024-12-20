@@ -51,8 +51,6 @@ async function sendToSheetAppsFlyer() {
   if (appsflyer_data.length) {
     let data = appsflyer_data.pop();
 
-    console.log(data)
-
     for (let i = 0; i < data.length; i++) {
       var device_id = ""
       var platform = ""
@@ -87,6 +85,19 @@ async function sendToSheetAppsFlyer() {
       const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
       const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
       const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
+
+      console.log(device_id)
+      console.log(platform)
+      console.log(device_model)
+      console.log(mpid)
+      console.log(customer_id)
+      console.log(other)
+      console.log(mobile_number)
+      console.log(event_name)
+      console.log(event_time)
+      console.log(event_value)
+      console.log(sheet_created_date)
+      console.log(source)
 
       await sheets.spreadsheets.values.append({
         spreadsheetIdAppsflyer,
