@@ -36,19 +36,198 @@ const voucher = "voucher"; // Please set your sheet name.
 const survey_submitted = "survey_submitted";
 const minigame_played = "minigame_played";
 
+//Appsflyer mParticle webhook
+var appsflyer_data = []
+
 app.post('/webhook_v3', (req, res) => {
-  if (req.body != null) {
-    console.log(req.body)
-    console.log("-----------------------------------------------------------")
-    console.log(req.body.events[0])
-  } else {
-    console.log(req.body)
-    console.log("-----------------------------------------------------------")
-    console.log(req.body.events[0])
-  }
+  eventData.push(req.body)
   res.send("OK")
 })
 
+async function sendToSheetAppsFlyer() {
+  if (appsflyer_data.length) {
+    let data = appsflyer_data.pop();
+
+    console.log(data)
+
+    /*
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].key_values.event === "minigame_played") {
+        var user_identified = ""
+        var email_address = ""
+        var mobile_number = ""
+        var prize_title = ""
+        var amount = null
+        var type = ""
+        var term = ""
+        var delivered_date = null	
+        var code = ""
+        var validate = null
+        var offer = ""
+        var service = ""
+        var created_date = null
+        var source = ""
+        var user_platform = ""
+
+        if (data[i].event_properties.prize_title == "Sổ tiết kiệm 50 triệu") {
+          user_identified = data[i].identity
+          email_address = data[i].email
+          mobile_number = data[i].phone
+          prize_title = data[i].event_properties.prize_title
+          amount = data[i].event_properties.amount
+          type = data[i].event_properties.type
+          term = data[i].event_properties.term
+          delivered_date = data[i].event_properties.delivered_date
+          created_date = data[i].event_properties.created_date
+          user_platform = data[i].event_properties.platform
+          source = data[i].key_values.source
+
+          const input = created_date;
+          const regex = /\$(?:D_)?(\d+)/;
+          const match = input.match(regex);
+
+          const date = new Date(match[1] * 1000);
+          const pad = (num) => num.toString().padStart(2, '0');
+          const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+          const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
+          const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
+
+          const input2 = delivered_date;
+          const regex2 = /\$(?:D_)?(\d+)/;
+          const match2 = input2.match(regex2);
+
+          const date2 = new Date(match2[1] * 1000);
+          const pad2 = (num) => num.toString().padStart(2, '0');
+          const options2 = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+          const gmtPlus7Date2 = new Intl.DateTimeFormat('en-GB', options2).format(date2);
+          const sheet_delivered_date = gmtPlus7Date2.replace(', ', ' ');
+
+          await sheets.spreadsheets.values.append({
+            spreadsheetId,
+            range: minigame_played,
+            valueInputOption: "USER_ENTERED",
+            requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, amount, type, term, sheet_delivered_date, "", null, "", "", sheet_created_date, source, user_platform]] },
+          });
+        }
+
+        else if (data[i].event_properties.prize_title == "Tai nghe JBL Tune 501BT") {
+          user_identified = data[i].identity
+          email_address = data[i].email
+          mobile_number = data[i].phone
+          prize_title = data[i].event_properties.prize_title
+          created_date = data[i].event_properties.created_date
+          user_platform = data[i].event_properties.platform
+          source = data[i].key_values.source
+
+          const input = created_date;
+          const regex = /\$(?:D_)?(\d+)/;
+          const match = input.match(regex);
+
+          const date = new Date(match[1] * 1000);
+          const pad = (num) => num.toString().padStart(2, '0');
+          const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+          const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
+          const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
+
+          await sheets.spreadsheets.values.append({
+            spreadsheetId,
+            range: minigame_played,
+            valueInputOption: "USER_ENTERED",
+            requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, "", null, "", "", sheet_created_date, source, user_platform]] },
+          });
+        }
+
+        else {
+          user_identified = data[i].identity
+          email_address = data[i].email
+          mobile_number = data[i].phone
+          prize_title = data[i].event_properties.prize_title
+          code = data[i].event_properties.code
+          validate = data[i].event_properties.validate
+          offer = "'"+data[i].event_properties.offer
+          service = data[i].event_properties.service
+          created_date = data[i].event_properties.created_date
+          user_platform = data[i].event_properties.platform
+          source = data[i].key_values.source
+
+          const input = created_date;
+          const regex = /\$(?:D_)?(\d+)/;
+          const match = input.match(regex);
+
+          const date = new Date(match[1] * 1000);
+          const pad = (num) => num.toString().padStart(2, '0');
+          const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+          const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
+          const sheet_created_date = gmtPlus7Date.replace(', ', ' ');
+
+          const input2 = validate;
+          const regex2 = /\$(?:D_)?(\d+)/;
+          const match2 = input2.match(regex2);
+
+          const date2 = new Date(match2[1] * 1000);
+          const pad2 = (num) => num.toString().padStart(2, '0');
+          const options2 = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+          const gmtPlus7Date2 = new Intl.DateTimeFormat('en-GB', options2).format(date2);
+          const sheet_validate = gmtPlus7Date2.replace(', ', ' ');
+
+          await sheets.spreadsheets.values.append({
+            spreadsheetId,
+            range: minigame_played,
+            valueInputOption: "USER_ENTERED",
+            requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, prize_title, null, "", "", null, code, sheet_validate, offer, service, sheet_created_date, source, user_platform]] },
+          });
+        }
+      } else if (data[i].key_values.event === "survey_submitted") {
+        //survey
+        var user_identified = ""
+        var email_address = ""
+        var mobile_number = ""
+        var q1 = ""
+        var q2 = ""
+        var q3 = ""
+        var q4 = ""
+        var q5 = ""
+        var created_date = null
+        var source = ""
+
+        user_identified = data[i].identity
+        email_address = data[i].email
+        mobile_number = data[i].phone
+        q1 = data[i].event_properties.Q1
+        q2 = data[i].event_properties.Q2
+        q3 = data[i].event_properties.Q3
+        q4 = data[i].event_properties.Q4
+        q5 = data[i].event_properties.Q5
+        created_date = data[i].event_properties.created_date
+        user_platform = data[i].event_properties.platform
+        source = data[i].key_values.source
+
+        const input = created_date;
+        const regex = /\$(?:D_)?(\d+)/;
+        const match = input.match(regex);
+
+        const date = new Date(match[1] * 1000);
+        const pad = (num) => num.toString().padStart(2, '0');
+        const options = { timeZone: 'Asia/Bangkok', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const gmtPlus7Date = new Intl.DateTimeFormat('en-GB', options).format(date);
+        const sheet_created_date = gmtPlus7Date.replace(', ', ' ');     
+
+        await sheets.spreadsheets.values.append({
+          spreadsheetId,
+          range: survey_submitted,
+          valueInputOption: "USER_ENTERED",
+          requestBody: { majorDimension: "ROWS", values: [[user_identified, email_address, mobile_number, q1, q2, q3, q4, q5, sheet_created_date, source, user_platform]] },
+        });
+      }
+    }
+    */
+  }
+
+  setTimeout(sendToSheetAppsFlyer, 1000);
+}
+
+sendToSheetAppsFlyer()
+//Appsflyer mParticle webhook
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', '/index.html'));
