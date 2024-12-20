@@ -39,9 +39,9 @@ const minigame_played = "minigame_played";
 const auth2 = new google.auth.GoogleAuth({
   credentials: {
     client_email:
-      "firebase-adminsdk-ez6w3@akastore-project.iam.gserviceaccount.com", //Placeholder client_email value
+      "aka-appsflyer@akastore-project.iam.gserviceaccount.com", //Placeholder client_email value
     private_key:
-      "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDg/YzPHUqsF0my\nj3/BXU0ES+MipUX6T1dupKBCkNxp3NNHmVUFadJnj7ar9ihw5BXcpqzlntC7xwhx\nfQD+aElDhbOdTTqojMBuvr8iZUeOE4VaKiWxwFbG95OuLoBmZUPBAonW3fXFKyL7\nOXEmlxMQbzx9oCDoTq1VNaArUXgmximZTukAE7T2zKSiK6hwv8oJEkVmXNrvNTKb\nU0j4kcrges2VMIZXmtbp5lCL0z+yWfPAYGRaT35MNt0aRQGWx8BFZ3dDMeVXTTXC\n1QMcdYdZBBMIn5vNf4ElUA3nH+N59ZhxAkGjKtr8uBIAPQe+X6XPcrx+1HMVjN/c\nN/fRAkiPAgMBAAECggEAa6VkRYQCQiwyOpily2JUgwW7+suQm55yeqGRe8fLbWsW\nO1+Faj2jSaFdCRGRb9HxE807U/GUdQNZatMgMpi61O+XbF+S/Sm6uEHTOSW0Aqoc\nV3Nq7YzU+AVkRyZAkL1KmYIZaRBxkpB9AC4PkSMfH/HYw1Jl7EAYdnhd1dv43LN1\nBYVTbMmPolfk9kQ6gLotfK7BGN0eQfW9QoHLHlatBri5MgFKXxotFTnCDZBSRM8J\nggo+xP+O6bYerMYOTtGn7FnLKpdzyAogmUdxHTbSRq+TWXAjCSis8Hw72bzbRAgO\ndrQvmVYxEb7ZYzDlY/7Q6gm8ivvxKuTymV4YhA4+QQKBgQD/M45K2FjdVtpkkxcn\n7b/wdJI8qbh3GFQ8ZIlqXYm750esh67Vsi3y2riXWVZq61zzoEA+2Xl1LfQUXfyQ\nw/PuzVjJaB7rUf+PFhbQWUb0TF8HmkZOCunPw5eZj2ZtNowOLWBP7cLBBWr1x1Wy\nG/1gxaLm49FlUG+QXTRCwG6cKQKBgQDhscq72yP+v7nCRz2k0ZmMpiIQk+aHLpiZ\nh+JZZUuyYPhYxsAxYLXHwBee0NK4lbsDlA+MzeNcSSn+f5E1YVgGY9QYk5Dqi5te\nvFpQHaz2SEtZ7kV6GRiZPRHNSOzKeqQjsq2d3XZiuhHP0gPGMk11qHBjj4M7by0S\nYCXRlvBV9wKBgCBo6MJClY6OkC/DqmYswHqGI2hG2aFuWoxM7FKwzGQrrCOSG7cR\n6Nn1wwmdk+cCOwzJpj8VGWKzUlMf2Ip+CEWkmIkDiyGxiTYfxQfyvpsZ89ugURtq\nMWVsXp1m48gs7D6Err2X4WroCDxsc0qqWVRn5RdTiW1HeNOpspBjpeh5AoGBANAO\nNSUuJCWQmu7E+8e3zQRCln6PyWDvDI/kGz5ryfdbuzUjq0MZsxm8NEocmVS9+xOW\nZytXFXQaolLRSIxb+2iQmJI7XslI/2a63cqjQLIc/RGfPH8NKYcCLCoBQwB5RF0A\nN1qjMKJcg1UAdqg78Po417qALusYVwVsixCGQ3ILAoGAfymOuicpJcV8Z9EckEYt\nvtvxVyIqyfoEr8XMUdmNA6VPVW8YNZXU41tkNgPf5PgH0G/TMFA4WwV7WP9DPjNn\nrT9VIvyhODtg0YI6UBu4eBEBxLtE0Se4652JNtyOX6NguJTjmZDik2w7AqhSzRi/\nKdebZl8yD/B+eRzwdpkYBjg=\n-----END PRIVATE KEY-----\n", //Placeholder private_key value
+      "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCWpo6JLhuJgpR4\ntQCb60wwr11j9o0FhdQmgxkelI76l20lIyuoFp7kIO9nlx336Yi7qzvnCE1W9u/K\nwJf9/JQT+ETU5b1/qU7is62ew8ax6ro0plP/TaDtxjLYaqO+AS6TXYcpIS2MJt1I\ni8a3uSe4+rg3N7kR/87l1mhwqAOFu+br+36kKt6j8Py/qYpBfdgsvY629laDeXxy\n7YTQInZhtIiQguyQkB8a2tztmCkywn/VcsSYpxuTMMVnO73KIYgO/vutY50XDmae\nxqbCIJ4m6jGviAKfIyCFRqho34xsWqAXl4ZnDv0oOxS6I/srzFc/3p05dfyaMvTA\nh2g6QQfBAgMBAAECggEAR4+op3syc3iGxGvedTIpR/sVVrW4OUZgB0dA+GjDHkAu\nBXUWeMr+AQmwDzoWbzwMynDFjLJB4qx8LYic6nY/dNj7AVJ8WJb5NPD66S7ARKVm\nfDoCLoUWi7wZTPoi+8+d6zyDRsNO2oNfm+VhqMYYG2NlfD1I+UbVZhIaHGGDAtQL\nPwJBo475c1a58WwZ3rGDiEehBphZGfGtgfFnqScnANJBC7hKqq1jaLRc7z1M0vH/\nmKuK9Hw8Lvc36ZAJYfRDkAffdm+Ua6ek7bq59KHHAzVT401NgeTOXYjMwBIoET8q\no8X8rKrby5vVKd94/F7VlOAv07cWgJGomKShZgQM7QKBgQDPMrLEyV2oweM5hOb1\n0Mo2pP+Zwuz9elWeBiiHNJFMWPPnv5zqp0ncLWy7dZ3HKUGEQHtrDhmN2Wo6txz+\ndC2Aocc2TXo/jISeGvjZvK36qVFUaaRJy+0EyVDnCg+JobIKAxByIlNA9zX9NkgN\nrxBE6U8WzqzUGIMqpVcZO0q+3wKBgQC6IkAkzOhKLw4wGuC/sDclA7cjIBXyyvcn\nrE203i1sHfEbEGNNjK3y0K7xD7AkcUZ6RePBtsSk8llBQW0ujEVpMPITCHkFCB2s\nvd0EPwFGYujgXBt8X7RAeSLO/T5iEmWVaAe+5ZoGIbYNHXDR9xDvxyXf1pgYnR5L\nAyy9Q+ktXwKBgFLKlEozmBwVlUDnjQ4OJq7dEVEUZXQHjOx+03TrGV/jb1pb40yU\nGdxDvl3NaoUpRAefaHFnieh3Ro49mvVF4OS0QBC/tqhr8pXmeyct0GsHevr6122x\ncXznIE+hYoIBPU3o2Ypxksizvzv1k6b8G8kdXL/lR4PcY5UHyhzH518LAoGAaPOR\nCW8Ed3fK3zL4kP0ySsuqgsK/vXPWImeUNSylnfXQEjuOUpbFKkmiqsf2wMWiQKWR\nw5Njk8IWs6XJg1qSdLqldDftzPmDifhQW+mOtXpl5sPot5tbDpN/HglLGI9Y+gJ7\ng5cA3v45IXH9QFa4FQtMfscIYbCN+SvkGR/mpa8CgYA6t85YJAzv3PbQA4QCfQZU\nhhP34nyuZe5FBSYlVhC99xaqtGXVrntCIwA17YRPGpgyAZ/xVflh1VGVOqal1SDr\nlzh3uRuAmNiGSNPWHU5H37Cw4zeaKr1Jdu47ysM0qX9/rGsFzuNoZGwojZ2yG9Z0\n1B24tSfwumKHqLUe5ZxHNQ==\n-----END PRIVATE KEY-----\n", //Placeholder private_key value
   },
   scopes: [
     "https://www.googleapis.com/auth/drive",
@@ -55,18 +55,9 @@ const sheets2 = google.sheets({ auth2, version: "v4" }); // This is from your sh
 const spreadsheetIdAppsflyer = "1rD8uXA_jUSfW9QGadbbp0DUfcRyaT6yESo3q-RKd7yo"; // Please set your Spreadsheet ID.
 const appsflyer_feed = "appsflyer_feed";
 
-//Appsflyer mParticle webhook
-var appsflyer_data = []
-
-app.post('/webhook_v3', (req, res) => {
-  appsflyer_data.push(req.body)
-  res.send("OK")
-})
-
-async function sendToSheetAppsFlyer() {
-  console.log(appsflyer_data)
-  if (appsflyer_data.length) {
-    let data = appsflyer_data.pop();
+app.post('/webhook_v3', async (req, res) => {
+  if (req.body.length) {
+    let data = req.body;
 
     for (let i = 0; i < data.length; i++) {
       var device_id = ""
@@ -124,11 +115,8 @@ async function sendToSheetAppsFlyer() {
       });
     }
   }
-
-  setTimeout(sendToSheetAppsFlyer, 1000);
-}
-
-sendToSheetAppsFlyer()
+  res.send("OK")
+})
 //Appsflyer mParticle webhook
 
 app.get('/', (req, res) => {
