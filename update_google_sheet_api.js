@@ -62,6 +62,8 @@ app.post('/webhook_v3', async (req, res) => {
   console.log(data)
   console.log("---------------------------------------------------------------------------------------------")
   console.log(data.events[0].data)
+  console.log("/////////////////////////////////////////////////////////////////////////////////////////////")
+  console.log(data.events[0].data.product_action.products[0])
 
   var device_id = ""
   var platform = ""
