@@ -58,7 +58,10 @@ const appsflyer_feed = "appsflyer_feed";
 app.post('/webhook_v3', async (req, res) => {
   let data = req.body;
 
+  console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
   console.log(data)
+  console.log("---------------------------------------------------------------------------------------------")
+  console.log(data.events[0].data)
 
   var device_id = ""
   var platform = ""
