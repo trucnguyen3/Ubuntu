@@ -58,7 +58,7 @@ const appsflyer_feed = "appsflyer_feed";
 app.post('/webhook_v3', async (req, res) => {
   let data = req.body;
 
-  const mpid = req.body.mpid;
+  const mpid = req.body.mpid.toString();
   console.log(typeof mpid, mpid);
 
   //console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
