@@ -58,17 +58,20 @@ const appsflyer_feed = "appsflyer_feed";
 app.post('/webhook_v3', async (req, res) => {
   let data = req.body;
 
-  console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-  console.log(data)
-  console.log("---------------------------------------------------------------------------------------------")
-  console.log(data.events[0].data)
-  console.log("/////////////////////////////////////////////////////////////////////////////////////////////")
+  const mpid = req.body.mpid;
+  console.log(typeof mpid, mpid);
+
+  //console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+  //console.log(data)
+  //console.log("---------------------------------------------------------------------------------------------")
+  //console.log(data.events[0].data)
+  //console.log("/////////////////////////////////////////////////////////////////////////////////////////////")
   //console.log(data.events[0].data.product_action.products[0])
 
   var device_id = ""
   var platform = ""
   var device_model = ""
-  var mpid = ""
+  mpid = ""
   var customer_id = ""
   var other = ""
   var mobile_number = ""
