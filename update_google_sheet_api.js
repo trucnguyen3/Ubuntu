@@ -56,8 +56,7 @@ const spreadsheetIdAppsflyer = "1rD8uXA_jUSfW9QGadbbp0DUfcRyaT6yESo3q-RKd7yo"; /
 const appsflyer_feed = "appsflyer_feed";
 
 app.post('/webhook_v3', async (req, res) => {
-  let data = req.body;
-  console.log(data);
+  console.log(req.body);
 
   //console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
   //console.log(data)
@@ -69,7 +68,7 @@ app.post('/webhook_v3', async (req, res) => {
   var device_id = ""
   var platform = ""
   var device_model = ""
-  mpid = ""
+  var mpid = ""
   var customer_id = ""
   var other = ""
   var mobile_number = ""
