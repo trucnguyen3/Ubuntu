@@ -65,6 +65,7 @@ app.post('/webhook_v3', async (req, res) => {
   //console.log("/////////////////////////////////////////////////////////////////////////////////////////////")
   //console.log(data.events[0].data.product_action.products[0])
 
+  /*
   var device_id = ""
   var platform = ""
   var device_model = ""
@@ -120,6 +121,7 @@ app.post('/webhook_v3', async (req, res) => {
     valueInputOption: "USER_ENTERED",
     requestBody: { majorDimension: "ROWS", values: [[device_id, platform, device_model, mpid, customer_id, other, mobile_number, event_name, event_time, event_value, sheet_created_date, source]] },
   });
+  */
 
   res.send("OK")
 });
