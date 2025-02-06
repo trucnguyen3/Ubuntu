@@ -1,0 +1,12 @@
+{
+  "name": "CleverTap PWA App",
+  "short_name": "CTPWA",
+  "display": "standalone",
+  "theme_color": "#000",
+  "background_color": "#fff",
+  "icons": [{
+    "src": "https://static.wixstatic.com/media/09c7dc_49aea3d3d5c547ea9ea1f20ae13628fe~mv2.png/v1/fill/w_103,h_73,al_c,q_95,enc_avif,quality_auto/AKA_MarTechAgency_logo%202.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}
