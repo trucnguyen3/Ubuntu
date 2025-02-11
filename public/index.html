@@ -267,7 +267,7 @@
         var oneLinkURL = "https://akadigital.onelink.me/avHM";
         var webReferrer = "af_channel";
         var mediaSource = { keys: ["utm_source"], overrideValues: { "dev.akadigital": "dev.akadigital.net" }, defaultValue: "dev.akadigital" };
-        var deepLinkValue = { keys: ["demo"], overrideValues: { demo: "demo1" }, defaultValue: "demo" };
+        var deepLinkValue = { keys: ["SecondPage"], overrideValues: { "SecondPage": "aka%3A%2F%2Fdemo%2FSecondPage" }, defaultValue: "SecondPage" };
         var custom_ss_ui = { paramKey: "af_ss_ui", defaultValue: "true" };
 
         //Call the function after embedding the code through a global parameter on the window object called window.AF_SMART_SCRIPT.
@@ -324,7 +324,7 @@
                             <a href="#" class="dropdown-item">Tiết kiệm</a>
                         </div>
                     </div>
-                    <a href="https://akadigital.onelink.me/avHM?deep_link_value=demo" class="nav-item nav-link"
+                    <a href="https://akadigital.onelink.me/avHM?deep_link_value=SecondPage" class="nav-item nav-link"
                         style="width: 90px;" id="openapp">Mở App</a>
                     <a href="https://dev.akadigital.net/signup" id="signup" class="nav-item nav-link"
                         style="width: 100px;">Đăng ký</a>
